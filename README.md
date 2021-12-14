@@ -25,13 +25,14 @@
 * Sort VCF and zip files
 * Run VCF check
 
-'''
+```
 ## Modules we'll need
 module load plink
 module load bcftools/1.9
 export BCFTOOLS_PLUGINS=/appl/bcftools-1.9/libexec/bcftools/
 module load vcftools/0.1.12c
 module load tabix/0.2.6
+```
 
 ```
 ## Preparing files for TOPMed imputation
