@@ -16,6 +16,7 @@
 * If you're unfamiliar with genomic file types, we will end up needing all of these files because they each contain some form of information we need
 * It looks like we have files for chromosome 1-22
 
+
 ## Imputation Preparation (Pre-Imputation QC)
 * Data is already lifted-over to build38??
 * Split data if its size maxes out the TOPMed Server
@@ -47,11 +48,31 @@ out_path=~/group/projects/cphg-gwas-qc/
  plink --make-bed \
  --bfile ${in_path}ALL.chr${i}_GRCh38.genotypes.20170504.genotypes \
  --extract range GSA-24v3-0_A2_cleaned.bed \
+ --exclude 1KG_GSA-filtered_merged-merge.missnp
  --out ${out_path}prepare/chr${i}_GSA-filtered; done
 ```
-
 ![image](https://user-images.githubusercontent.com/30478823/146036594-4590d0eb-0753-4bd7-9404-32de174f3c89.png)
 
+## Merge per-chromosome files into whole-genome input file
+```
+## create a text file which is our merge list containing a line for each chromosome we are working with
+```
+![image](https://user-images.githubusercontent.com/30478823/146052632-032cc0b4-f0b3-4b10-a369-ae58ffce5a4c.png)
+
+```
+## cd into prepare/ then merge the chr into 1 file
+plink --bfile chr1_GSA-filtered --merge-list ../mergelist.txt --make-bed --out 1KG_GSA-filtered_merged
+ 
+## if it finds error: # variants with 3+ alleles present, go back and re-generate chromosomes from raw input with the aberrant snps using the --exclude command with the .missnp file
+for i in {4..4}; do \
+ plink --make-bed \
+ --bfile ${in_path}ALL.chr${i}_GRCh38.genotypes.20170504.genotypes \
+ --extract range GSA-24v3-0_A2_cleaned.bed \
+ --exclude prepare/1KG_GSA-filtered_merged-merge.missnp \
+ --out ${out_path}prepare/chr${i}_GSA-filtered; done
+ 
+ ## now repeat the merge again
+```
 
 ```
 ## Calculating freq
