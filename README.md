@@ -49,8 +49,12 @@ out_path=~/group/projects/cphg-gwas-qc/
  --bfile ${in_path}ALL.chr${i}_GRCh38.genotypes.20170504.genotypes \
  --extract range GSA-24v3-0_A2_cleaned.bed \
  --out ${out_path}prepare/chr${i}_GSA-filtered; done
+```
+
 ![image](https://user-images.githubusercontent.com/30478823/146036594-4590d0eb-0753-4bd7-9404-32de174f3c89.png)
 
+
+```
 ## Calculating freq
 plink --bfile <input_files> --freq --out <output_filename>
 
