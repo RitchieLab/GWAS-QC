@@ -44,7 +44,8 @@ plink --bfile <input_files> --freq --out <output_filename>
 ## Imputation using TOPMed Imputation Server
 
 
-## Post-Imputation
+## Post-Imputation QC
 
+## GWAS
 
 
