@@ -14,6 +14,7 @@
   * *.bim files contain information about markers, one marker per line
   * *.bed contain binary genotype information (don’t view this file directly)
 * If you're unfamiliar with genomic file types, we will end up needing all of these files because they each contain some form of information we need
+* It looks like we have files for chromosome 1-22
 
 ## Imputation Preparation (Pre-Imputation QC)
 * Data is already lifted-over to build38??
@@ -21,7 +22,21 @@
 * Calculating freq
 
 ```
-plink --bfile 
+## Preparing files for TOPMed imputation
+
+## Is data lifted over?
+
+## Extract SNPs from GSA Manifest file
+plink --make-bed \
+ --bfile <input_files> \
+ --extract range <GSA bed file> \
+ --out <output_filenames>
+
+## Calculating freq
+plink --bfile <input_files> --freq --out <output_filename>
+
+## Checking snps against TOPMed
+
 ```
 * 
 
