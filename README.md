@@ -55,8 +55,12 @@ out_path=~/group/projects/cphg-gwas-qc/
 
 ```
 ## Calculating freq
-plink --bfile <input_files> --freq --out <output_filename>
+for i in {1..22}; do plink --bfile chr${i}_GSA-filtered --freq --out chr${i}_GSA-filtered_freq; done
+```
+![image](https://user-images.githubusercontent.com/30478823/146039269-f1ad7d19-537d-419b-a727-82e43300c16a.png)
 
+
+```
 ## Checking snps against TOPMed
 (http://www.well.ox.ac.uk/~wrayner/tools/)
 ## Checks Strand, alleles, position, Ref/Alt assignments and frequency differences
