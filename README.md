@@ -72,14 +72,18 @@ for i in {4..4}; do \
  --out ${out_path}prepare/chr${i}_GSA-filtered; done
  
  ## now repeat the merge again
+ plink --bfile chr1_GSA-filtered --merge-list ../mergelist.txt --make-bed --out 1KG_GSA-filtered_merged
 ```
+![image](https://user-images.githubusercontent.com/30478823/146056961-3a72cfa8-aaa4-4dc2-86fe-63f5c5947565.png)
+
 
 ```
 ## Calculating freq
-for i in {1..22}; do plink --bfile chr${i}_GSA-filtered --freq --out chr${i}_GSA-filtered_freq; done
+plink --bfile 1KG_GSA-filtered_merged --freq --out 1KG_GSA-filtered_merged_freq
 ```
-![image](https://user-images.githubusercontent.com/30478823/146039269-f1ad7d19-537d-419b-a727-82e43300c16a.png)
+![image](https://user-images.githubusercontent.com/30478823/146056904-ab43216b-7d42-4469-acfa-580d963856fa.png)
 
+![image](https://user-images.githubusercontent.com/30478823/146056829-047a7afc-44c0-4435-8afd-d0e8975f9863.png)
 
 ```
 ## Checking snps against TOPMed
