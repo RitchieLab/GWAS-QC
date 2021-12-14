@@ -71,22 +71,21 @@ plink --recode vcf --output-chr
 ## Imputation using TOPMed Imputation Server
 XYZ
 
-'''
-## code block here
-'''
+```
+<code>
+```
 
 ## Post-Imputation QC
 XYZ
-
-'''
-## code block here
-'''
+```
+<code>
+```
 
 ## GWAS
 XYZ
 
-'''
-## code block here
-'''
+```
+<code>
+```
 
 
