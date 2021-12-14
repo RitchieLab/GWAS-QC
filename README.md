@@ -17,7 +17,7 @@
 * It looks like we have files for chromosome 1-22
 
 
-## Imputation Preparation (Pre-Imputation QC)
+## Starting out
 * Data is already lifted-over to build38??
 * Split data if its size maxes out the TOPMed Server
 * Calculating freq
@@ -56,6 +56,8 @@ out_path=~/group/projects/cphg-gwas-qc/
 ## Merge per-chromosome files into whole-genome input file
 ```
 ## create a text file which is our merge list containing a line for each chromosome we are working with
+cat > mergelist.txt
+# then type in all the chr file prefixes separated by line minus the first chromosome, chr1
 ```
 ![image](https://user-images.githubusercontent.com/30478823/146052632-032cc0b4-f0b3-4b10-a369-ae58ffce5a4c.png)
 
