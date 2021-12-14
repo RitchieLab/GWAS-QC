@@ -10,9 +10,9 @@
 ## Browsing raw data
 * We go into the directory containing our raw genotype files and inspect to get a sense of them
 * For 1KG, we have .bed, .bim, and .fam files
-** *.fam files contain information about samples, one sample per line
-** *.bim files contain information about markers, one marker per line
-** *.bed contain binary genotype information (don’t view this file directly)
+  *.fam files contain information about samples, one sample per line
+  *.bim files contain information about markers, one marker per line
+  *.bed contain binary genotype information (don’t view this file directly)
 * If you're unfamiliar with genomic file types, we will end up needing all of these files because they each contain some form of information we need
 
 ## Imputation Preparation (Pre-Imputation QC)
