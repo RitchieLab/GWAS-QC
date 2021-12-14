@@ -76,7 +76,12 @@ for i in {4..4}; do \
 ```
 ![image](https://user-images.githubusercontent.com/30478823/146056961-3a72cfa8-aaa4-4dc2-86fe-63f5c5947565.png)
 
+## Run Pre-imputation QC before you start your freq command
+Yuki's usual PMBB pre-imputation QC criteria are: 95% snp call rate / 90% sample call rate / sexcheck-failed samples removed.
+```
+```
 
+## Prepare files to upload to TOPMed Imputation Server
 ```
 ## Calculating freq
 plink --bfile 1KG_GSA-filtered_merged --freq --out 1KG_GSA-filtered_merged_freq
