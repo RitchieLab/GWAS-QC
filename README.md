@@ -40,8 +40,7 @@ module load tabix/0.2.6
 ## Is data lifted over?
 
 ## Extract SNPs from GSA Manifest file
-in_path=/project/ritchie00/datasets/1KG_Phase3/plink_files/
-plink_raw_files/b38/
+in_path=/project/ritchie00/datasets/1KG_Phase3/plink_files/plink_raw_files/b38/
 out_path=~/group/projects/cphg-gwas-qc/
 
  for i in {1..22}; do \
