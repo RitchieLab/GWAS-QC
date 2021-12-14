@@ -5,7 +5,7 @@
 ## Data locations
 * Raw files: /project/ritchie00/datasets/1KG_Phase3/plink_files/plink_raw_files/b38
 * Project output diretory: ~group/projects/cphg-gwas-qc
-* Illumina GSA Manifest file (cleaned & converted to bed format): GSA-24v3-0_A2_cleaned.bed
+  * Illumina GSA Manifest file (cleaned & converted to bed format): GSA-24v3-0_A2_cleaned.bed
 
 ## Browsing raw data
 * We go into the directory containing our raw genotype files and inspect to get a sense of them
