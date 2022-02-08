@@ -61,6 +61,8 @@ cat > mergelist.txt
 ```
 ![image](https://user-images.githubusercontent.com/30478823/146052632-032cc0b4-f0b3-4b10-a369-ae58ffce5a4c.png)
 
+Based on the above image, we see that there are 2504 ambigious individuals with 0 males and 0 females. 
+
 ```
 ## cd into prepare/ then merge the chr into 1 file
 plink --bfile chr1_GSA-filtered --merge-list ../mergelist.txt --make-bed --out 1KG_GSA-filtered_merged
@@ -77,6 +79,16 @@ for i in {4..4}; do \
  plink --bfile chr1_GSA-filtered --merge-list ../mergelist.txt --make-bed --out 1KG_GSA-filtered_merged
 ```
 ![image](https://user-images.githubusercontent.com/30478823/146056961-3a72cfa8-aaa4-4dc2-86fe-63f5c5947565.png)
+
+## create sex-file (FID, IID, sex (coded as 1 or 2) and pheno-file (FID, IID, pheno)
+```
+
+```
+
+## update-sex and update-pheno in the same command on the
+```
+plink --bfile 1KG_GSA-filtered_merged --update-sex <sex-file> --update-pheno <pheno-file> --make-bed --out 1KG_GSA-filtered_merged-with-sex-pheno
+```
 
 ## Run Pre-imputation QC before you start your freq command
 Yuki's usual PMBB pre-imputation QC criteria are: 95% snp call rate / 90% sample call rate / sexcheck-failed samples removed.
