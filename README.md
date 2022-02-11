@@ -81,6 +81,10 @@ for i in {4..4}; do \
 ![image](https://user-images.githubusercontent.com/30478823/146056961-3a72cfa8-aaa4-4dc2-86fe-63f5c5947565.png)
 
 ## create sex-file (FID, IID, sex (coded as 1 or 2) and pheno-file (FID, IID, pheno)
+20130606_g1k.ped = File with Family ID, Individual ID, Gender etc to use to create our sex-file
+igsr_samples.tsv = File with ancestryto use to create our pheno-file
+
+
 ```
 
 ```
