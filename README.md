@@ -85,15 +85,18 @@ Checking the .fam file from our merge, we see that column 5 has 0's when it shou
 ![image](https://user-images.githubusercontent.com/30478823/153645848-a03b98f3-d997-4857-bcb3-350d99bc2a2c.png)
 
 
-## create sex-file (FID, IID, sex (coded as 1 or 2) and pheno-file (FID, IID, pheno)
+## Create sex-file (FID, IID, sex (coded as 1 or 2) and pheno-file (FID, IID, pheno)
 20130606_g1k.ped = File with Family ID, Individual ID, Gender etc to use to create our sex-file
 igsr_samples.tsv = File with ancestryto use to create our pheno-file
 
 ```
+# grab the family ID, individual ID, and sex info
+awk -F '\t' '{print $1, $2, $5}'  20130606_g1k.ped > sex-file.txt
 
+# do the same for phenotype?
 ```
 
-## update-sex and update-pheno in the same command on the
+## Update-sex and update-pheno in the same command on the
 ```
 plink --bfile 1KG_GSA-filtered_merged --update-sex <sex-file> --update-pheno <pheno-file> --make-bed --out 1KG_GSA-filtered_merged-with-sex-pheno
 ```
