@@ -85,7 +85,6 @@ Based on the above image, we see that there are 2504 ambigious individuals with 
 20130606_g1k.ped = File with Family ID, Individual ID, Gender etc to use to create our sex-file
 igsr_samples.tsv = File with ancestryto use to create our pheno-file
 
-
 ```
 
 ```
@@ -94,6 +93,9 @@ igsr_samples.tsv = File with ancestryto use to create our pheno-file
 ```
 plink --bfile 1KG_GSA-filtered_merged --update-sex <sex-file> --update-pheno <pheno-file> --make-bed --out 1KG_GSA-filtered_merged-with-sex-pheno
 ```
+This is what it looks like after we only update sex.
+![image](https://user-images.githubusercontent.com/30478823/153644627-ef3dd315-c113-45ee-85ab-b2d075210ba8.png)
+
 
 ## Run Pre-imputation QC before you start your freq command
 Yuki's usual PMBB pre-imputation QC criteria are: 95% snp call rate / 90% sample call rate / sexcheck-failed samples removed.
