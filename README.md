@@ -112,7 +112,7 @@ join -1 1 -2 1 <(cat 1KG_GSA-filtered_merged.fam |sort -k1,1) <(cat ../20130606_
 # then replace AFR=2 and others (EUR, AMR, EAS, SAS)=1
 ```
 
-## Update-sex and update-pheno in the same command on the
+## Update-sex to update our 1KG files with the appropriate sex info
 ```
 plink --bfile 1KG_GSA-filtered_merged --update-sex sex_file.txt --make-bed --out 1KG_GSA-filtered_merged_withsex
 ```
@@ -120,15 +120,18 @@ This is what it looks like after we update sex.
 ![image](https://user-images.githubusercontent.com/30478823/153913980-85bb7a89-8107-4daa-b9be-32e7c86d8663.png)
 
 
-## Run Pre-imputation QC before you start your freq command
+## Run pre-imputation QC before you start your freq command
 Yuki's usual PMBB pre-imputation QC criteria are: 95% snp call rate / 90% sample call rate / sexcheck-failed samples removed.
 ```
 plink --bfile 1KG_GSA-filtered_merged_withsex --geno 0.05 --mind 0.1 --make-bed --out 1KG_GSA-filtered_merged_withsex_QC
 ```
 ![image](https://user-images.githubusercontent.com/30478823/153922085-c9e51727-315c-4a29-bc9d-fc682067b3ae.png)
 
+## Perform heterozygosity check
+```
+```
 
-## Prepare files to upload to TOPMed Imputation Server
+## (TO-DO/old) Prepare files to upload to TOPMed Imputation Server
 ```
 ## Calculating freq
 plink --bfile 1KG_GSA-filtered_merged --freq --out 1KG_GSA-filtered_merged_freq
@@ -138,22 +141,22 @@ plink --bfile 1KG_GSA-filtered_merged --freq --out 1KG_GSA-filtered_merged_freq
 ![image](https://user-images.githubusercontent.com/30478823/146056829-047a7afc-44c0-4435-8afd-d0e8975f9863.png)
 
 ```
-## Checking snps against TOPMed
+## (TO-DO/old) Checking snps against TOPMed
 (http://www.well.ox.ac.uk/~wrayner/tools/)
 ## Checks Strand, alleles, position, Ref/Alt assignments and frequency differences
 ## Updates: Strand, position, ref/alt assignment
 ## Removes: A/T & G/C SNPs if MAF > 0.4, SNPs with differing alleles, SNPs with > 0.2 allele frequency difference, SNPs not in reference panel
-## Using HRC-1000G-check-bim-v4.3.0
+## (TO-DO/old) Using HRC-1000G-check-bim-v4.3.0
 <use Yuki's perl script?>
 
 <make sure the chromosomes are in the right chr# format>
 plink --recode vcf --output-chr
 
-## Creating VCF file aligned with build38 reference alleles (downloaded from: https://console.cloud.google.com/storage/browser/genomics-public-data/resources/broad/hg38/)
+## (TO-DO/old) Creating VCF file aligned with build38 reference alleles (downloaded from: https://console.cloud.google.com/storage/browser/genomics-public-data/resources/broad/hg38/)
 
-#Sorting VCF and zipping files using VCFtools and tabix (make sure the module are loaded first)
+# (TO-DO/old) Sorting VCF and zipping files using VCFtools and tabix (make sure the module are loaded first)
 
-## Run VCF check (downloaded from https://github.com/zhanxw/checkVCF)
+## (TO-DO/old) Run VCF check (downloaded from https://github.com/zhanxw/checkVCF)
 
 ```
 * 
