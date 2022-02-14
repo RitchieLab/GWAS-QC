@@ -87,21 +87,32 @@ Checking the .fam file from our merge, we see that column 5 has 0's when it shou
 
 ## Create sex-file (FID, IID, sex (coded as 1 or 2) and pheno-file (FID, IID, pheno)
 20130606_g1k.ped = File with Family ID, Individual ID, Gender etc to use to create our sex-file
+![image](https://user-images.githubusercontent.com/30478823/153914145-636c8e0c-1fe2-4f1d-b702-a8ef0ec7ee99.png)
+
 igsr_samples.tsv = File with ancestryto use to create our pheno-file
+![image](https://user-images.githubusercontent.com/30478823/153914187-f5420695-a71c-4b62-a331-e8231eccb095.png)
 
 ```
-# grab the family ID, individual ID, and sex info
+# my query to grab the family ID, individual ID, and sex info
 awk -F '\t' '{print $1, $2, $5}'  20130606_g1k.ped > sex-file.txt
+![image](https://user-images.githubusercontent.com/30478823/153914094-00a1cd19-59ec-4a30-943f-6c3c92052496.png)
 
-# do the same for phenotype?
+# Shefali's query to grab the items (this one worked best)
+join -1 1 -2 1 <(cat 1KG_GSA-filtered_merged.fam |sort -k1,1) <(cat ../20130606_g1k.ped |awk -F '\t' '{print $2,$5}' |sort -k1,1) |awk '{print $1,$2,$7}' >sex_file.txt
+![image](https://user-images.githubusercontent.com/30478823/153914059-e3e680ba-9326-4b74-8fc9-7cb6430d3c5d.png)
+
+# do the same for phenotype to have pheno_file on hand for GWAS
+#  Extract the population info from igsr_samples.tsv file
+# then replace AFR=2 and others (EUR, AMR, EAS, SAS)=1
+
 ```
 
 ## Update-sex and update-pheno in the same command on the
 ```
-plink --bfile 1KG_GSA-filtered_merged --update-sex <sex-file> --update-pheno <pheno-file> --make-bed --out 1KG_GSA-filtered_merged-with-sex-pheno
+plink --bfile 1KG_GSA-filtered_merged --update-sex sex_file.txt --make-bed --out 1KG_GSA-filtered_merged_withsex
 ```
-This is what it looks like after we only update sex.
-![image](https://user-images.githubusercontent.com/30478823/153644627-ef3dd315-c113-45ee-85ab-b2d075210ba8.png)
+This is what it looks like after we update sex.
+![image](https://user-images.githubusercontent.com/30478823/153913980-85bb7a89-8107-4daa-b9be-32e7c86d8663.png)
 
 
 ## Run Pre-imputation QC before you start your freq command
