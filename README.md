@@ -95,16 +95,21 @@ igsr_samples.tsv = File with ancestryto use to create our pheno-file
 ```
 # my query to grab the family ID, individual ID, and sex info
 awk -F '\t' '{print $1, $2, $5}'  20130606_g1k.ped > sex-file.txt
+```
 ![image](https://user-images.githubusercontent.com/30478823/153914094-00a1cd19-59ec-4a30-943f-6c3c92052496.png)
 
+
+```
 # Shefali's query to grab the items (this one worked best)
 join -1 1 -2 1 <(cat 1KG_GSA-filtered_merged.fam |sort -k1,1) <(cat ../20130606_g1k.ped |awk -F '\t' '{print $2,$5}' |sort -k1,1) |awk '{print $1,$2,$7}' >sex_file.txt
+```
 ![image](https://user-images.githubusercontent.com/30478823/153914059-e3e680ba-9326-4b74-8fc9-7cb6430d3c5d.png)
 
+
+```
 # do the same for phenotype to have pheno_file on hand for GWAS
 #  Extract the population info from igsr_samples.tsv file
 # then replace AFR=2 and others (EUR, AMR, EAS, SAS)=1
-
 ```
 
 ## Update-sex and update-pheno in the same command on the
@@ -118,6 +123,7 @@ This is what it looks like after we update sex.
 ## Run Pre-imputation QC before you start your freq command
 Yuki's usual PMBB pre-imputation QC criteria are: 95% snp call rate / 90% sample call rate / sexcheck-failed samples removed.
 ```
+plink --bfile 1KG_GSA-filtered_merged_withsex --geno 0.05 --mind 0.1 --make-bed --out 1KG_GSA-filtered_merged_withsex_QC
 ```
 
 ## Prepare files to upload to TOPMed Imputation Server
