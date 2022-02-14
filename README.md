@@ -127,11 +127,11 @@ plink --bfile 1KG_GSA-filtered_merged_withsex --geno 0.05 --mind 0.1 --make-bed 
 ```
 ![image](https://user-images.githubusercontent.com/30478823/153922085-c9e51727-315c-4a29-bc9d-fc682067b3ae.png)
 
-## Perform heterozygosity check
+## Perform heterozygosity check in R to generate plots
 ```
 ```
 
-## (TO-DO/old) Prepare files to upload to TOPMed Imputation Server
+## (TO-DO) Prepare files to upload to TOPMed Imputation Server
 ```
 ## Calculating freq
 plink --bfile 1KG_GSA-filtered_merged_withsex_QC --freq --out 1KG_GSA-filtered_merged_withsex_QC_freq
@@ -139,22 +139,22 @@ plink --bfile 1KG_GSA-filtered_merged_withsex_QC --freq --out 1KG_GSA-filtered_m
 ![image](https://user-images.githubusercontent.com/30478823/146056904-ab43216b-7d42-4469-acfa-580d963856fa.png)
 
 ```
-## (TO-DO/old) Checking snps against TOPMed
+## (TO-DO) Checking snps against TOPMed
 (http://www.well.ox.ac.uk/~wrayner/tools/)
 ## Checks Strand, alleles, position, Ref/Alt assignments and frequency differences
 ## Updates: Strand, position, ref/alt assignment
 ## Removes: A/T & G/C SNPs if MAF > 0.4, SNPs with differing alleles, SNPs with > 0.2 allele frequency difference, SNPs not in reference panel
-## (TO-DO/old) Using HRC-1000G-check-bim-v4.3.0
+## (TO-DO) Using HRC-1000G-check-bim-v4.3.0
 <use Yuki's perl script?>
 
 <make sure the chromosomes are in the right chr# format>
 plink --recode vcf --output-chr
 
-## (TO-DO/old) Creating VCF file aligned with build38 reference alleles (downloaded from: https://console.cloud.google.com/storage/browser/genomics-public-data/resources/broad/hg38/)
+## (TO-DO) Creating VCF file aligned with build38 reference alleles (downloaded from: https://console.cloud.google.com/storage/browser/genomics-public-data/resources/broad/hg38/)
 
-# (TO-DO/old) Sorting VCF and zipping files using VCFtools and tabix (make sure the module are loaded first)
+# (TO-DO) Sorting VCF and zipping files using VCFtools and tabix (make sure the module are loaded first)
 
-## (TO-DO/old) Run VCF check (downloaded from https://github.com/zhanxw/checkVCF)
+## (TO-DO) Run VCF check (downloaded from https://github.com/zhanxw/checkVCF)
 
 ```
 * 
