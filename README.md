@@ -134,11 +134,9 @@ plink --bfile 1KG_GSA-filtered_merged_withsex --geno 0.05 --mind 0.1 --make-bed 
 ## (TO-DO/old) Prepare files to upload to TOPMed Imputation Server
 ```
 ## Calculating freq
-plink --bfile 1KG_GSA-filtered_merged --freq --out 1KG_GSA-filtered_merged_freq
+plink --bfile 1KG_GSA-filtered_merged_withsex_QC --freq --out 1KG_GSA-filtered_merged_withsex_QC_freq
 ```
 ![image](https://user-images.githubusercontent.com/30478823/146056904-ab43216b-7d42-4469-acfa-580d963856fa.png)
-
-![image](https://user-images.githubusercontent.com/30478823/146056829-047a7afc-44c0-4435-8afd-d0e8975f9863.png)
 
 ```
 ## (TO-DO/old) Checking snps against TOPMed
