@@ -125,6 +125,8 @@ Yuki's usual PMBB pre-imputation QC criteria are: 95% snp call rate / 90% sample
 ```
 plink --bfile 1KG_GSA-filtered_merged_withsex --geno 0.05 --mind 0.1 --make-bed --out 1KG_GSA-filtered_merged_withsex_QC
 ```
+![image](https://user-images.githubusercontent.com/30478823/153922085-c9e51727-315c-4a29-bc9d-fc682067b3ae.png)
+
 
 ## Prepare files to upload to TOPMed Imputation Server
 ```
