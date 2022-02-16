@@ -181,3 +181,7 @@ XYZ
 ```
 
 
+## Additional material
+We recommend the following resources and tutorials developed for performing GWAS:
+* Comphrehensive tutorial about GWAS and PRS by MareesAT: https://github.com/MareesAT/GWA_tutorial/
+* GWAS Data Cleaning tutorial by the GENEVA Coordinating Center: https://www.bioconductor.org/packages/devel/bioc/vignettes/GWASTools/inst/doc/DataCleaning.pdf
