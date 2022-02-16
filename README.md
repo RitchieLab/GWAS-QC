@@ -146,25 +146,47 @@ plink --bfile 1KG_GSA-filtered_merged_withsex_QC --freq --out 1KG_GSA-filtered_m
 ## Removes: A/T & G/C SNPs if MAF > 0.4, SNPs with differing alleles, SNPs with > 0.2 allele frequency difference, SNPs not in reference panel
 ## (TO-DO) Using HRC-1000G-check-bim-v4.3.0
 perl /home/yub7/group/projects/PMBB/QC_Imputation/scripts/HRC-1000G-check-bim.pl \
-> -r /home/yub7/group/projects/PMBB/QC_Imputation/scripts/PASS.Variants.TOPMed_freeze5_hg38_dbSNP.tab -h \
-> -b 1KG_GSA-filtered_merged_withsex_QC.bim \
-> -f 1KG_GSA-filtered_merged_withsex_QC_freq.frq
+-r /home/yub7/group/projects/PMBB/QC_Imputation/scripts/PASS.Variants.TOPMed_freeze5_hg38_dbSNP.tab -h \
+-b 1KG_GSA-filtered_merged_withsex_QC.bim \
+-f 1KG_GSA-filtered_merged_withsex_QC_freq.frq
 ```
 ![image](https://user-images.githubusercontent.com/30478823/154357815-632c6c56-eac7-4ce2-ae26-efaea8ac2de5.png)
-![image](https://user-images.githubusercontent.com/30478823/154359889-b6c1e26b-3d5c-4e10-a902-75b8d7b2cc66.png)
+![image](https://user-images.githubusercontent.com/30478823/154360757-f09aabb9-2298-45eb-b6b0-ebe7e5722b78.png)
 
-
+## Coding CHR from "1","23" into "Chr1","ChrX" format
 ```
-<make sure the chromosomes are in the right chr# format>
-plink --recode vcf --output-chr
+sed -i 's/--recode vcf/--recode vcf --output-chr chrM/g' Run-plink.sh
+chmod +x ./Run-plink.sh
+./Run-plink.sh
 ```
 
+## Creating VCF file aligned with build38 reference alleles (downloaded from: https://console.cloud.google.com/storage/browser/genomics-public-data/resources/broad/hg38/)
 ```
-## (TO-DO) Creating VCF file aligned with build38 reference alleles (downloaded from: https://console.cloud.google.com/storage/browser/genomics-public-data/resources/broad/hg38/)
+module load bcftools/1.9
+export BCFTOOLS_PLUGINS=/appl/bcftools-1.9/libexec/bcftools/
 
-# (TO-DO) Sorting VCF and zipping files using VCFtools and tabix (make sure the module are loaded first)
+for i in {1..23}; do \
+bcftools +fixref GSA_V2_45K_set1-updated-chr$i'.vcf' \
+-Ov -o GSA_V2_45K_set1_updated_flipped_chr$i'.vcf' \
+-- -d -f ~/group/projects/PMBB/QC_Imputation/scripts/resources_broad_hg38_v0_Homo_sapiens_assembly38.fasta -m flip; done
+```
 
-## (TO-DO) Run VCF check (downloaded from https://github.com/zhanxw/checkVCF)
+## Sorting VCF and zipping files using VCFtools and tabix (make sure the module are loaded first)
+```
+module load vcftools/0.1.12c
+module load tabix/0.2.6
+for i in {1..23}; do \
+vcf-sort GSA_V2_45K_set1_updated_flipped_chr$i.vcf | \
+bgzip -c > GSA_V2_45K_ImputationInput_TOPMED_set1_chr$i.vcf.gz; done
+```
+
+## Run VCF check (downloaded from https://github.com/zhanxw/checkVCF)
+```
+for i in {1..23}; do python ~/group/projects/PMBB/QC_Imputation/scripts/checkVCF.py \
+-r ~/group/projects/PMBB/QC_Imputation/scripts/resources_broad_hg38_v0_Homo_sapiens_assembly38.fasta \
+ -o test GSA_V2_45K_ImputationInput_TOPMED_set1_chr$i.vcf.gz; mv test.check.log test.check_chr$i.log >> test_check_set1.log; done
+```
+
 
 ```
 * 
