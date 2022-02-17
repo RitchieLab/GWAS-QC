@@ -191,6 +191,9 @@ for i in {1..23}; do python ~/group/projects/PMBB/QC_Imputation/scripts/checkVCF
 ```
 * 
 
+## Compute Principal Component Analyses on Pre-Imputed Data
+```
+```
 
 ## Imputation using TOPMed Imputation Server
 XYZ
