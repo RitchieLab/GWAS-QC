@@ -8,7 +8,7 @@ We chose a publicly available dataset from the International Genome Sample Resou
 * Raw files: /project/ritchie00/datasets/1KG_Phase3/plink_files/plink_raw_files/b38
 * Project output diretory: ~group/projects/cphg-gwas-qc
   * Illumina GSA Manifest file (cleaned & converted to bed format): ~metadata/GSA-24v3-0_A2_cleaned.bed
-* QC'd Pre-Imputation Data: ~
+* QC'd Pre-Imputation Data: ~group/projects/cphg-gwas-qc/prepare
 * Imputated Data: ~group/scratch/van/cphg-gwas-qc-imputed-data
 
 ## Browsing raw data
