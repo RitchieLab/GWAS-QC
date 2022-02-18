@@ -274,7 +274,8 @@ Theoretically, phased means that the two strands on each Chr are separated to id
 ~group/scratch/van/cphg-gwas-qc-imputed-data
 
 # Unzip the files and enter the password that was emailed to you from TOPMed inside the quotes
- for file in *.zip; do 7z e $file -p"<password>"; done
+module load p7zip
+for file in *.zip; do 7z e $file -p"<password>"; done
 ```
 ![image](https://user-images.githubusercontent.com/30478823/154745163-97f3cb23-03db-487c-9638-63830eec92cc.png)
 
