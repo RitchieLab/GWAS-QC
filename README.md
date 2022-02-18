@@ -8,6 +8,8 @@ We chose a publicly available dataset from the International Genome Sample Resou
 * Raw files: /project/ritchie00/datasets/1KG_Phase3/plink_files/plink_raw_files/b38
 * Project output diretory: ~group/projects/cphg-gwas-qc
   * Illumina GSA Manifest file (cleaned & converted to bed format): ~metadata/GSA-24v3-0_A2_cleaned.bed
+* QC'd Pre-Imputation Data: ~
+* Imputated Data: ~group/scratch/van/cphg-gwas-qc-imputed-data
 
 ## Browsing raw data
 * We go into the directory containing our raw genotype files and inspect to get a sense of them
@@ -262,7 +264,12 @@ Theoretically, phased means that the two strands on each Chr are separated to id
 ![image](https://user-images.githubusercontent.com/30478823/154598027-ea78546d-e645-460a-bab7-b41fead62356.png)
 ![image](https://user-images.githubusercontent.com/30478823/154598503-691c4973-2858-4ff0-a9ac-95360317b405.png)
 ![image](https://user-images.githubusercontent.com/30478823/154600698-1d443de3-6691-4af9-a078-6bdb8f113e5a.png)
+![image](https://user-images.githubusercontent.com/30478823/154738461-b951ab13-75b3-417f-bfc1-1e461dc4cf47.png)
 
+## Location of Imputed Data
+```
+~group/scratch/van/cphg-gwas-qc-imputed-data
+```
 
 ## Post-Imputation QC
 XYZ
