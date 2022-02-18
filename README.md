@@ -215,7 +215,7 @@ chmod +x ./Run-plink.sh
 ./Run-plink.sh
 ```
 
-## TODO Creating VCF file aligned with build38 reference alleles (downloaded from: https://console.cloud.google.com/storage/browser/genomics-public-data/resources/broad/hg38/)
+## Creating VCF file aligned with build38 reference alleles (downloaded from: https://console.cloud.google.com/storage/browser/genomics-public-data/resources/broad/hg38/)
 ```
 module load bcftools/1.9
 export BCFTOOLS_PLUGINS=/appl/bcftools-1.9/libexec/bcftools/
@@ -225,8 +225,9 @@ bcftools +fixref 1KG_GSA-filtered_merged_withsex_QC-updated-chr$i'.vcf' \
 -Ov -o 1KG_GSA-filtered_merged_withsex_QC-updated_flipped_chr$i'.vcf' \
 -- -d -f ~/group/projects/PMBB/QC_Imputation/scripts/resources_broad_hg38_v0_Homo_sapiens_assembly38.fasta -m flip; done
 ```
+![image](https://user-images.githubusercontent.com/30478823/154592044-bd1e7f13-ffff-4b95-8efb-e21e02c46f02.png)
 
-## TODO Sorting VCF and zipping files using VCFtools and tabix (make sure the module are loaded first)
+## Sorting VCF and zipping files using VCFtools and tabix (make sure the module are loaded first)
 ```
 module load vcftools/0.1.12c
 module load tabix/0.2.6
@@ -234,13 +235,16 @@ for i in {1..22}; do \
 vcf-sort 1KG_GSA-filtered_merged_withsex_QC-updated_flipped_chr$i.vcf | \
 bgzip -c > 1KG_ImputationInput_TOPMED_chr$i.vcf.gz; done
 ```
+![image](https://user-images.githubusercontent.com/30478823/154592893-04983705-37db-4aa1-b761-7dbe0da27a7b.png)
+![image](https://user-images.githubusercontent.com/30478823/154592906-7c88fb93-79b8-451a-b4e7-acf925d5bb08.png)
 
-## TODO Run VCF check (downloaded from https://github.com/zhanxw/checkVCF)
+## Run VCF check (downloaded from https://github.com/zhanxw/checkVCF)
 ```
 for i in {1..23}; do python ~/group/projects/PMBB/QC_Imputation/scripts/checkVCF.py \
 -r ~/group/projects/PMBB/QC_Imputation/scripts/resources_broad_hg38_v0_Homo_sapiens_assembly38.fasta \
  -o test 1KG_ImputationInput_TOPMED_chr$i.vcf.gz; mv test.check.log test.check_chr$i.log >> test_check_set1.log; done
 ```
+![image](https://user-images.githubusercontent.com/30478823/154593256-cc5a4372-421f-402c-ba02-907fbe854424.png)
 
 
 ## Compute Principal Component Analyses on Pre-Imputed Data
