@@ -137,6 +137,7 @@ for i in {4..4}; do \
 Based on the above image, we see that there are 2504 ambigious individuals with 0 males and 0 females. 
 
 Checking the .fam file from our merge, we see that column 5 has 0's when it should have 1's or 2's to represent female/male. 
+
 ![image](https://user-images.githubusercontent.com/30478823/153645848-a03b98f3-d997-4857-bcb3-350d99bc2a2c.png)
 
 
