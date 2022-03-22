@@ -293,7 +293,45 @@ XYZ
 <code>
 ```
 
-## Regenie
+## Regenie (run by Yuki)
+Ok so here is the steps I took to create bgen sample file required to run Regenie:
+*info.gz files from imputed data contains all the snp information, so I just want to extract 1 snp name out of it:
+```
+zcat ~/group/scratch/van/cphg-gwas-qc-data/imputed-data/chr22.info.gz | head -4
+```
+```
+SNP	REF(0)	ALT(1)	ALT_Frq	MAF	AvgCall	Rsq	Genotyped	LooRsq	EmpR	EmpRsq	Dose0	Dose1
+chr22:10581332:TATG:T	TATG	T	0.00013	0.00013	0.99988	0.42729	Imputed	-	-	-	-	-
+chr22:10625878:T:C	T	C	0.00014	0.00014	0.99987	0.40740	Imputed	-	-	-	-	-
+chr22:10670252:G:T	G	T	0.00010	0.00010	0.99990	0.51619	Imputed	-	-	-	-	-
+```
+
+So I am using the very first snp name (irrelevant which one you pick) to extract just 1 snp out of huge vcf file and create binary file with just 1 snp, so I can quickly check the *fam file.
+
+```
+plink2 --vcf chr22.dose.vcf.gz --id-delim _ --snp chr22:10581332:TATG:T --make-bed --out test22
+```
+This step create binary test22.bed/bim/fam PLINK files.
+*fam file contains the sample information in this format:
+```
+HG00096 HG00096 0	0	0	-9
+HG00097 HG00097 0	0	0	-9
+HG00099 HG00099 0	0	0	-9
+```
+I need it to change this to this format to create bgen sample file:
+```
+ID_1 ID_2 missing sex
+0 0 0 D
+HG00096 HG00096 0 NA
+HG00097 HG00097 0 NA
+```
+```
+awk '{print $1,$2,"0","NA"}' test22.fam > cphg_sample.txt
+```
+And I manually added in 2 line header.
+
+These specific steps are not all that important, but you need to get used to the idea of how to find the info you need from where.
+
 ```
 <code>
 ```
