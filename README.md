@@ -281,17 +281,100 @@ for file in *.zip; do 7z e $file -p"<password>"; done
 
 
 ## Post-Imputation QC
-XYZ
+
+Much of the QC can be done in PLINK. For ease start by converting the output from the imputation from `vcf.gz` to bed/bim/fam file format.
+
 ```
-<code>
+#!/bin/bash
+
+SOURCE1="postimp/chr"
+SOURCE2=".dose.vcf.gz"
+DEST1="postimp/chr"
+
+for i in {2..22}
+do
+	SOURCE=${SOURCE1}$i${SOURCE2}
+	DEST=${DEST1}$i
+	plink --vcf $SOURCE --make-bed --out $DEST
+done
+```
+
+Since this is a small dataset, it is possible to merge chromosome files into one bed/bim/fam file, so as to run fewer overall QC commands. This uses `mergelist.txt` which is just a file with all the chromosomes listed from 2-22 (withouut the filename extension), each on a separate line.
+
+```
+plink --bfile postimp/chr1 --merge-list postimp/mergelist.txt --make-bed --out postimp/merged
+```
+
+To actually run QC, we will run three PLINK commands on all the imputed data. The first includes only markers that have over 99% complete observations. The second command includes only individuals that have over 99% complete observations. With imputed data, these steps should not remove any variants or individuals. The third command only include variants where the minor allele frequency is over 5%, thus removing rare variants. The fourth command computes the Hardy-Weinberg equilibrium for alleles, which is important to check when assessing putatively influential variants/loci.
+
+```
+plink --bfile postimp/merged --geno 0.01 --make-bed --out postimp/merged1_geno
+plink --bfile postimp/merged1_geno --mind 0.01 --make-bed--out postimp/merged2_mind
+plink --bfile postimp/merged2_mind --maf 0.05 --make-bed --out postimp/merged3_maf
+plink --bfile postimp/merged3_maf --hardy --out postimp/merged4_hwe
+```
+
+Sometimes it is valuable to remove related individuals to remove confounding variation such as relatedness. To calculate relatedness, run the following command to get pairs of individuals with kinship coefficients greater than 0.125.
+
+```
+plink --bfile postimp/merged3_maf --genome --min .125 --out postimp/merged5_related
+```
+
+This output can be read into R, where you can arbitrarily remove samples from the first column. Since this dataset is made up of related individuals, many were removed during this processing step.
+
+```
+related <- read.table("postimp/merged5_related.genome", header = TRUE)
+write.table(unique(related[,1:2]), "postimp/related_IDs", append = FALSE, quote = FALSE, row.names = FALSE, col.names = FALSE)
+```
+
+PLINK can be run to actually remove these individuals.
+
+```
+plink --bfile postimp/merged3_maf --remove postimp/related_IDs --make-bed --out postimp/merged6_related
 ```
 
 ## Performing GWAS
 
 ## PLINK
+
+With the phenotype/covariate file in the right format, here are the commands to perform the GWAS. The furst includes just sex as a covaraite, while the second command include sex and the firts 6 PCs as covariates.
+
+
 ```
-<code>
+plink --bfile postimp/merged6_related --logistic --pheno data/cov_pheno_rand.txt --pheno-name Pheno --covar data/cov_pheno_rand.txt --covar-name SEX --allow-no-sex --out postimp/merged9_rand_noPCA --hide-covar
 ```
+
+```
+plink --bfile postimp/merged6_related --logistic --pheno data/cov_pheno_rand.txt --pheno-name Pheno --covar data/cov_pheno_rand.txt --covar-name SEX-PC6 --allow-no-sex --out postimp/merged10_rand_wPCA --hide-covar
+```
+
+The GWAS results can be visualized with a QQ-plot and a manhattan plot. These can be generated in R.
+
+```
+library(ggplot2)
+library(plyr)
+library(gridExtra)
+library(qqman)
+library(RColorBrewer)
+ppi <-300
+
+d <- read.table("postimp/merged10_rand_wPCA.assoc.logistic", header=T) # takes a few minutes to read in
+d$logP = -log10(d$P)
+data_sorted <- d[order(d$CHR, d$BP), ]
+data_sorted$order <- seq(1:length(data_sorted$CHR))
+
+group.colors <- c("1"="black","2"="red","3"="blue","4"="green","5"="gray","6"="purple","7"="yellow","8"="pink","9"="black","10"="red","11"="blue","12"="green","13"="gray","14"="purple","15"="yellow","16"="pink","17"="black","18"="red","19"="blue","20"="green","21"="gray","22"="purple")
+
+p <- ggplot(data_sorted, aes(order, logP, colour=factor(CHR),)) + geom_point(size=1) +scale_colour_manual(values=group.colors,name="Chromosome") +xlab("CHR") + ylab("-log10P") +theme(text=element_text(size=20))+
+ theme(axis.ticks = element_blank(), axis.text.x = element_blank()) + ggtitle("CHPG: adjusted with PC1-6 and SEX")
+ggsave(p, filename="postimp/figures/cphg_plink_PC1-6_SEX_manhattan.png",dpi=300, height=7, width=20, units="in", type="cairo-png")
+png("postimp/figures/cphg_plink_PC1-6_SEX_qq.png", height=7, width=7, units="in", res=300, type="cairo-png")
+qq(d$P, main="CHPG: adjusted with PC1-6 and SEX")
+dev.off()
+# Might take long (~10 minutes) to generate figures
+```
+
+
 
 ## Regenie (run by Yuki)
 Ok so here is the steps I took to create bgen sample file required to run Regenie:
@@ -337,9 +420,8 @@ These specific steps are not all that important, but you need to get used to the
 ```
 
 ## SAIGE
-```
-<code>
-```
+
+Probably won't show here...
 
 
 ## Additional material
