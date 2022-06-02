@@ -212,6 +212,8 @@ perl /home/yub7/group/projects/PMBB/QC_Imputation/scripts/HRC-1000G-check-bim.pl
 ![image](https://user-images.githubusercontent.com/30478823/154360757-f09aabb9-2298-45eb-b6b0-ebe7e5722b78.png)
 
 ## Coding Chr from "1","23" into "Chr1","ChrX" format
+This will recode the chromosomes into the correct syntax that Plink v2.00 can use it. Plink v1.9 and earlier does not write vcf in the right format for TopMED. 
+
 ```
 sed -i 's/--recode vcf/--recode vcf --output-chr chrM/g' Run-plink.sh
 chmod +x ./Run-plink.sh
