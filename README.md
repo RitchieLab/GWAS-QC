@@ -4,6 +4,14 @@
 ## GWAS QC Workflow on Example Dataset
 We chose a publicly available dataset from the International Genome Sample Resource (IGSR) (www.internationalgenome.org). IGSR created and maintains the 1000 Genomes (1KG) Project to provide a public catalog of common human genetic variation and genotype data. The 1KG dataset has been kept up to date with current reference data sets, thus it is available for both GRCh37 and GRCh38. The latter is utilized here because the 2014 update increased the quantity of loci represented, resolved more than 1000 issues from the previous version of the assembly, and overall provides a better basis for alignment and subsequent analysis. Additionally, IGSR’s continued efforts will lead to the incorporation of various populations to the data which were not previously captured.
 
+## Setting up your environment
+
+### Notes on PLINK v1.9 and v2.0
+* Not all commands are portable between PLINK version 1.9 and version 2.0. Since PLINK v2.0 is under heavy active development, the developers urge users to check certain results against an earlier, more widely-used version of PLINK. 
+* Original version of PLINK: 1.07, https://zzz.bwh.harvard.edu/plink/plink2.shtml 
+* Beta version: 1.90, https://www.cog-genomics.org/plink/1.9/
+* Alpha version: 2.00, https://www.cog-genomics.org/plink/2.0/ 
+
 ## Data locations
 * Raw files: /project/ritchie00/datasets/1KG_Phase3/plink_files/plink_raw_files/b38
 * Project output diretory: ~group/projects/cphg-gwas-qc
