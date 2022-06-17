@@ -40,7 +40,7 @@ We chose a publicly available dataset from the International Genome Sample Resou
 * If you're unfamiliar with genomic file types, we will end up needing all of these files because they each contain some form of information we need
 * It looks like we have files for chromosome 1-22
 
-## I. Pre-Imputation QC
+# I. Subsampling our complete data for this tutorial
 During the Pre-Imputation steps, we will filter the 1000 Genomes raw files to retain only the SNPs which match the Illumina Infinium Global Screening Array v3.0 Manifest File for our build. Although the 1KG dataset is complete, we will sample it down in order to perform the GWAS QC steps. Pre-imputation QC is done mostly in PLINK. If we are running GWAS on unrelated samples using a generalized regression, then we would use PLINK. Instead, if we are running analyses on all samples using a mixed linear model or bayesian approach, we would use SAIGE or Regenie, respectively.
 
 For manuscript text: “For example, we took 1000 genomes data and we got ### variants. Write how many variants at each step for Shefali to check my work”
@@ -197,6 +197,7 @@ plink --bfile 1KG_GSA-filtered_merged --update-sex sex_file.txt --make-bed --out
 This is what it looks like after we update sex.
 ![image](https://user-images.githubusercontent.com/30478823/153913980-85bb7a89-8107-4daa-b9be-32e7c86d8663.png)
 
+# II. Pre-Imputation QC
 
 ## 11. Run pre-imputation QC before you start your freq command
 Yuki's usual PMBB pre-imputation QC criteria are: 95% snp call rate / 90% sample call rate / sexcheck-failed samples removed.
@@ -276,7 +277,7 @@ for i in {1..23}; do python ~/group/projects/PMBB/QC_Imputation/scripts/checkVCF
 ```
 ```
 
-## II. Imputation using TOPMed Imputation Server
+## III. Imputation using TOPMed Imputation Server
 Imputation has become an essential component of GWAS quality control because it increases power, facilitates meta-analysis, and aids interpretation of signals. Genotype imputation is the statistical inference of unobserved genotype, which enables scientists to reconstruct the missing data in each genome and accurately evaluate the evidence for association at genetic markers that were not genotyped. Genotype imputation is achieved by comparing short stretches of an individual genome against stretches of previously characterized reference genomes.  It is usually performed on single nucleotide polymorphisms (SNPs), which are the most common type of genetic variation. 
 
 Several tools exist specifically for genotype imputation such as the Michigan and Trans-Omics for Precision Medicine (TOPMed) Imputation Servers where one uploads the phased or unphased GWAS genotypes in order to receive the imputed genomes in return. Each imputation server varies in terms of speed and accuracy. One of the most important considerations in imputation is the composition of the reference panel. For our study, we selected the TOPMed Imputation Reference panel  (version r2) because it is one of the most diverse reference panels available and contains information from 97,256 deeply sequenced human genomes containing 308,107085 genetic variants distributed across the 22 autosomes and the X chromosome. 
@@ -302,7 +303,7 @@ for file in *.zip; do 7z e $file -p"<password>"; done
 ![image](https://user-images.githubusercontent.com/30478823/154745163-97f3cb23-03db-487c-9638-63830eec92cc.png)
 
 
-## III. Post-Imputation QC
+## IV. Post-Imputation QC
 
 Much of the QC can be done in PLINK. For ease start by converting the output from the imputation from `vcf.gz` to bed/bim/fam file format.
 
