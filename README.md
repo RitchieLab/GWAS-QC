@@ -53,7 +53,7 @@ First, download the Global Screening Array (GSA) Manifest File from [Illumina’
 * 1000 Genomes is the whole genome sequence data from which we want to extra the SNPs that are in the GSA manifest file. We are doing this so the filtered data matches a common genotyping chip.
 
 ## Download the GSA Manifest File from Illumina’s site and copy it to the project location
-> scp GSA-24v3-0_A2.csv heyvan@superman.pmacs.upenn.edu:/home/heyvan/group/projects/cphg-gwas-qc
+> scp GSA-24v3-0_A2.csv heyvan@superman.pmacs.upenn.edu:/home/heyvan/group/projects/cphg-gwas-qc/metadata
 
 ## Look at the first few lines to see what fields it has
 ```
