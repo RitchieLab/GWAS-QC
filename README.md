@@ -22,11 +22,14 @@ We chose a publicly available dataset from the International Genome Sample Resou
 > The main difference is that plink 1.9 is essentially finished, while plink 2.0 is an alpha-stage program which will have significant unfinished components for a while to come. As a consequence, current development priorities for plink 2.0 are centered around things which are impossible to do with plink 1.9, such as handling multiallelic/phased variants and dosage data and reliably tracking REF/ALT alleles; while things that plink 1.9 already handles perfectly well, such as working with .ped/.map file pairs, have been deliberately deprioritized for now. So, you should stick to 1.9 as long as it's good enough for the jobs you need to perform. But once you need to do something outside 1.9's scope, you're likely to find that 2.0 already has the additional feature you need (or it'll be added quickly after you ask for it)
 
 ## Data locations
-* Raw files: /project/ritchie00/datasets/1KG_Phase3/plink_files/plink_raw_files/b38
-* Project output diretory: ~group/projects/cphg-gwas-qc
+* New raw files: ~/group/personal/tess/GWAS_Tutorial
+* Old raw files: /project/ritchie00/datasets/1KG_Phase3/plink_files/plink_raw_files/b38
+* Metadata: ~/group/projects/cphg-gwas-qc/metadata
+  * 1000 Genome's pedigree file: ~/metadata/20130606_g1k.ped
   * Illumina GSA Manifest file (cleaned & converted to bed format): ~metadata/GSA-24v3-0_A2_cleaned.bed
+* Project output diretory: TBD
 * QC'd Pre-Imputation Data: ~group/projects/cphg-gwas-qc/prepare
-* Imputated Data: ~group/scratch/van/cphg-gwas-qc-imputed-data
+* Imputated Data: ~group/scratch/van/cphg-gwas-qc/imputed-data
 
 ## Browsing raw data
 * We go into the directory containing our raw genotype files and inspect to get a sense of them
