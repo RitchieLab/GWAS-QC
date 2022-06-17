@@ -99,7 +99,7 @@ awk '{if (NF == 4) {print $0}}' GSA-24v3-0_A2_cleaned.bed
 ```
 
 ## Starting out
-* Data is already Build 38 so it doesn't need ot be lifted over from Build 37 to 38 using liftOver
+* Data is already Build 38 so it doesn't need to be lifted over from Build 37 to 38 using liftOver
 * Split data if its size maxes out the TOPMed Server
 * Calculating freq
 * Check SNPs 
