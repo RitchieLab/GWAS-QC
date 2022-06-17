@@ -40,7 +40,7 @@ We chose a publicly available dataset from the International Genome Sample Resou
 * If you're unfamiliar with genomic file types, we will end up needing all of these files because they each contain some form of information we need
 * It looks like we have files for chromosome 1-22
 
-## Pre-Imputation QC
+## I. Pre-Imputation QC
 During the Pre-Imputation steps, we will filter the 1000 Genomes raw files to retain only the SNPs which match the Illumina Infinium Global Screening Array v3.0 Manifest File for our build. Although the 1KG dataset is complete, we will sample it down in order to perform the GWAS QC steps. Pre-imputation QC is done mostly in PLINK. If we are running GWAS on unrelated samples using a generalized regression, then we would use PLINK. Instead, if we are running analyses on all samples using a mixed linear model or bayesian approach, we would use SAIGE or Regenie, respectively.
 
 For manuscript text: “For example, we took 1000 genomes data and we got ### variants. Write how many variants at each step for Shefali to check my work”
@@ -52,10 +52,10 @@ First, download the Global Screening Array (GSA) Manifest File from [Illumina’
 * Note: SNP IDs are not always portable so extract the Chr position without having to input SNP ID which is a command like “extract range”
 * 1000 Genomes is the whole genome sequence data from which we want to extra the SNPs that are in the GSA manifest file. We are doing this so the filtered data matches a common genotyping chip.
 
-## Download the GSA Manifest File from Illumina’s site and copy it to the project location
+## 1. Download the GSA Manifest File from Illumina’s site and copy it to the project location
 > scp GSA-24v3-0_A2.csv heyvan@superman.pmacs.upenn.edu:/home/heyvan/group/projects/cphg-gwas-qc/metadata
 
-## Look at the first few lines to see what fields it has
+## 2. Look at the first few lines to see what fields it has
 ```
 head -10 GSA-24v3-0_A2.csv
 > output
@@ -83,22 +83,22 @@ TGATTATGCCAAAGCATTAGAAT[A/G]TCACCATCATGATTTAACCCTTGCAAGGTAATTAATTTAAGCTTTTAAATAT
 TCCTT,1964,3,0,+
 ```
 
-## Parse the csv to grab the fields we need (chr, start position & stop position from mapinfo)
+## 3. Parse the csv to grab the fields we need (chr, start position & stop position from mapinfo)
 ```
 awk -F ',' '{print "chr"$10, $11, $11+1, NR}' GSA-24v3-0_A2.csv > GSA-24v3-0_A2.bed
 ```
 
-## Check the file lengths
+## 4. Check the file lengths
 ```
 wc -l <filename>
 ```
 
-## There’s some weird metadata in that .csv file so here we’ll grab just the lines with 4 columns
+## 5. There’s some weird metadata in that .csv file so here we’ll grab just the lines with 4 columns
 ```
 awk '{if (NF == 4) {print $0}}' GSA-24v3-0_A2_cleaned.bed
 ```
 
-## Starting out
+## 6. Starting out
 * Data is already Build 38 so it doesn't need to be lifted over from Build 37 to 38 using liftOver
 * Split data if its size maxes out the TOPMed Server
 * Calculating freq
@@ -116,7 +116,7 @@ module load vcftools/0.1.12c
 module load tabix/0.2.6
 ```
 
-## Extract SNPs from GSA Manifest file
+## 7. Extract SNPs from GSA Manifest file
 ```
 in_path=/project/ritchie00/datasets/1KG_Phase3/plink_files/plink_raw_files/b38/
 out_path=~/group/projects/cphg-gwas-qc/
@@ -130,7 +130,7 @@ out_path=~/group/projects/cphg-gwas-qc/
 ```
 ![image](https://user-images.githubusercontent.com/30478823/146036594-4590d0eb-0753-4bd7-9404-32de174f3c89.png)
 
-## Merge per-chromosome files into whole-genome input file
+## 8. Merge per-chromosome files into whole-genome input file
 ```
 ## create a text file which is our merge list containing a line for each chromosome we are working with
 cat > mergelist.txt
@@ -163,7 +163,7 @@ Checking the .fam file from our merge, we see that column 5 has 0's when it shou
 ![image](https://user-images.githubusercontent.com/30478823/153645848-a03b98f3-d997-4857-bcb3-350d99bc2a2c.png)
 
 
-## Create sex-file (FID, IID, sex (coded as 1 or 2) and pheno-file (FID, IID, pheno)
+## 9. Create sex-file (FID, IID, sex (coded as 1 or 2) and pheno-file (FID, IID, pheno)
 20130606_g1k.ped = File with Family ID, Individual ID, Gender etc to use to create our sex-file
 ![image](https://user-images.githubusercontent.com/30478823/153914145-636c8e0c-1fe2-4f1d-b702-a8ef0ec7ee99.png)
 
@@ -190,7 +190,7 @@ join -1 1 -2 1 <(cat 1KG_GSA-filtered_merged.fam |sort -k1,1) <(cat ../20130606_
 # then replace AFR=2 and others (EUR, AMR, EAS, SAS)=1
 ```
 
-## Update-sex to update our 1KG files with the appropriate sex info
+## 10. Update-sex to update our 1KG files with the appropriate sex info
 ```
 plink --bfile 1KG_GSA-filtered_merged --update-sex sex_file.txt --make-bed --out 1KG_GSA-filtered_merged_withsex
 ```
@@ -198,18 +198,18 @@ This is what it looks like after we update sex.
 ![image](https://user-images.githubusercontent.com/30478823/153913980-85bb7a89-8107-4daa-b9be-32e7c86d8663.png)
 
 
-## Run pre-imputation QC before you start your freq command
+## 11. Run pre-imputation QC before you start your freq command
 Yuki's usual PMBB pre-imputation QC criteria are: 95% snp call rate / 90% sample call rate / sexcheck-failed samples removed.
 ```
 plink --bfile 1KG_GSA-filtered_merged_withsex --geno 0.05 --mind 0.1 --make-bed --out 1KG_GSA-filtered_merged_withsex_QC
 ```
 ![image](https://user-images.githubusercontent.com/30478823/153922085-c9e51727-315c-4a29-bc9d-fc682067b3ae.png)
 
-## Perform heterozygosity check in R to generate plots
+## 12. Perform heterozygosity check in R to generate plots
 ```
 ```
 
-## Prepare files to upload to TOPMed Imputation Server
+## 13. Prepare files to upload to TOPMed Imputation Server
 ```
 ## Calculating freq
 plink --bfile 1KG_GSA-filtered_merged_withsex_QC --freq --out 1KG_GSA-filtered_merged_withsex_QC_freq
@@ -231,7 +231,7 @@ perl /home/yub7/group/projects/PMBB/QC_Imputation/scripts/HRC-1000G-check-bim.pl
 ![image](https://user-images.githubusercontent.com/30478823/154357815-632c6c56-eac7-4ce2-ae26-efaea8ac2de5.png)
 ![image](https://user-images.githubusercontent.com/30478823/154360757-f09aabb9-2298-45eb-b6b0-ebe7e5722b78.png)
 
-## Coding Chr from "1","23" into "Chr1","ChrX" format
+## 14. Coding Chr from "1","23" into "Chr1","ChrX" format
 This will recode the chromosomes into the correct syntax that Plink v2.00 can use it. Plink v1.9 and earlier does not write vcf in the right format for TopMED. 
 
 ```
@@ -240,7 +240,7 @@ chmod +x ./Run-plink.sh
 ./Run-plink.sh
 ```
 
-## Creating VCF file aligned with build38 reference alleles (downloaded from: https://console.cloud.google.com/storage/browser/genomics-public-data/resources/broad/hg38/)
+## 15. Creating VCF file aligned with build38 reference alleles (downloaded from: https://console.cloud.google.com/storage/browser/genomics-public-data/resources/broad/hg38/)
 ```
 module load bcftools/1.9
 export BCFTOOLS_PLUGINS=/appl/bcftools-1.9/libexec/bcftools/
@@ -252,7 +252,7 @@ bcftools +fixref 1KG_GSA-filtered_merged_withsex_QC-updated-chr$i'.vcf' \
 ```
 ![image](https://user-images.githubusercontent.com/30478823/154592044-bd1e7f13-ffff-4b95-8efb-e21e02c46f02.png)
 
-## Sorting VCF and zipping files using VCFtools and tabix (make sure the module are loaded first)
+## 16. Sorting VCF and zipping files using VCFtools and tabix (make sure the module are loaded first)
 ```
 module load vcftools/0.1.12c
 module load tabix/0.2.6
@@ -263,7 +263,7 @@ bgzip -c > 1KG_ImputationInput_TOPMED_chr$i.vcf.gz; done
 ![image](https://user-images.githubusercontent.com/30478823/154592893-04983705-37db-4aa1-b761-7dbe0da27a7b.png)
 ![image](https://user-images.githubusercontent.com/30478823/154592906-7c88fb93-79b8-451a-b4e7-acf925d5bb08.png)
 
-## Run VCF check (downloaded from https://github.com/zhanxw/checkVCF)
+## 17. Run VCF check (downloaded from https://github.com/zhanxw/checkVCF)
 ```
 for i in {1..23}; do python ~/group/projects/PMBB/QC_Imputation/scripts/checkVCF.py \
 -r ~/group/projects/PMBB/QC_Imputation/scripts/resources_broad_hg38_v0_Homo_sapiens_assembly38.fasta \
@@ -272,11 +272,11 @@ for i in {1..23}; do python ~/group/projects/PMBB/QC_Imputation/scripts/checkVCF
 ![image](https://user-images.githubusercontent.com/30478823/154593256-cc5a4372-421f-402c-ba02-907fbe854424.png)
 
 
-## Compute Principal Component Analyses on Pre-Imputed Data
+## 18. Compute Principal Component Analyses on Pre-Imputed Data
 ```
 ```
 
-## Imputation using TOPMed Imputation Server
+## II. Imputation using TOPMed Imputation Server
 Imputation has become an essential component of GWAS quality control because it increases power, facilitates meta-analysis, and aids interpretation of signals. Genotype imputation is the statistical inference of unobserved genotype, which enables scientists to reconstruct the missing data in each genome and accurately evaluate the evidence for association at genetic markers that were not genotyped. Genotype imputation is achieved by comparing short stretches of an individual genome against stretches of previously characterized reference genomes.  It is usually performed on single nucleotide polymorphisms (SNPs), which are the most common type of genetic variation. 
 
 Several tools exist specifically for genotype imputation such as the Michigan and Trans-Omics for Precision Medicine (TOPMed) Imputation Servers where one uploads the phased or unphased GWAS genotypes in order to receive the imputed genomes in return. Each imputation server varies in terms of speed and accuracy. One of the most important considerations in imputation is the composition of the reference panel. For our study, we selected the TOPMed Imputation Reference panel  (version r2) because it is one of the most diverse reference panels available and contains information from 97,256 deeply sequenced human genomes containing 308,107085 genetic variants distributed across the 22 autosomes and the X chromosome. 
@@ -288,7 +288,7 @@ Theoretically, phased means that the two strands on each Chr are separated to id
 ![image](https://user-images.githubusercontent.com/30478823/154600698-1d443de3-6691-4af9-a078-6bdb8f113e5a.png)
 ![image](https://user-images.githubusercontent.com/30478823/154738461-b951ab13-75b3-417f-bfc1-1e461dc4cf47.png)
 
-## Location of Imputed Data
+## 19. Location of Imputed Data
 ```
 # Download the completed imputation files using the wget commands provided by TOPMed to the location where you'll be working with it
 
@@ -302,7 +302,7 @@ for file in *.zip; do 7z e $file -p"<password>"; done
 ![image](https://user-images.githubusercontent.com/30478823/154745163-97f3cb23-03db-487c-9638-63830eec92cc.png)
 
 
-## Post-Imputation QC
+## III. Post-Imputation QC
 
 Much of the QC can be done in PLINK. For ease start by converting the output from the imputation from `vcf.gz` to bed/bim/fam file format.
 
