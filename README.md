@@ -21,32 +21,16 @@
 
 
 ## Basic Overview
-
+* Workflow is implemented on a publicly-available dataset from the 1000 Genomes Project (abbreviated as 1kGP here).
+* We chose a publicly available dataset from the International Genome Sample Resource (IGSR) (www.internationalgenome.org). IGSR created and maintains the 1000 Genomes (1KG) Project to provide a public catalog of common human genetic variation and genotype data. The 1KG dataset has been kept up to date with current reference data sets, thus it is available for both GRCh37 and GRCh38. The latter is utilized here because the 2014 update increased the quantity of loci represented, resolved more than 1000 issues from the previous version of the assembly, and overall provides a better basis for alignment and subsequent analysis. Additionally, IGSR’s continued efforts will lead to the incorporation of various populations to the data which were not previously captured.
 
 ## Set Up
-
-## Download
-
-## Related Resources
-
-## License
-
-
-
-# GWAS-QC
-## Workflow is implemented on 1000Genomes on Build 38 (abbreviated as 1KG here)
-
-## GWAS QC Workflow on Example Dataset
-We chose a publicly available dataset from the International Genome Sample Resource (IGSR) (www.internationalgenome.org). IGSR created and maintains the 1000 Genomes (1KG) Project to provide a public catalog of common human genetic variation and genotype data. The 1KG dataset has been kept up to date with current reference data sets, thus it is available for both GRCh37 and GRCh38. The latter is utilized here because the 2014 update increased the quantity of loci represented, resolved more than 1000 issues from the previous version of the assembly, and overall provides a better basis for alignment and subsequent analysis. Additionally, IGSR’s continued efforts will lead to the incorporation of various populations to the data which were not previously captured.
-
-## Setting up your environment
 ### Modules in BASH
 * plink/1.9
 * plink/2.0
 * bcftools/1.9
 * vcftools/0.1.12c
 * tabix/0.2.6
-* 
 
 ### Notes on PLINK v1.9 and v2.0
 * Not all commands are portable between PLINK version 1.9 and version 2.0. Since PLINK v2.0 is under heavy active development, the developers urge users to check certain results against an earlier, more widely-used version of PLINK. Some functions are available in v1.9 which are not in v2.0, and vice versa.
@@ -55,6 +39,21 @@ We chose a publicly available dataset from the International Genome Sample Resou
 * Alpha version: 2.00, https://www.cog-genomics.org/plink/2.0/ 
 * [Developer's comments](https://www.biostars.org/p/299855/) 1.9 and 2.0 serving as complementary resources
 > The main difference is that plink 1.9 is essentially finished, while plink 2.0 is an alpha-stage program which will have significant unfinished components for a while to come. As a consequence, current development priorities for plink 2.0 are centered around things which are impossible to do with plink 1.9, such as handling multiallelic/phased variants and dosage data and reliably tracking REF/ALT alleles; while things that plink 1.9 already handles perfectly well, such as working with .ped/.map file pairs, have been deliberately deprioritized for now. So, you should stick to 1.9 as long as it's good enough for the jobs you need to perform. But once you need to do something outside 1.9's scope, you're likely to find that 2.0 already has the additional feature you need (or it'll be added quickly after you ask for it)
+
+
+## Download
+
+
+## Related Resources
+We recommend the following resources and tutorials developed for performing GWAS:
+* Comphrehensive tutorial about GWAS and PRS by MareesAT: https://github.com/MareesAT/GWA_tutorial/
+* GWAS Data Cleaning tutorial by the GENEVA Coordinating Center: https://www.bioconductor.org/packages/devel/bioc/vignettes/GWASTools/inst/doc/DataCleaning.pdf
+
+
+## License
+
+
+
 
 ## Data locations
 * New raw files: ~/group/personal/tess/GWAS_Tutorial
@@ -482,7 +481,4 @@ These specific steps are not all that important, but you need to get used to the
 Probably won't show here...
 
 
-## Additional material
-We recommend the following resources and tutorials developed for performing GWAS:
-* Comphrehensive tutorial about GWAS and PRS by MareesAT: https://github.com/MareesAT/GWA_tutorial/
-* GWAS Data Cleaning tutorial by the GENEVA Coordinating Center: https://www.bioconductor.org/packages/devel/bioc/vignettes/GWASTools/inst/doc/DataCleaning.pdf
+
