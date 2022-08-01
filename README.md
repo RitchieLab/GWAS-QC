@@ -43,6 +43,13 @@
 ## Workflow Steps
 * Need to add in Tess's updated workflow steps, https://ritchielab.org/blogs/tcherlin/2022/07/29/1-kg-gwas-tutorial-steps/ 
 * Van deleted her pre-imputation data simulation steps since they're outdated now with the new dataset we used
+### Pre-Imputation
+
+### Genotype Imputation
+
+### Post-Imputation
+
+
 
 ## Related Resources
 We recommend the following resources and tutorials developed for performing GWAS:
