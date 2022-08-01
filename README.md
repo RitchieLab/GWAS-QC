@@ -41,7 +41,7 @@
 
 
 ## Workflow Steps
-* Need to add in Tess's updated workflow steps
+* Need to add in Tess's updated workflow steps, https://ritchielab.org/blogs/tcherlin/2022/07/29/1-kg-gwas-tutorial-steps/ 
 * Van deleted her pre-imputation data simulation steps since they're outdated now with the new dataset we used
 
 ## Related Resources
