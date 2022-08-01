@@ -55,6 +55,11 @@ We recommend the following resources and tutorials developed for performing GWAS
 
 
 
+
+
+
+
+# STUFF BELOW THIS SECTION NEEDS TO BE EDITED & REORGANIZED INTO THE ABOVE SECTION HEADERS
 ## Data locations
 * New raw files: ~/group/personal/tess/GWAS_Tutorial
 * Old raw files: /project/ritchie00/datasets/1KG_Phase3/plink_files/plink_raw_files/b38
