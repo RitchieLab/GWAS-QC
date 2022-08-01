@@ -1,3 +1,17 @@
+
+<h1 align="center">
+  <br>
+  <a href=""><img src="https://user-images.githubusercontent.com/30478823/182218051-a9a58111-9b92-42e9-bdc1-c2ffad393fe2.png" alt="GWAS QC" width="200"></a>
+  <br>
+  GWAS Quality Control (QC)
+  <br>
+</h1>
+
+
+## Basic Overview
+
+## 
+
 # GWAS-QC
 ## Workflow is implemented on 1000Genomes on Build 38 (abbreviated as 1KG here)
 
