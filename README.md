@@ -51,8 +51,9 @@ We recommend the following resources and tutorials developed for performing GWAS
 * GWAS QC - theory and steps by the Pan African Bioinformatics Network for H3Africa: https://www.bioinf.wits.ac.za/courses/AIMS/QC_data.pdf 
 
 
-## License
 
+## License
+* To be decided. Suggestions welcome.
 
 
 
