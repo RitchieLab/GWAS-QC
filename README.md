@@ -9,11 +9,29 @@
 
 <h4 align="center">A complementary tutorial to the <a href="https://pubmed.ncbi.nlm.nih.gov/21234875/" target="_blank">Truong, Woerner, Cherlin, et al 2022 Paper</a>.</h4>
 
+<p align="center">
+  <a href="#basic-overview">Basic Overview</a> •
+  <a href="#set-up">Set Up</a> •
+  <a href="#download">Download</a> •
+  <a href="#related-resources">Related Resources</a> •
+  <a href="#license">License</a>
+</p>
+
+
 
 
 ## Basic Overview
 
-## 
+
+## Set Up
+
+## Download
+
+## Related Resources
+
+## License
+
+
 
 # GWAS-QC
 ## Workflow is implemented on 1000Genomes on Build 38 (abbreviated as 1KG here)
