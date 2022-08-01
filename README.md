@@ -41,7 +41,8 @@
 
 
 ## Workflow Steps
-
+* Need to add in Tess's updated workflow steps
+* Van deleted her pre-imputation data simulation steps since they're outdated now with the new dataset we used
 
 ## Related Resources
 We recommend the following resources and tutorials developed for performing GWAS:
