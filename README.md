@@ -30,6 +30,18 @@
 * bcftools/1.9
 * vcftools/0.1.12c
 * tabix/0.2.6
+* liftOver/20180423
+* R
+
+### Set up working directory
+* You'll want to set up a directory structure for your GWAS QC workflow
+```
+mkdir GWAS_QC
+mkdir GWAS_QC/preImputation
+mkdir GWAS_QC/preImutation/VCFfiles
+mkdir GWAS_QC/Imputed
+mkdir GWAS_QC/postImpuatation
+```
 
 ### Notes on PLINK v1.9 and v2.0
 * Not all commands are portable between PLINK version 1.9 and version 2.0. Since PLINK v2.0 is under heavy active development, the developers urge users to check certain results against an earlier, more widely-used version of PLINK. Some functions are available in v1.9 which are not in v2.0, and vice versa.
@@ -43,9 +55,367 @@
 ## Workflow Steps
 * Need to add in Tess's updated workflow steps, https://ritchielab.org/blogs/tcherlin/2022/07/29/1-kg-gwas-tutorial-steps/ 
 * Van deleted her pre-imputation data simulation steps since they're outdated now with the new dataset we used
-### Pre-Imputation
+
+
+## PART 1 -- Get Data
+* Enter your GWAS_QC directory 
+```
+cd GWAS_QC
+```
+* Download -- First, we need to download the publicly available dataset form the 1000 Genomes Project (1KGP). The data is Affy6.0 genotype data for 3,450 individuals with population-level data. 
+
+* Files can be found here: http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/hd_genotype_chip/
+* Two dowload options 
+	- Download directly to your local computer by clicking the hyperlink for ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz
+	- Dowload using wget command: wget http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/hd_genotype_chip/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz
+
+* At this point ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz should be in your GWASQC directory.
+```
+gunzip ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz
+
+ls 
+
+ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bed 
+ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bim 
+ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam 
+```
+
+* Also need sex and ancestry files!!!!!!!!
+
+# include 
+
+## PART 2 -- Pre-Imputation
+### Step 1 - Enter the preImpuatation directory
+
+```
+cd preImputation
+```
+### Step 2 - Check heterogeneity and missigness 
+* First, run plink commands to calculate heterogenetiy and missigness for the data 
+```
+module load plink/1.9-20210416
+plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --het --outALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het
+plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --missing --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss
+```
+* Then, plot in R
+
+```
+# Read in 1000 Genomes DATA
+het <- read.csv("~/Desktop/GWAS/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het", sep="")
+miss <- read.csv("~/Desktop/GWAS/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.smiss", sep="")
+
+# Organize the data
+x <- miss %>% select(IID, F_MISS)
+y <- het %>% mutate(HR = (`OBS_CT`-`O.HOM.`)/`OBS_CT`) %>% select(IID,HR) ## 1000 Genomes
+to_plot <- inner_join(x,y, by = "IID")
+
+# Calculate mean and sd of HR
+HR_mean=mean(y$HR)
+HR_mean
+HR_SD=sd(y$HR)
+HR_SD
+
+# Calculate mean of Missingness
+MISS_mean=mean(x$F_MISS)
+MISS_mean
+
+# Establish color scheme
+rbPal <- colorRampPalette(c('#6baed6','#deebf7'))
+
+to_plot$Col <- rbPal(200)[as.numeric(cut(to_plot$F_MISS,breaks = 200))]
+
+png("1000_Genomes_Affy6_3450samples.png")
+# Making the plot
+plot(to_plot$F_MISS,to_plot$HR, 
+     col = ifelse(to_plot$HR <= HR_mean-(3*HR_SD), "#c6dbef", 
+                  ifelse(to_plot$HR >= HR_mean+(3*HR_SD), "#c6dbef", to_plot$Col2)),
+     las = 1, 
+     xlab = "Proportion of Missing Genotypes",
+     ylab = "Heterozygosity rate", 
+     pch = 19,
+     cex = 0.5)
+    # These commands make the threshold lines for HR and Missingness 
+    # according to the H3ABioNet tutorial
+    abline(h=HR_mean+(3*HR_SD),col=2,lty=3)
+    abline(h=HR_mean-(3*HR_SD),col=2,lty=3)
+    abline(v=MISS_mean,col=2,lty=3)
+    abline(v=MISS_mean-(0.05*MISS_mean),col=1,lty=3)
+    abline(v=MISS_mean+(0.05*MISS_mean),col=4,lty=3)
+dev.off()
+
+```
+
+![1000 Genomes Affy6_3450samples](https://user-images.githubusercontent.com/66582523/183427858-1eaf5f79-4001-4dbf-8222-0c2d50fe7a74.png)
+
+* Figure 2 uses the same code as above, on example internal data
+
+### Step 3 - Update first column of file which has zeros
+```
+cat ../ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam | awk '{print $1,$2,$2,$2}' > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_toUpdate.txt
+
+plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --update-ids ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_auto_toUpdate.txt --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated
+
+```
+### Step 4 -- Add sex phenotype
+* First make sex file from 20130606_g1k.ped file
+
+```
+join -1 1 -2 1 <(cat ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.fam |sort -k1,1) <(cat 20130606_g1k.ped |awk -F '\t' '{print $2,$5}' |sort -k1,1) |awk '{print $1,$2,$7}' > sex_file.txt
+```
+* Then update .fam file to include sex phenotype
+
+```
+plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated --update-sex sex_file.txt --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex
+```
+* Next, check sex and remove sex inconsistencies
+
+```
+plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex --check-sex 
+cat plink.sexcheck |  grep PROBLEM | sed 's/^ *//' > plink.sexcheck_list
+plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex --remove plink.sexcheck_list --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked
+```
+### Step 5 -- Remove SNP variants that do not have SNP IDs
+```
+echo . > noSNP
+plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked --exclude noSNP --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots
+```
+### Step 6 -- Run QC on data
+```
+plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots --geno 0.05 --mind 0.1 --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC
+
+ [tcherlin@superman Unfiltered]$ head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim
+ 1       rs10458597      0       564621  T       C
+ 1       rs12565286      0       721290  C       G
+ 1       rs12082473      0       740857  A       G
+ 1       rs3094315       0       752566  A       G
+ 1       rs2286139       0       761732  T       C
+ 1       rs11240776      0       765269  G       A
+ 1       rs2980319       0       777122  T       A
+ 1       rs2980300       0       785989  C       T
+ 1       rs2905036       0       792480  T       C
+ 1       rs11240777      0       798959  A       G 
+```
+
+### Step 7 -- LiftOver the data
+* We found out that the data was built using hg37 so we will to convert the data to hg38 using the liftOver module
+	- First, make BED coordinate file
+```
+cat ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim | awk '{print "chr"$1, $4, ($4+1), $4, $2}' > liftover_input.BED
+
+[tcherlin@superman Unfiltered]$ head liftover_input.BED
+ chr1 564621 564622 564621 rs10458597
+ chr1 721290 721291 721290 rs12565286
+ chr1 740857 740858 740857 rs12082473
+ chr1 752566 752567 752566 rs3094315
+ chr1 761732 761733 761732 rs2286139
+ chr1 765269 765270 765269 rs11240776
+ chr1 777122 777123 777122 rs2980319
+ chr1 785989 785990 785989 rs2980300
+ chr1 792480 792481 792480 rs2905036
+ chr1 798959 798960 798959 rs11240777 
+
+sed -i 's/chr23/chrX/g' liftover_input.BED #I don't think this is a problem with this dataset
+
+```
+	- Then, dowload the correct liftover file
+		- http://hgdownload.cse.ucsc.edu/goldenpath/hg18/liftOver/
+		- hg18ToHg38.over.chain
+```
+wget http://hgdownload.cse.ucsc.edu/goldenpath/hg18/liftOver/hg18ToHg38.over.chain
+```	
+	- Finally, perform the actual liftOver
+```
+liftOver liftover_input.BED hg18ToHg38.over.chain liftover_newmap.txt liftover_exclude.txt
+
+sed -i 's/chr//g' liftover_newmap.txt
+awk '{print $5,$2}' liftover_newmap.txt > update_map.txt
+cat liftover_exclude.txt | grep -v "#" | awk '{print $5}' > exclude_liftover.txt
+```
+
+### Step 8 -- Exclude data
+* Exclude any SNPs that do not liftOver and non-somatic chromosomes (X, Y)
+```
+plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC --exclude exclude_liftover.txt --update-map update_map.txt --not-chr X, Y --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38
+```
+
+* Final pre-imputation variant count is 834,972 SNPs
+
+	905788 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.bim
+
+	905788 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.bim
+
+	905788 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.bim
+
+	887969 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.bim
+
+	879990 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim 
+
+	834872 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim 
+	
+### Step 9 -- Principal Component Analysis (PCA)
+* First, run PCA on data
+
+```
+To use: plink_pca.sh script
+Confirm that we are able to share this code with people...
+
+module load plink_pca.sh 
+plink_pca.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38 -g PCA_no1KG
+
+Makes 5 files
+ 
+ tcherlin@superman preImputation]$ ls plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.geno*
+ plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.eval
+ plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.evec
+ plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.excluded
+ plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_ScreePlot.png
+ plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_variance.txt 
+
+```
+* Then, create Scree and PCA plots in R
+```
+library(cowplot); library(tidyverse)
+
+pca <- read_table("plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.evec", col_names = FALSE)
+pve <- read_table("plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_variance.txt")
+names(pve) <- c("PC","Variance")
+ped <- read.csv("20130606_g1k.ped", sep = "\t")
+
+scree_plot <- ggplot(pve, aes(PC, Variance)) + 
+  geom_line() + 
+  geom_point(color = "black", size = 3) +
+  labs(x = "Principal Component", y = "Proportion variance explained") + 
+  theme_light() +
+  theme(axis.title.x = element_text(size = 15),
+        axis.title.y = element_text(size = 14),
+        axis.text = element_text(size = 14)) +
+  scale_x_continuous(breaks=c(1,5,10,15,20))
+
+pca_one_two <- pca[-1,1:3]
+names(pca_one_two) <- c("Individual.ID", "PC1","PC2")
+to_plot <- pca_one_two %>% left_join(ped %>% select(Individual.ID, Population), 
+                                     by = "Individual.ID")
+pc_plot <- to_plot %>% 
+  ggplot(aes(PC1, PC2, color = Population)) +
+  geom_point() + 
+  theme_light() +
+  theme(axis.text.y = element_text(angle = 90, size = 13, hjust = 0.5),
+        axis.text.x = element_text(size = 13),
+        axis.title = element_text(size = 15),
+        legend.title = element_text(size = 15),
+        legend.text = element_text(size = 12))
+
+# Figure dimensions: 7x7
+plot_grid(scree_plot,
+          pc_plot, ncol = 1,
+          labels = "AUTO", label_size = 17, 
+          label_x = -0.005, label_y = 1.02)
+```
+#### Can be viewed as Figure XX in paper
+![image](https://user-images.githubusercontent.com/66582523/183430931-e91733c5-8fde-4914-a931-945f6f297486.png)
+
+### Step 10 -- Calculate frequency files and compare to TOPMED panel
+* First, calculate frequencies
+	- !!! This needs to be done using plink 1.9 !!!
+```
+plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38 --freq --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_freq
+
+[tcherlin@superman Unfiltered]$ head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_freq.frq
+  CHR          SNP   A1   A2          MAF  NCHROBS
+    1   rs10458597    T    C      0.00733     5730
+    1   rs12565286    C    G      0.03481     5716
+    1   rs12082473    A    G      0.07056     5726
+    1    rs3094315    G    A       0.3353     5732
+    1    rs2286139    C    T       0.4201     5732
+    1   rs11240776    G    A     0.008188     5740
+    1    rs2980319    A    T       0.2963     5740
+    1    rs2980300    T    C       0.4287     5678
+    1    rs2905036    C    T      0.03063     5746 
+```
+
+* Then, Compare variants to TOPMED panel
+
+```
+perl ~/group/projects/PMBB/QC_Imputation/scripts/HRC-1000G-check-bim.pl -r ~/group/projects/PMBB/QC_Imputation/scripts/PASS.Variants.TOPMed_freeze5_hg38_dbSNP.tab -h -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim -f ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_freq.frq
+ 
+Displayed
+ Matching to HRC
+ 
+ Position Matches
+  ID matches HRC 0
+  ID Doesn't match HRC 832317
+  Total Position Matches 832317
+ ID Match
+  Position different from HRC 0
+ No Match to HRC 10845
+ Skipped (MT) 0
+ Total in bim file 843162
+ Total processed 843162 
+
+  ID matches HRC 0
+  ID Doesn't match HRC 832317
+  Total Position Matches 832317
+ ID Match
+  Position different from HRC 0
+ No Match to HRC 10845
+ Skipped (MT) 0
+ Total in bim file 843162
+ Total processed 843162
+
+ Indels 0
+
+ SNPs not changed 1686
+ SNPs to change ref alt 795615
+ Strand ok 797298
+ Total Strand ok 797301
+ 
+ Strand to change 10
+ Total checked 832317
+ Total checked Strand 797308
+ Total removed for allele Frequency diff > 0.2 163426
+ Palindromic SNPs with Freq > 0.4 19737
+
+ Non Matching alleles 15272
+ ID and allele mismatching 15272; where HRC is . 0
+ Duplicates removed 0
+ ```
+ 
+* Run the Run-plink.sh script, which is generate by perl script 
+* Pulls out chromosome info and makes VCF files
+```
+sed -i ‘s/plink/plink2/’ Run-plink.sh
+ sed -i 's/--recode vcf/--recode vcf --output-chr chrM/g' Run-plink.sh
+ chmod +x ./Run-plink.sh
+ ./Run-plink.sh
+```
+
+# NEED LINKS TO DOWNLOAD DATA 
+ * Flip files
+ ```
+export BCFTOOLS_PLUGINS=/appl/bcftools-1.9/libexec/bcftools/
+
+for i in {1..22}; do bcftools +fixref ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated-chr$i'.vcf' -Ov -o ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated_flipped_chr$i'.vcf' -- -d -f ~/group/projects/PMBB/QC_Imputation/scripts/resources_broad_hg38_v0_Homo_sapiens_assembly38.fasta -m flip; done
+```
+# NEED LINKS TO DOWNLOAD DATA
+### Step 11 - Sort and zip files to create VCF files for imputation
+```
+for i in {1..22}; do vcf-sort ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated_flipped_chr$i.vcf | bgzip -c > VCFfiles/ALL.wgs.nhgri_coriell_affy_6.20140825_ImputationInput_TOPMED_chr$i.vcf.gz; done
+```
+
+### Step 12 -- If not already on local computer, copy VCF files to local computer in order to upload to TOPMED impuatation server
+```
+scp -r login@serveraddress:/~/GWAS_QC/VCFfiles/ ~/Desktop/
+```
+
+### Step 13 -- Last pre-Impuation step - Calculate relateds (need later, for GWAS)
+```
+module load drop_relateds.sh
+drop_relateds.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38 -i ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome_updated.genome -p remove_related
+```
 
 ### Genotype Imputation
+
+
 
 ### Post-Imputation
 
