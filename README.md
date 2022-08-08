@@ -69,7 +69,7 @@ cd GWAS_QC
 	- Download directly to your local computer by clicking the hyperlink for ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz
 	- Dowload using wget command: wget http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/hd_genotype_chip/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz
 
-* At this point ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz should be in your GWASQC directory.
+* At this point `ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz` should be in your GWAS_QC directory.
 ```
 gunzip ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz
 
@@ -94,17 +94,19 @@ cd preImputation
 * First, run plink commands to calculate heterogenetiy and missigness for the data 
 ```
 module load plink/1.9-20210416
-plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --het --outALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het
+plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --het --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het
 plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --missing --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss
 ```
 * Then, plot in R
 
 ```
 # Read in 1000 Genomes DATA
-het <- read.csv("~/Desktop/GWAS/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het", sep="")
-miss <- read.csv("~/Desktop/GWAS/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.smiss", sep="")
+setwd("GWAS_QC")
+het <- read.csv(file.path("GWAS_QC", "ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het"), sep="")
+miss <- read.csv(file.path("GWAS_QC", "ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.smiss"), sep="")
 
 # Organize the data
+library(dplyr)
 x <- miss %>% select(IID, F_MISS)
 y <- het %>% mutate(HR = (`OBS_CT`-`O.HOM.`)/`OBS_CT`) %>% select(IID,HR) ## 1000 Genomes
 to_plot <- inner_join(x,y, by = "IID")
@@ -170,7 +172,7 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated -
 * Next, check sex and remove sex inconsistencies
 
 ```
-plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex --check-sex 
+plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex --check-sex 
 cat plink.sexcheck |  grep PROBLEM | sed 's/^ *//' > plink.sexcheck_list
 plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex --remove plink.sexcheck_list --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked
 ```
@@ -183,7 +185,7 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 ```
 plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots --geno 0.05 --mind 0.1 --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC
 
- [tcherlin@superman Unfiltered]$ head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim
+head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim
  1       rs10458597      0       564621  T       C
  1       rs12565286      0       721290  C       G
  1       rs12082473      0       740857  A       G
