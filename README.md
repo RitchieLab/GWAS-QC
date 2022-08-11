@@ -25,6 +25,7 @@
 ## Modules in BASH
 <details> 
 <summary>👇 How to load modules </summary>
+	
 ```
 module load plink/1.9
 module load plink/2.0
@@ -34,6 +35,7 @@ module load tabix/0.2.6
 module load liftOver/20180423
 module load R
 ```
+	
 </details>
 
 
