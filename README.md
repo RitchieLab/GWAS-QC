@@ -248,20 +248,7 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 
 head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim
 ```
-	
-```	
- 1       rs10458597      0       564621  T       C
- 1       rs12565286      0       721290  C       G
- 1       rs12082473      0       740857  A       G
- 1       rs3094315       0       752566  A       G
- 1       rs2286139       0       761732  T       C
- 1       rs11240776      0       765269  G       A
- 1       rs2980319       0       777122  T       A
- 1       rs2980300       0       785989  C       T
- 1       rs2905036       0       792480  T       C
- 1       rs11240777      0       798959  A       G 
 
-```
 </details>
 	
 
