@@ -22,8 +22,10 @@
 * We chose a publicly available dataset from the International Genome Sample Resource (IGSR) (www.internationalgenome.org). IGSR created and maintains the 1000 Genomes Project (1kGP) to provide a public catalog of common human genetic variation and genotype data. The 1kGP dataset has been kept up to date with current reference data sets, thus it is available for both GRCh37 and GRCh38. The latter is utilized here because the 2014 update increased the quantity of loci represented, resolved more than 1000 issues from the previous version of the assembly, and overall provides a better basis for alignment and subsequent analysis. Additionally, IGSR’s continued efforts will lead to the incorporation of various populations to the data which were not previously captured.
 
 # Set Up
-## Modules in BASH
-```
+
+<details> 
+<summary> ## 👇 Modules in BASH </summary>
+> ```
 module load plink/1.9
 module load plink/2.0
 module load bcftools/1.9
@@ -32,6 +34,8 @@ module load tabix/0.2.6
 module load liftOver/20180423
 module load R
 ```
+</details>
+
 
 ## Set up working directory
 * You'll want to set up a directory structure for your GWAS QC workflow
