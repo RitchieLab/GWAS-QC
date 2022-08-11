@@ -40,7 +40,9 @@ module load R
 
 
 ## Set up working directory
-* You'll want to set up a directory structure for your GWAS QC workflow
+<details> 
+<summary>👇 How to set up your directory structure for the GWAS QC workflow </summary>
+
 ```
 mkdir GWAS_QC
 mkdir GWAS_QC/preImputation
@@ -48,6 +50,7 @@ mkdir GWAS_QC/preImutation/VCFfiles
 mkdir GWAS_QC/Imputed
 mkdir GWAS_QC/postImpuatation
 ```
+</details>
 
 ## Notes on PLINK v1.9 and v2.0
 * Not all commands are portable between PLINK version 1.9 and version 2.0. Since PLINK v2.0 is under heavy active development, the developers urge users to check certain results against an earlier, more widely-used version of PLINK. Some functions are available in v1.9 which are not in v2.0, and vice versa.
