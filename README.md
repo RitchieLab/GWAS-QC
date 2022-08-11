@@ -733,7 +733,7 @@ These specific steps are not all that important, but you need to get used to the
 </details> 
 	
 	
-## Related Resources
+# Related Resources
 We recommend the following resources and tutorials developed for performing GWAS:
 * Comphrehensive tutorial about GWAS and PRS by MareesAT: https://github.com/MareesAT/GWA_tutorial/
 * GWAS Data Cleaning tutorial by the GENEVA Coordinating Center: https://www.bioconductor.org/packages/devel/bioc/vignettes/GWASTools/inst/doc/DataCleaning.pdf
@@ -741,5 +741,5 @@ We recommend the following resources and tutorials developed for performing GWAS
 * The International Sample Genome Resource (IGSR) GitHub: https://github.com/igsr 
 
 
-## License
+# License
 * To be decided. Suggestions welcome.
