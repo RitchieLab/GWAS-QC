@@ -70,6 +70,11 @@ mkdir GWAS_QC/postImpuatation
 # Workflow Steps
 
 ## PART 1 -- Get Data
+
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
+	
 * Enter your GWAS_QC directory 
 ```
 cd GWAS_QC
@@ -95,11 +100,20 @@ ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam
 * The pedigree information can be downloaded here:
 	- https://www.internationalgenome.org/faq/can-i-get-phenotype-gender-and-family-relationship-information-for-the-individuals/
 
+</details>
+
+
 ## PART 2 -- Pre-Imputation
 ### Step 1 - Enter the preImpuatation directory
+
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
+	
 ```
 cd preImputation
 ```
+</details>
 
 ### Step 2 - Check heterogeneity and missingness 
 * First, run plink commands to calculate heterogenetiy and missingness for the data 
