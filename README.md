@@ -99,7 +99,6 @@ ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam
 
 * The pedigree information can be downloaded here:
 	- https://www.internationalgenome.org/faq/can-i-get-phenotype-gender-and-family-relationship-information-for-the-individuals/
-
 </details>
 
 
@@ -183,8 +182,7 @@ dev.off()
 ![1000 Genomes Affy6_3450samples](https://user-images.githubusercontent.com/66582523/183427858-1eaf5f79-4001-4dbf-8222-0c2d50fe7a74.png)
 
 * Figure 2 uses the same code as above, on example internal data
-	
-	</details>
+</details>
 	
 
 ### Step 3 - Update first column of file which has zeros
@@ -198,8 +196,7 @@ cat ../ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam | awk '{print
 
 plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --update-ids ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_auto_toUpdate.txt --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated
 ```
-
-	</details>
+</details>
 	
 	
 ### Step 4 -- Add sex phenotype
@@ -225,8 +222,7 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 cat plink.sexcheck |  grep PROBLEM | sed 's/^ *//' > plink.sexcheck_list
 plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex --remove plink.sexcheck_list --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked
 ```
-
-	</details>
+</details>
 	
 	
 ### Step 5 -- Remove SNP variants that do not have SNP IDs
@@ -239,8 +235,7 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 echo . > noSNP
 plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked --exclude noSNP --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots
 ```
-
-	</details>
+</details>
 	
 	
 ### Step 6 -- Run QC on data
@@ -263,8 +258,7 @@ head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_che
  1       rs2905036       0       792480  T       C
  1       rs11240777      0       798959  A       G 
 ```
-	
-	</details>
+</details>
 	
 
 ### Step 7 -- LiftOver the data
@@ -307,8 +301,7 @@ sed -i 's/chr//g' liftover_newmap.txt
 awk '{print $5,$2}' liftover_newmap.txt > update_map.txt
 cat liftover_exclude.txt | grep -v "#" | awk '{print $5}' > exclude_liftover.txt
 ```
-
-	</details>
+</details>
 	
 	
 ### Step 8 -- Exclude data
@@ -336,7 +329,7 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 
 	834872 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim 
 
-	</details>
+</details>
 	
 	
 ### Step 9 -- Principal Component Analysis (PCA)
@@ -405,8 +398,7 @@ plot_grid(scree_plot,
 ```
 #### Can be viewed as Figure XX in paper
 ![image](https://user-images.githubusercontent.com/66582523/183430931-e91733c5-8fde-4914-a931-945f6f297486.png)
-	
-	</details>
+</details>
 	
 	
 ### Step 10 -- Calculate frequency files and compare to TOPMed panel
@@ -488,7 +480,7 @@ sed -i ‘s/plink/plink2/’ Run-plink.sh
  chmod +x ./Run-plink.sh
  ./Run-plink.sh
 ```
-	</details>
+</details>
 	
 	
 # NEED LINKS TO DOWNLOAD DATA 
@@ -504,7 +496,7 @@ export BCFTOOLS_PLUGINS=/appl/bcftools-1.9/libexec/bcftools/
 
 for i in {1..22}; do bcftools +fixref ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated-chr$i'.vcf' -Ov -o ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated_flipped_chr$i'.vcf' -- -d -f ~/group/projects/PMBB/QC_Imputation/scripts/resources_broad_hg38_v0_Homo_sapiens_assembly38.fasta -m flip; done
 ```
-	</details>
+</details>
 	
 	
 # NEED LINKS TO DOWNLOAD DATA
@@ -517,8 +509,7 @@ for i in {1..22}; do bcftools +fixref ALL.wgs.nhgri_coriell_affy_6.20140825.geno
 ```
 for i in {1..22}; do vcf-sort ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated_flipped_chr$i.vcf | bgzip -c > VCFfiles/ALL.wgs.nhgri_coriell_affy_6.20140825_ImputationInput_TOPMED_chr$i.vcf.gz; done
 ```
-
-	</details>
+</details>
 	
 	
 ### Step 12 -- If not already on local computer, copy VCF files to local computer in order to upload to TOPMed impuatation server
@@ -530,7 +521,7 @@ for i in {1..22}; do vcf-sort ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_ha
 ```
 scp -r login@serveraddress:/~/GWAS_QC/VCFfiles/ ~/Desktop/
 ```
-	</details>
+</details>
 	
 
 ### Step 13 -- Last Pre-Impuation step - Calculate relateds (need later, for GWAS)
@@ -543,7 +534,8 @@ scp -r login@serveraddress:/~/GWAS_QC/VCFfiles/ ~/Desktop/
 module load drop_relateds.sh
 drop_relateds.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38 -i ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome_updated.genome -p remove_related
 ```
-	</details>
+</details>
+	
 
 ## PART 3 -- Genotype Imputation
 ### Step 14 -- Imputation using TOPMed Imputation Server
@@ -562,8 +554,7 @@ drop_relateds.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Upda
 ![image](https://user-images.githubusercontent.com/30478823/154598503-691c4973-2858-4ff0-a9ac-95360317b405.png)
 ![image](https://user-images.githubusercontent.com/30478823/154600698-1d443de3-6691-4af9-a078-6bdb8f113e5a.png)
 ![image](https://user-images.githubusercontent.com/30478823/154738461-b951ab13-75b3-417f-bfc1-1e461dc4cf47.png)
-
-	</details>
+</details>
 	
 	
 ## Step 15 -- Download Imputed Data to Working Directory
@@ -583,8 +574,7 @@ module load p7zip
 for file in *.zip; do 7z e $file -p"<password>"; done
 ```
 ![image](https://user-images.githubusercontent.com/30478823/154745163-97f3cb23-03db-487c-9638-63830eec92cc.png)
-
-	</details>
+</details>
 
 ## PART 4 -- Post-Imputation QC
 ### Step 16 -- 
@@ -644,7 +634,7 @@ PLINK can be run to actually remove these individuals.
 ```
 plink --bfile postimp/merged3_maf --remove postimp/related_IDs --make-bed --out postimp/merged6_related
 ```
-	   </details>
+</details>
 	
 	
 ## PART 5 Performing GWAS
@@ -693,8 +683,7 @@ qq(d$P, main="CHPG: adjusted with PC1-6 and SEX")
 dev.off()
 # Might take long (~10 minutes) to generate figures
 ```
-
-	</details>
+</details>
 	
 	
 ### Regenie
@@ -744,8 +733,7 @@ These specific steps are not all that important, but you need to get used to the
 ```
 <code>
 ```
-
-	</details> 
+</details> 
 	
 	
 ## Related Resources
