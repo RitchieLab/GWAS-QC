@@ -301,6 +301,7 @@ sed -i 's/chr//g' liftover_newmap.txt
 awk '{print $5,$2}' liftover_newmap.txt > update_map.txt
 cat liftover_exclude.txt | grep -v "#" | awk '{print $5}' > exclude_liftover.txt
 ```
+	
 </details>
 	
 	
@@ -398,6 +399,7 @@ plot_grid(scree_plot,
 ```
 #### Can be viewed as Figure XX in paper
 ![image](https://user-images.githubusercontent.com/66582523/183430931-e91733c5-8fde-4914-a931-945f6f297486.png)
+
 </details>
 	
 	
