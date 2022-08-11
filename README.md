@@ -77,19 +77,17 @@ ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bim
 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam 
 ```
 
-* The pedigree informmation can be downloaded here:
+* The pedigree information can be downloaded here:
 	- https://www.internationalgenome.org/faq/can-i-get-phenotype-gender-and-family-relationship-information-for-the-individuals/
-
-# include 
 
 ## PART 2 -- Pre-Imputation
 ### Step 1 - Enter the preImpuatation directory
-
 ```
 cd preImputation
 ```
-### Step 2 - Check heterogeneity and missigness 
-* First, run plink commands to calculate heterogenetiy and missigness for the data 
+
+### Step 2 - Check heterogeneity and missingness 
+* First, run plink commands to calculate heterogenetiy and missingness for the data 
 ```
 module load plink/1.9-20210416
 plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --het --outALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het
@@ -98,7 +96,7 @@ plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --missing 
 * Then, plot in R
 
 ```
-# Read in 1000 Genomes DATA
+# Read in 1000 Genomes data
 het <- read.csv("~/Desktop/GWAS/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het", sep="")
 miss <- read.csv("~/Desktop/GWAS/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.smiss", sep="")
 
@@ -152,8 +150,8 @@ dev.off()
 cat ../ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam | awk '{print $1,$2,$2,$2}' > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_toUpdate.txt
 
 plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --update-ids ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_auto_toUpdate.txt --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated
-
 ```
+
 ### Step 4 -- Add sex phenotype
 * First make sex file from 20130606_g1k.ped file
 
@@ -172,11 +170,13 @@ plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_wi
 cat plink.sexcheck |  grep PROBLEM | sed 's/^ *//' > plink.sexcheck_list
 plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex --remove plink.sexcheck_list --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked
 ```
+
 ### Step 5 -- Remove SNP variants that do not have SNP IDs
 ```
 echo . > noSNP
 plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked --exclude noSNP --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots
 ```
+
 ### Step 6 -- Run QC on data
 ```
 plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots --geno 0.05 --mind 0.1 --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC
@@ -249,7 +249,8 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 	879990 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim 
 
 	834872 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim 
-	
+
+
 ### Step 9 -- Principal Component Analysis (PCA)
 * First, run PCA on data
 
@@ -268,9 +269,9 @@ Makes 5 files
  plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.excluded
  plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_ScreePlot.png
  plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_variance.txt 
-
 ```
 * Then, create Scree and PCA plots in R
+
 ```
 library(cowplot); library(tidyverse)
 
@@ -312,7 +313,7 @@ plot_grid(scree_plot,
 #### Can be viewed as Figure XX in paper
 ![image](https://user-images.githubusercontent.com/66582523/183430931-e91733c5-8fde-4914-a931-945f6f297486.png)
 
-### Step 10 -- Calculate frequency files and compare to TOPMED panel
+### Step 10 -- Calculate frequency files and compare to TOPMed panel
 * First, calculate frequencies
 	- !!! This needs to be done using plink 1.9 !!!
 ```
@@ -389,6 +390,7 @@ sed -i ‘s/plink/plink2/’ Run-plink.sh
 
 # NEED LINKS TO DOWNLOAD DATA 
  * Flip files
+ 
  ```
 export BCFTOOLS_PLUGINS=/appl/bcftools-1.9/libexec/bcftools/
 
@@ -400,50 +402,22 @@ for i in {1..22}; do bcftools +fixref ALL.wgs.nhgri_coriell_affy_6.20140825.geno
 for i in {1..22}; do vcf-sort ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated_flipped_chr$i.vcf | bgzip -c > VCFfiles/ALL.wgs.nhgri_coriell_affy_6.20140825_ImputationInput_TOPMED_chr$i.vcf.gz; done
 ```
 
-### Step 12 -- If not already on local computer, copy VCF files to local computer in order to upload to TOPMED impuatation server
+### Step 12 -- If not already on local computer, copy VCF files to local computer in order to upload to TOPMed impuatation server
 ```
 scp -r login@serveraddress:/~/GWAS_QC/VCFfiles/ ~/Desktop/
 ```
 
-### Step 13 -- Last pre-Impuation step - Calculate relateds (need later, for GWAS)
+### Step 13 -- Last Pre-Impuation step - Calculate relateds (need later, for GWAS)
 ```
 module load drop_relateds.sh
 drop_relateds.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38 -i ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome_updated.genome -p remove_related
 ```
 
-### Genotype Imputation
-
-
-
-### Post-Imputation
-
-
-
-## Related Resources
-We recommend the following resources and tutorials developed for performing GWAS:
-* Comphrehensive tutorial about GWAS and PRS by MareesAT: https://github.com/MareesAT/GWA_tutorial/
-* GWAS Data Cleaning tutorial by the GENEVA Coordinating Center: https://www.bioconductor.org/packages/devel/bioc/vignettes/GWASTools/inst/doc/DataCleaning.pdf
-* GWAS QC - theory and steps by the Pan African Bioinformatics Network for H3Africa: https://www.bioinf.wits.ac.za/courses/AIMS/QC_data.pdf 
-* The International Sample Genome Resource (IGSR) GitHub: https://github.com/igsr 
-
-
-
-## License
-* To be decided. Suggestions welcome.
-
-
-
-
-
-
-
-# STUFF BELOW THIS SECTION NEEDS TO BE EDITED & REORGANIZED INTO THE ABOVE SECTION HEADERS
-
-## III. Imputation using TOPMed Imputation Server
-
+## Genotype Imputation
+### Step 14 -- Imputation using TOPMed Imputation Server
 * Imputation has become an essential component of GWAS quality control because it increases power, facilitates meta-analysis, and aids interpretation of signals. Genotype imputation is the statistical inference of unobserved genotype, which enables scientists to reconstruct the missing data in each genome and accurately evaluate the evidence for association at genetic markers that were not genotyped. Genotype imputation is achieved by comparing short stretches of an individual genome against stretches of previously characterized reference genomes.  It is usually performed on single nucleotide polymorphisms (SNPs), which are the most common type of genetic variation. 
 * Several tools exist specifically for genotype imputation such as the Michigan and Trans-Omics for Precision Medicine (TOPMed) Imputation Servers where one uploads the phased or unphased GWAS genotypes in order to receive the imputed genomes in return. Each imputation server varies in terms of speed and accuracy. One of the most important considerations in imputation is the composition of the reference panel. For our study, we selected the TOPMed Imputation Reference panel  (version r2) because it is one of the most diverse reference panels available and contains information from 97,256 deeply sequenced human genomes containing 308,107085 genetic variants distributed across the 22 autosomes and the X chromosome. 
-Theoretically, phased means that the two strands on each Chr are separated to identify which regions come from each parent whereas no phasing means that they are not separated. Essentially, for imputation phasing is the first step which is done in reference to the reference genome panel.
+* Theoretically, phased means that the two strands on each Chr are separated to identify which regions come from each parent whereas no phasing means that they are not separated. Essentially, for imputation phasing is the first step which is done in reference to the reference genome panel.
 
 ![image](https://user-images.githubusercontent.com/30478823/154597606-bc2f8b09-2741-493e-9c4a-dabdf238bd23.png)
 ![image](https://user-images.githubusercontent.com/30478823/154598027-ea78546d-e645-460a-bab7-b41fead62356.png)
@@ -465,7 +439,8 @@ for file in *.zip; do 7z e $file -p"<password>"; done
 ![image](https://user-images.githubusercontent.com/30478823/154745163-97f3cb23-03db-487c-9638-63830eec92cc.png)
 
 
-## IV. Post-Imputation QC
+## Post-Imputation QC
+### Step 15 -- 
 
 Much of the QC can be done in PLINK. For ease start by converting the output from the imputation from `vcf.gz` to bed/bim/fam file format.
 
@@ -517,10 +492,10 @@ PLINK can be run to actually remove these individuals.
 ```
 plink --bfile postimp/merged3_maf --remove postimp/related_IDs --make-bed --out postimp/merged6_related
 ```
-
 ## Performing GWAS
+### Step 16 -- GWAS with PLINK or Regenie
 
-## PLINK
+### PLINK
 
 With the phenotype/covariate file in the right format, here are the commands to perform the GWAS. The furst includes just sex as a covaraite, while the second command include sex and the firts 6 PCs as covariates.
 
@@ -559,9 +534,7 @@ dev.off()
 # Might take long (~10 minutes) to generate figures
 ```
 
-
-
-## Regenie (run by Yuki)
+### Regenie
 Ok so here is the steps I took to create bgen sample file required to run Regenie:
 *info.gz files from imputed data contains all the snp information, so I just want to extract 1 snp name out of it:
 ```
@@ -604,9 +577,13 @@ These specific steps are not all that important, but you need to get used to the
 <code>
 ```
 
-## SAIGE
+## Related Resources
+We recommend the following resources and tutorials developed for performing GWAS:
+* Comphrehensive tutorial about GWAS and PRS by MareesAT: https://github.com/MareesAT/GWA_tutorial/
+* GWAS Data Cleaning tutorial by the GENEVA Coordinating Center: https://www.bioconductor.org/packages/devel/bioc/vignettes/GWASTools/inst/doc/DataCleaning.pdf
+* GWAS QC - theory and steps by the Pan African Bioinformatics Network for H3Africa: https://www.bioinf.wits.ac.za/courses/AIMS/QC_data.pdf 
+* The International Sample Genome Resource (IGSR) GitHub: https://github.com/igsr 
 
-Probably won't show here...
 
-
-
+## License
+* To be decided. Suggestions welcome.
