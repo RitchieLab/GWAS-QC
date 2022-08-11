@@ -24,7 +24,8 @@
 # Set Up
 ## Modules in BASH
 <details> 
-<summary>👇 How to load modules </summary>
+	<summary>👇 How to load modules </summary>
+	<hr>
 	
 ```
 module load plink/1.9
@@ -40,7 +41,8 @@ module load R
 
 ## Set up working directory
 <details> 
-<summary>👇 How to set up your directory structure for the GWAS QC workflow </summary>
+	<summary>👇 How to set up your directory structure for the GWAS QC workflow </summary>
+	<hr>
 
 ```
 mkdir GWAS_QC
@@ -59,7 +61,8 @@ mkdir GWAS_QC/postImpuatation
 * Alpha version: 2.00, https://www.cog-genomics.org/plink/2.0/ 
 
 <details> 
-<summary> 👇 Developer's comments </summary>
+	<summary> 👇 Developer's comments </summary>
+	<hr>
 > [Developer's comments](https://www.biostars.org/p/299855/) 1.9 and 2.0 serving as complementary resources
 > The main difference is that plink 1.9 is essentially finished, while plink 2.0 is an alpha-stage program which will have significant unfinished components for a while to come. As a consequence, current development priorities for plink 2.0 are centered around things which are impossible to do with plink 1.9, such as handling multiallelic/phased variants and dosage data and reliably tracking REF/ALT alleles; while things that plink 1.9 already handles perfectly well, such as working with .ped/.map file pairs, have been deliberately deprioritized for now. So, you should stick to 1.9 as long as it's good enough for the jobs you need to perform. But once you need to do something outside 1.9's scope, you're likely to find that 2.0 already has the additional feature you need (or it'll be added quickly after you ask for it)
 </details>
