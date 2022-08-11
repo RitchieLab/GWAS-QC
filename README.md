@@ -24,8 +24,8 @@
 # Set Up
 
 <details> 
-<summary> ## 👇 Modules in BASH </summary>
-> ```
+## <summary> 👇 Modules in BASH </summary>
+```
 module load plink/1.9
 module load plink/2.0
 module load bcftools/1.9
