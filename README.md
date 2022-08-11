@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <br>
-  <a href="https://github.com/RitchieLab/GWAS-QC"><img src="https://user-images.githubusercontent.com/30478823/182218051-a9a58111-9b92-42e9-bdc1-c2ffad393fe2.png" alt="GWAS QC" width="300"></a>
+  <a href="https://github.com/RitchieLab/GWAS-QC"><img src="https://user-images.githubusercontent.com/30478823/182218051-a9a58111-9b92-42e9-bdc1-c2ffad393fe2.png" alt="GWAS QC" width="200"></a>
   <br>
   GWAS Quality Control (QC)
   <br>
@@ -16,8 +16,6 @@
   <a href="#related-resources">Related Resources</a> •
   <a href="#license">License</a>
 </p>
-
-
 
 
 # Basic Overview
@@ -55,19 +53,16 @@ mkdir GWAS_QC/postImpuatation
 
 
 # Workflow Steps
-* Need to add in Tess's updated workflow steps, https://ritchielab.org/blogs/tcherlin/2022/07/29/1-kg-gwas-tutorial-steps/ 
-* Van deleted her pre-imputation data simulation steps since they're outdated now with the new dataset we used
-
 
 ## PART 1 -- Get Data
 * Enter your GWAS_QC directory 
 ```
 cd GWAS_QC
 ```
-* Download -- First, we need to download the publicly available dataset form the 1000 Genomes Project (1KGP). The data is Affy6.0 genotype data for 3,450 individuals with population-level data. 
+* Download -- First, we need to download the publicly available dataset from the 1000 Genomes Project (1KGP). The data is Affy6.0 genotype data for 3,450 individuals with population-level data. 
 
 * Files can be found here: http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/hd_genotype_chip/
-* Two dowload options 
+* Two download options 
 	- Download directly to your local computer by clicking the hyperlink for ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz
 	- Dowload using wget command: wget http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/hd_genotype_chip/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz
 
@@ -82,7 +77,8 @@ ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bim
 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam 
 ```
 
-* Also need sex and ancestry files!!!!!!!!
+* The pedigree informmation can be downloaded here:
+	- https://www.internationalgenome.org/faq/can-i-get-phenotype-gender-and-family-relationship-information-for-the-individuals/
 
 # include 
 
