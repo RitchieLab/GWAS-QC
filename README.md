@@ -115,7 +115,13 @@ cd preImputation
 ```
 </details>
 
+
 ### Step 2 - Check heterogeneity and missingness 
+
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
+	
 * First, run plink commands to calculate heterogenetiy and missingness for the data 
 ```
 module load plink/1.9-20210416
@@ -177,15 +183,31 @@ dev.off()
 ![1000 Genomes Affy6_3450samples](https://user-images.githubusercontent.com/66582523/183427858-1eaf5f79-4001-4dbf-8222-0c2d50fe7a74.png)
 
 * Figure 2 uses the same code as above, on example internal data
+	
+	</details>
+	
 
 ### Step 3 - Update first column of file which has zeros
+
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
+	
 ```
 cat ../ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam | awk '{print $1,$2,$2,$2}' > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_toUpdate.txt
 
 plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --update-ids ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_auto_toUpdate.txt --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated
 ```
 
+	</details>
+	
+	
 ### Step 4 -- Add sex phenotype
+	
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
+	
 * First make sex file from 20130606_g1k.ped file
 
 ```
@@ -204,13 +226,28 @@ cat plink.sexcheck |  grep PROBLEM | sed 's/^ *//' > plink.sexcheck_list
 plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex --remove plink.sexcheck_list --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked
 ```
 
+	</details>
+	
+	
 ### Step 5 -- Remove SNP variants that do not have SNP IDs
+	
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
+	
 ```
 echo . > noSNP
 plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked --exclude noSNP --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots
 ```
 
+	</details>
+	
+	
 ### Step 6 -- Run QC on data
+	
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
 ```
 plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots --geno 0.05 --mind 0.1 --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC
 
@@ -226,8 +263,16 @@ head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_che
  1       rs2905036       0       792480  T       C
  1       rs11240777      0       798959  A       G 
 ```
+	
+	</details>
+	
 
 ### Step 7 -- LiftOver the data
+
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
+	
 * We found out that the data was built using hg37 so we will to convert the data to hg38 using the liftOver module
 	- First, make BED coordinate file
 ```
@@ -263,7 +308,15 @@ awk '{print $5,$2}' liftover_newmap.txt > update_map.txt
 cat liftover_exclude.txt | grep -v "#" | awk '{print $5}' > exclude_liftover.txt
 ```
 
+	</details>
+	
+	
 ### Step 8 -- Exclude data
+	
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
+	
 * Exclude any SNPs that do not liftOver and non-somatic chromosomes (X, Y)
 ```
 plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC --exclude exclude_liftover.txt --update-map update_map.txt --not-chr X, Y --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38
@@ -283,8 +336,15 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 
 	834872 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim 
 
-
+	</details>
+	
+	
 ### Step 9 -- Principal Component Analysis (PCA)
+	
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
+
 * First, run PCA on data
 
 ```
@@ -345,8 +405,16 @@ plot_grid(scree_plot,
 ```
 #### Can be viewed as Figure XX in paper
 ![image](https://user-images.githubusercontent.com/66582523/183430931-e91733c5-8fde-4914-a931-945f6f297486.png)
-
+	
+	</details>
+	
+	
 ### Step 10 -- Calculate frequency files and compare to TOPMed panel
+	
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
+	
 * First, calculate frequencies
 	- !!! This needs to be done using plink 1.9 !!!
 ```
@@ -420,8 +488,15 @@ sed -i ‘s/plink/plink2/’ Run-plink.sh
  chmod +x ./Run-plink.sh
  ./Run-plink.sh
 ```
-
+	</details>
+	
+	
 # NEED LINKS TO DOWNLOAD DATA 
+
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
+	
  * Flip files
  
  ```
@@ -429,22 +504,46 @@ export BCFTOOLS_PLUGINS=/appl/bcftools-1.9/libexec/bcftools/
 
 for i in {1..22}; do bcftools +fixref ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated-chr$i'.vcf' -Ov -o ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated_flipped_chr$i'.vcf' -- -d -f ~/group/projects/PMBB/QC_Imputation/scripts/resources_broad_hg38_v0_Homo_sapiens_assembly38.fasta -m flip; done
 ```
+	</details>
+	
+	
 # NEED LINKS TO DOWNLOAD DATA
+
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
+	
 ### Step 11 - Sort and zip files to create VCF files for imputation
 ```
 for i in {1..22}; do vcf-sort ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated_flipped_chr$i.vcf | bgzip -c > VCFfiles/ALL.wgs.nhgri_coriell_affy_6.20140825_ImputationInput_TOPMED_chr$i.vcf.gz; done
 ```
 
+	</details>
+	
+	
 ### Step 12 -- If not already on local computer, copy VCF files to local computer in order to upload to TOPMed impuatation server
+
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
+	
 ```
 scp -r login@serveraddress:/~/GWAS_QC/VCFfiles/ ~/Desktop/
 ```
+	</details>
+	
 
 ### Step 13 -- Last Pre-Impuation step - Calculate relateds (need later, for GWAS)
+
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
+	
 ```
 module load drop_relateds.sh
 drop_relateds.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38 -i ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome_updated.genome -p remove_related
 ```
+	</details>
 
 ## PART 3 -- Genotype Imputation
 ### Step 14 -- Imputation using TOPMed Imputation Server
@@ -452,6 +551,10 @@ drop_relateds.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Upda
 * Several tools exist specifically for genotype imputation such as the Michigan and Trans-Omics for Precision Medicine (TOPMed) Imputation Servers where one uploads the phased or unphased GWAS genotypes in order to receive the imputed genomes in return. Each imputation server varies in terms of speed and accuracy. One of the most important considerations in imputation is the composition of the reference panel. For our study, we selected the TOPMed Imputation Reference panel  (version r2) because it is one of the most diverse reference panels available and contains information from 97,256 deeply sequenced human genomes containing 308,107085 genetic variants distributed across the 22 autosomes and the X chromosome. 
 * Theoretically, phased means that the two strands on each Chr are separated to identify which regions come from each parent whereas no phasing means that they are not separated. Essentially, for imputation phasing is the first step which is done in reference to the reference genome panel.
 
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
+	
 ### TODO - NEED TO UPDATE IMAGES & CODE
 
 ![image](https://user-images.githubusercontent.com/30478823/154597606-bc2f8b09-2741-493e-9c4a-dabdf238bd23.png)
@@ -460,7 +563,15 @@ drop_relateds.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Upda
 ![image](https://user-images.githubusercontent.com/30478823/154600698-1d443de3-6691-4af9-a078-6bdb8f113e5a.png)
 ![image](https://user-images.githubusercontent.com/30478823/154738461-b951ab13-75b3-417f-bfc1-1e461dc4cf47.png)
 
+	</details>
+	
+	
 ## Step 15 -- Download Imputed Data to Working Directory
+	
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
+	
 ```
 # Download the completed imputation files using the wget commands provided by TOPMed to the location where you'll be working with it
 
@@ -473,10 +584,15 @@ for file in *.zip; do 7z e $file -p"<password>"; done
 ```
 ![image](https://user-images.githubusercontent.com/30478823/154745163-97f3cb23-03db-487c-9638-63830eec92cc.png)
 
+	</details>
 
 ## PART 4 -- Post-Imputation QC
 ### Step 16 -- 
 ### TODO - NEED TO UPDATE IMAGES & CODE
+	
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
 	
 Much of the QC can be done in PLINK. For ease start by converting the output from the imputation from `vcf.gz` to bed/bim/fam file format.
 
@@ -528,12 +644,19 @@ PLINK can be run to actually remove these individuals.
 ```
 plink --bfile postimp/merged3_maf --remove postimp/related_IDs --make-bed --out postimp/merged6_related
 ```
+	   </details>
+	
+	
 ## PART 5 Performing GWAS
 ### Step 17 -- GWAS with PLINK or Regenie
 ### TODO - NEED TO UPDATE IMAGES & CODE
-	   
+   
 ### PLINK
 
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
+	
 With the phenotype/covariate file in the right format, here are the commands to perform the GWAS. The furst includes just sex as a covaraite, while the second command include sex and the firts 6 PCs as covariates.
 
 
@@ -571,7 +694,15 @@ dev.off()
 # Might take long (~10 minutes) to generate figures
 ```
 
+	</details>
+	
+	
 ### Regenie
+
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
+	
 Ok so here is the steps I took to create bgen sample file required to run Regenie:
 *info.gz files from imputed data contains all the snp information, so I just want to extract 1 snp name out of it:
 ```
@@ -614,6 +745,9 @@ These specific steps are not all that important, but you need to get used to the
 <code>
 ```
 
+	</details> 
+	
+	
 ## Related Resources
 We recommend the following resources and tutorials developed for performing GWAS:
 * Comphrehensive tutorial about GWAS and PRS by MareesAT: https://github.com/MareesAT/GWA_tutorial/
