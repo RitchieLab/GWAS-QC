@@ -57,7 +57,8 @@ mkdir GWAS_QC/postImpuatation
 * Original version of PLINK: 1.07, https://zzz.bwh.harvard.edu/plink/plink2.shtml 
 * Beta version: 1.90, https://www.cog-genomics.org/plink/1.9/
 * Alpha version: 2.00, https://www.cog-genomics.org/plink/2.0/ 
-* <details> 
+
+<details> 
 <summary> 👇 Developer's comments </summary>
 > [Developer's comments](https://www.biostars.org/p/299855/) 1.9 and 2.0 serving as complementary resources
 > The main difference is that plink 1.9 is essentially finished, while plink 2.0 is an alpha-stage program which will have significant unfinished components for a while to come. As a consequence, current development priorities for plink 2.0 are centered around things which are impossible to do with plink 1.9, such as handling multiallelic/phased variants and dosage data and reliably tracking REF/ALT alleles; while things that plink 1.9 already handles perfectly well, such as working with .ped/.map file pairs, have been deliberately deprioritized for now. So, you should stick to 1.9 as long as it's good enough for the jobs you need to perform. But once you need to do something outside 1.9's scope, you're likely to find that 2.0 already has the additional feature you need (or it'll be added quickly after you ask for it)
