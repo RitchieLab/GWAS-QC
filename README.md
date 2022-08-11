@@ -429,7 +429,7 @@ drop_relateds.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Upda
 ![image](https://user-images.githubusercontent.com/30478823/154600698-1d443de3-6691-4af9-a078-6bdb8f113e5a.png)
 ![image](https://user-images.githubusercontent.com/30478823/154738461-b951ab13-75b3-417f-bfc1-1e461dc4cf47.png)
 
-## 19. Location of Imputed Data
+## Step 15 -- Download Imputed Data to Working Directory
 ```
 # Download the completed imputation files using the wget commands provided by TOPMed to the location where you'll be working with it
 
@@ -444,7 +444,7 @@ for file in *.zip; do 7z e $file -p"<password>"; done
 
 
 ## PART 4 -- Post-Imputation QC
-### Step 15 -- 
+### Step 16 -- 
 
 Much of the QC can be done in PLINK. For ease start by converting the output from the imputation from `vcf.gz` to bed/bim/fam file format.
 
@@ -497,7 +497,7 @@ PLINK can be run to actually remove these individuals.
 plink --bfile postimp/merged3_maf --remove postimp/related_IDs --make-bed --out postimp/merged6_related
 ```
 ## PART 5 Performing GWAS
-### Step 16 -- GWAS with PLINK or Regenie
+### Step 17 -- GWAS with PLINK or Regenie
 
 ### PLINK
 
