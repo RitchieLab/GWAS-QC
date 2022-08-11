@@ -247,6 +247,7 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots --geno 0.05 --mind 0.1 --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC
 
 head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim
+	
  1       rs10458597      0       564621  T       C
  1       rs12565286      0       721290  C       G
  1       rs12082473      0       740857  A       G
@@ -257,6 +258,7 @@ head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_che
  1       rs2980300       0       785989  C       T
  1       rs2905036       0       792480  T       C
  1       rs11240777      0       798959  A       G 
+
 ```
 </details>
 	
