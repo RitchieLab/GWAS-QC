@@ -423,6 +423,8 @@ drop_relateds.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Upda
 * Several tools exist specifically for genotype imputation such as the Michigan and Trans-Omics for Precision Medicine (TOPMed) Imputation Servers where one uploads the phased or unphased GWAS genotypes in order to receive the imputed genomes in return. Each imputation server varies in terms of speed and accuracy. One of the most important considerations in imputation is the composition of the reference panel. For our study, we selected the TOPMed Imputation Reference panel  (version r2) because it is one of the most diverse reference panels available and contains information from 97,256 deeply sequenced human genomes containing 308,107085 genetic variants distributed across the 22 autosomes and the X chromosome. 
 * Theoretically, phased means that the two strands on each Chr are separated to identify which regions come from each parent whereas no phasing means that they are not separated. Essentially, for imputation phasing is the first step which is done in reference to the reference genome panel.
 
+### TODO - NEED TO UPDATE IMAGES & CODE
+
 ![image](https://user-images.githubusercontent.com/30478823/154597606-bc2f8b09-2741-493e-9c4a-dabdf238bd23.png)
 ![image](https://user-images.githubusercontent.com/30478823/154598027-ea78546d-e645-460a-bab7-b41fead62356.png)
 ![image](https://user-images.githubusercontent.com/30478823/154598503-691c4973-2858-4ff0-a9ac-95360317b405.png)
@@ -445,7 +447,8 @@ for file in *.zip; do 7z e $file -p"<password>"; done
 
 ## PART 4 -- Post-Imputation QC
 ### Step 16 -- 
-
+### TODO - NEED TO UPDATE IMAGES & CODE
+	
 Much of the QC can be done in PLINK. For ease start by converting the output from the imputation from `vcf.gz` to bed/bim/fam file format.
 
 ```
@@ -498,7 +501,8 @@ plink --bfile postimp/merged3_maf --remove postimp/related_IDs --make-bed --out 
 ```
 ## PART 5 Performing GWAS
 ### Step 17 -- GWAS with PLINK or Regenie
-
+### TODO - NEED TO UPDATE IMAGES & CODE
+	   
 ### PLINK
 
 With the phenotype/covariate file in the right format, here are the commands to perform the GWAS. The furst includes just sex as a covaraite, while the second command include sex and the firts 6 PCs as covariates.
