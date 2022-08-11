@@ -257,6 +257,7 @@ head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_che
  1       rs2980300       0       785989  C       T
  1       rs2905036       0       792480  T       C
  1       rs11240777      0       798959  A       G 
+
 ```
 
 </details>
