@@ -97,8 +97,21 @@ ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bim
 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam 
 ```
 
-* The pedigree information can be downloaded here:
+* You will also want to dowload the pedigree information, which can be downloaded here:
 	- https://www.internationalgenome.org/faq/can-i-get-phenotype-gender-and-family-relationship-information-for-the-individuals/
+	-  20130606_g1k.ped
+	
+* You also need to dowload the TOPMed reference panel and code from the McCarthy Tools website
+	- https://www.well.ox.ac.uk/~wrayner/tools/ 
+	- Midway down the page there are instructions for Usage with the TOPMed reference panel
+	- Click on dbSNP in the top right panel and download ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz file
+	- Download CreateTOPMed.zip from the websites
+	- After downloading both files, unzip the ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz file and execute the following command:
+```
+./CreateTOPMed.pl -i ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz	
+```
+	
+
 </details>
 
 
@@ -423,6 +436,7 @@ plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_wi
 ```
 
 * Then, Compare variants to TOPMED panel
+	- The perl script is created by the 
 
 ```
 perl ~/group/projects/PMBB/QC_Imputation/scripts/HRC-1000G-check-bim.pl -r ~/group/projects/PMBB/QC_Imputation/scripts/PASS.Variants.TOPMed_freeze5_hg38_dbSNP.tab -h -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim -f ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_freq.frq
