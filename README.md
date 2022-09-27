@@ -118,10 +118,11 @@ ls
 * You also need to dowload the TOPMed reference panel and code from the McCarthy Tools website
 	- https://www.well.ox.ac.uk/~wrayner/tools/ 
 	- Midway down the page there are instructions for Usage with the TOPMed reference panel
+	- Download `CreateTOPMed.zip` from the McCarthy Tools website
 	- Click on the link to navigate to the Bravo site where this can be downloaded from
-	- TODO! - Click on dbSNP in the top right panel and download ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz file
-	- Download CreateTOPMed.zip from the websites
-	- After downloading both files, move them to the GWAS_QC directory, unzip the ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz file and execute the following command:
+	- Click on dbSNP in the top right panel and click "Download VCF" button to download `ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz` file
+	- Note: If you run the curl command that's given on the site, the filename will be different 
+	- After downloading both files, move them to the GWAS_QC directory, unzip the `ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz` file and execute the following command:
 ```
 ./CreateTOPMed.pl -i ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz	
 ```	
