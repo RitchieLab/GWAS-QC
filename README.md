@@ -96,9 +96,13 @@ wget http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/hd_ge
 ```
 gunzip ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz
 ```
-* When we check the directory, the following files should be unzipped:
+* Then recode the `.vcf` file as `.bed`, `.bim`, `.bed`. 
 ```
-TODO! ls 
+plink2 --vcf ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
+```	
+When we check the directory, the following files should be unzipped:
+```
+ls 
 ```
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bed 
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bim 
