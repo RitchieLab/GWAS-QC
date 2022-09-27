@@ -98,7 +98,7 @@ gunzip ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz
 ```
 * When we check the directory, the following files should be unzipped:
 ```
-ls 
+TODO! ls 
 ```
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bed 
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bim 
@@ -112,9 +112,10 @@ ls
 * You also need to dowload the TOPMed reference panel and code from the McCarthy Tools website
 	- https://www.well.ox.ac.uk/~wrayner/tools/ 
 	- Midway down the page there are instructions for Usage with the TOPMed reference panel
-	- Click on dbSNP in the top right panel and download ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz file
+	- Click on the link to navigate to the Bravo site where this can be downloaded from
+	- TODO! - Click on dbSNP in the top right panel and download ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz file
 	- Download CreateTOPMed.zip from the websites
-	- After downloading both files, unzip the ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz file and execute the following command:
+	- After downloading both files, move them to the GWAS_QC directory, unzip the ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz file and execute the following command:
 ```
 ./CreateTOPMed.pl -i ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz	
 ```	
