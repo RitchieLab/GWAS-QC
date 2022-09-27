@@ -85,7 +85,7 @@ cd GWAS_QC
 
 * Files can be found here: http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/hd_genotype_chip/
 * Two download options 
-	- Download directly to your local computer by clicking the hyperlink for ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz
+	- Download directly to your local computer by clicking the hyperlink for `ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz`
 	- Dowload using wget command:
 
 ```
@@ -107,6 +107,8 @@ ls
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bed 
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bim 
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam 
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.log
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf
 
 
 * You will also want to dowload the pedigree information, which can be downloaded here:
