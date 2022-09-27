@@ -122,10 +122,15 @@ ls
 	- Click on the link to navigate to the Bravo site where this can be downloaded from
 	- Click on dbSNP in the top right panel and click "Download VCF" button to download `ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz` file
 	- Note: If you run the curl command that's given on the site, the filename will be different 
-	- After downloading both files, move them to the GWAS_QC directory, unzip the `ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz` file and execute the following command:
+	- After downloading both files, move them to the GWAS_QC directory, and execute the following command to convert VCF to an HRC formatted reference legend according to the code provided by McCarthy Tools:
 ```
 ./CreateTOPMed.pl -i ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz	
-```	
+```
+	- By default this will create a file filtered for variants flagged as PASS only, if you wish to use all variants the -a flag overrides this. To override the default output file naming use -o filename.
+	- If you get an error in the above step, try this variation:
+```
+perl CreateTOPMed.pl -i ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz	
+```
 </details>
 
 
