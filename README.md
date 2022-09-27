@@ -111,10 +111,9 @@ ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam
 	- After downloading both files, unzip the ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz file and execute the following command:
 ```
 ./CreateTOPMed.pl -i ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz	
-```
-	
-
+```	
 </details>
+
 
 
 ## PART 2 -- Pre-Imputation
