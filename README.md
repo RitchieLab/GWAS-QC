@@ -161,6 +161,7 @@ TODOD - delete / cd preImputation
 module load plink/1.9-20210416
 plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --het --out preImputation/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het
 ```
+* Output:
 > PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
 > (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 > Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.log.
@@ -187,6 +188,7 @@ plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --het --ou
 ```
 plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --missing --out preImputation/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss
 ```
+* Output:
 > PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
 > (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 > Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.log.
