@@ -83,6 +83,7 @@ mkdir GWAS_QC/postImpuatation
 
 ## PART 1 -- Get Data
 
+### Step 1 - Retrieve 1000 Genomes Data
 <details> 
 	<summary>👇 Steps and code </summary>
 	<hr>
@@ -110,15 +111,7 @@ gunzip ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz
 ```
 plink2 --vcf ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 ```
-</details>
-
-
-<details> 
-	<summary>👇 Steps and code </summary>
-	<hr>
-
-* When we check the directory, the following files should be unzipped:
-
+	* When we check the directory, the following files should be unzipped:
 ```
 ls 
 ```
@@ -128,6 +121,13 @@ ls
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.log
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf
 
+</details>
+
+
+### Step 2 - Download other relevant data
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
 
 * You will also want to dowload the pedigree information, which can be downloaded here:
 	- https://www.internationalgenome.org/faq/can-i-get-phenotype-gender-and-family-relationship-information-for-the-individuals/
