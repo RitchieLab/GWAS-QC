@@ -129,7 +129,7 @@ ls
 	./CreateTOPMed.pl -i ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz	
 	```
 	- By default this will create a file filtered for variants flagged as PASS only, if you wish to use all variants the -a flag overrides this. To override the default output file naming use -o filename.
-	- If you get an error in the above step, try this variation. Both were run successfully on a local computer and server using perl/5.30.0:
+	- If you get an error in the above step, try this variation. Both were run successfully on a local computer and server using perl/5.30.0. Depending on your setup, this may take a few hours to run:
 	```
 	perl CreateTOPMed.pl -i ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz	
 	```
