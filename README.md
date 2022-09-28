@@ -280,14 +280,37 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 	
 ### UNCHANGED BELOW ###
 	
-* Now, let's make some plots in R
+* Now, let's make some plots in R so first we need to enter into R in the terminal. You can run R code in Rstudio or your preferred IDE. 
+	
+```
+R
+```
+
+* Read in the relevant data for the plots
 ```
 # Read in 1000 Genomes DATA
-setwd("GWAS_QC")
-het <- read.csv(file.path("GWAS_QC", "ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het"), sep="")
-miss <- read.csv(file.path("GWAS_QC", "ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.smiss"), sep="")
+setwd("preImputation/")
+het <- read.csv(file.path("ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het"), sep="")
+>  X.FID     IID O.HOM. E.HOM. OBS_CT         F
+> 1     0 HG00096 634762 608326 867229 0.1021090
+> 2     0 HG00097 635035 607916 866659 0.1048090
+> 3     0 HG00098 629539 604988 861939 0.0955457
+> 4     0 HG00099 635235 607948 866667 0.1054700
+> 5     0 HG00100 633342 607067 865511 0.1016670
+> 6     0 HG00101 633098 607641 866215 0.0984509
+     
+```
+miss <- read.csv(file.path("ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.smiss"), sep="")
+```
+>  X.FID     IID MISSING_CT OBS_CT     F_MISS
+> 1     0 HG00096       1403 905531 0.00154937
+> 2     0 HG00097       2016 905531 0.00222632
+> 3     0 HG00098       6899 905531 0.00761873
+> 4     0 HG00099       2042 905531 0.00225503
+> 5     0 HG00100       3210 905531 0.00354488
+> 6     0 HG00101       2428 905531 0.00268130
 
-
+```
 # Organize the data
 library(dplyr)
 x <- miss %>% select(IID, F_MISS)
