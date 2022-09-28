@@ -58,11 +58,11 @@ mkdir GWAS_QC/postImpuatation
 ```
 .
 ├──GWAS_QC/
-	├── rawData/
-	├──preImputation/
-	|	└───VCFfiles/
-	├──Imputed/
-	└───postImputation/	
+    ├── rawData/
+    ├──preImputation/
+    |    └───VCFfiles/
+    ├──Imputed/
+    └───postImputation/	
 ```
 
 
