@@ -46,13 +46,15 @@ module load R
 	<summary>👇 How to set up your directory structure for the GWAS QC workflow </summary>
 	<hr>
 ```
-GWAS_QC/
-└─── rawData/
-└───preImputation/
-|     └───VCFfiles/
-└───Imputed/
-└───postImputation/	
+.
+├──GWAS_QC/
+	├── rawData/
+	├──preImputation/
+	|	└───VCFfiles/
+	├──Imputed/
+	└───postImputation/	
 ```
+
 	
 ```
 mkdir GWAS_QC
