@@ -221,6 +221,8 @@ plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --missing 
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.log
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.nosex
 
+
+### UNCHANGED BELOW ###
 	
 * Now, let's make some plots in R
 ```
