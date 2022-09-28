@@ -165,7 +165,7 @@ ls
     |    ├── CreateTOPMed.pl
     |    ├── CreateTOPMed.zip
     |    ├── LICENSE.txt
-    |    └──PASS.Variants.TOPMed_freeze5_hg38_dbSNP.tab.gz
+    |    └── PASS.Variants.TOPMed_freeze5_hg38_dbSNP.tab.gz
     ├──preImputation/
     |    └── VCFfiles/
     ├──Imputed/
@@ -181,7 +181,7 @@ ls
 	<hr>
 	
 ```
-TODOD - delete / cd preImputation
+cd preImputation
 ```
 </details>
 
@@ -194,72 +194,90 @@ TODOD - delete / cd preImputation
 	
 * First, run plink commands to calculate heterogeneity and missingness for the data 
 ```
-module load plink/1.9-20210416
-plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --het --out preImputation/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het
+module load plink/2.0
+plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --het --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het
 ```
 * Output:
-> PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
-> (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+> PLINK v2.00a3LM 64-bit Intel (28 Oct 2020)     www.cog-genomics.org/plink/2.0/
+> (C) 2005-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
 > Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.log.
 > Options in effect:
->   --bfile ../ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
+>   --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 >   --het
 >   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het
->
-> 128235 MB RAM detected; reserving 64117 MB for main workspace.
-> 905788 variants loaded from .bim file.
-> 3450 people (0 males, 0 females, 3450 ambiguous) loaded from .fam.
-> Ambiguous sex IDs written to
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.nosex.
-> Using 1 thread (no multithreaded calculations invoked).
-> Before main variant filters, 3450 founders and 0 nonfounders present.
+> 
+> Start time: Wed Sep 28 13:22:52 2022
+> 128235 MiB RAM detected; reserving 64117 MiB for main workspace.
+> Using up to 56 threads (change this with --threads).
+> 3450 samples (0 females, 0 males, 3450 ambiguous; 3450 founders) loaded from
+> ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam.
+> 905788 variants loaded from
+> ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bim.
+> Note: No phenotype data present.
 > Calculating allele frequencies... done.
-> Warning: Nonmissing nonmale Y chromosome genotype(s) present; many commands treat these as missing.
-> Total genotyping rate is 0.996712.
-> 905788 variants and 3450 people pass filters and QC.
-> Note: No phenotypes present.
-> --het: 868601 variants scanned, report written to
+> Excluding 37156 variants on non-autosomes from --het.
+> --het: done.
+> --het: Results written to
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het .
-	
-```
-plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --missing --out preImputation/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss
+
+```	
+plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --missing --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss
 ```
 * Output:
-> PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
-> (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+> PLINK v2.00a3LM 64-bit Intel (28 Oct 2020)     www.cog-genomics.org/plink/2.0/
+> (C) 2005-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
 > Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.log.
 > Options in effect:
->   --bfile ../ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
+>   --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 >   --missing
 >   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss
 > 
-> 128235 MB RAM detected; reserving 64117 MB for main workspace.
-> 905788 variants loaded from .bim file.
-> 3450 people (0 males, 0 females, 3450 ambiguous) loaded from .fam.
-> Ambiguous sex IDs written to
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.nosex .
-> Using 1 thread (no multithreaded calculations invoked).
-> Before main variant filters, 3450 founders and 0 nonfounders present.
+> 128235 MiB RAM detected; reserving 64117 MiB for main workspace.
+> Using up to 56 threads (change this with --threads).
+> 3450 samples (0 females, 0 males, 3450 ambiguous; 3450 founders) loaded from
+> ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam.
+> 905788 variants loaded from
+> ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bim.
+> Note: No phenotype data present.
+> Calculating sample missingness rates... done.
 > Calculating allele frequencies... done.
-> Warning: Nonmissing nonmale Y chromosome genotype(s) present; many commands
-> treat these as missing.
-> Total genotyping rate is 0.996712.
 > --missing: Sample missing data report written to
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.imiss, and
-> variant-based missing data report written to
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.lmiss.
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.smiss .
+> --missing: Variant missing data report written to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.vmiss .
 
 	
 * Here's the current directory structure within GWAS_QC/preImputation/	
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.log
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.nosex
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.imiss
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.lmiss
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.log
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.nosex
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.smiss
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.vmiss
 
+```
+.
+├── GWAS_QC/
+    ├── rawData/ (current directory)
+    |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bed
+    |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bim
+    |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam
+    |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.log
+    |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf
+    |    ├── CreateTOPMed.pl
+    |    ├── CreateTOPMed.zip
+    |    ├── LICENSE.txt
+    |    └── PASS.Variants.TOPMed_freeze5_hg38_dbSNP.tab.gz
+    ├──preImputation/
+    |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het
+    |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.log
+    |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.log
+    |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.smiss
+    |    └── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.vmiss
+    ├──Imputed/
+    └── postImputation/	
+```
 
+	
 ### UNCHANGED BELOW ###
 	
 * Now, let's make some plots in R
