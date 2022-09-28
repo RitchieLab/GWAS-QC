@@ -57,7 +57,7 @@ mkdir GWAS_QC/postImpuatation
 
 ```
 .
-├── GWAS_QC/
+├── ** GWAS_QC/ **
     ├── rawData/
     ├── preImputation/
     |    └── VCFfiles/
@@ -116,7 +116,9 @@ plink2 --vcf ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf --make-
 <details> 
 	<summary>👇 Steps and code </summary>
 	<hr>
-When we check the directory, the following files should be unzipped:
+
+* When we check the directory, the following files should be unzipped:
+
 ```
 ls 
 ```
@@ -154,7 +156,7 @@ ls
 ```
 .
 ├── GWAS_QC/
-    ├── rawData/
+    ├── ** rawData/ **
     |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bed
     |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bim
     |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam
