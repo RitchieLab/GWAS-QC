@@ -30,7 +30,7 @@
 	<hr>
 	
 ```
-module load plink/1.9
+module load plink/1.9-20210416
 module load plink/2.0
 module load bcftools/1.9
 module load vcftools/0.1.12c # used by bcftools so may not need to be directly loaded
