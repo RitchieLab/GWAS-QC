@@ -145,7 +145,7 @@ ls
 	<hr>
 	
 ```
-cd preImputation
+TODOD - delete / cd preImputation
 ```
 </details>
 
@@ -159,7 +159,7 @@ cd preImputation
 * First, run plink commands to calculate heterogeneity and missingness for the data 
 ```
 module load plink/1.9-20210416
-plink --bfile ../ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --het --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het
+plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --het --out preImputation/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het
 ```
 > PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
 > (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
@@ -168,12 +168,12 @@ plink --bfile ../ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --het -
 >   --bfile ../ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 >   --het
 >   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het
-
+>
 > 128235 MB RAM detected; reserving 64117 MB for main workspace.
 > 905788 variants loaded from .bim file.
 > 3450 people (0 males, 0 females, 3450 ambiguous) loaded from .fam.
 > Ambiguous sex IDs written to
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.nosex .
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.nosex.
 > Using 1 thread (no multithreaded calculations invoked).
 > Before main variant filters, 3450 founders and 0 nonfounders present.
 > Calculating allele frequencies... done.
@@ -185,7 +185,7 @@ plink --bfile ../ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --het -
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het .
 	
 ```
-plink --bfile ../ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --missing --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss
+plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --missing --out preImputation/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss
 ```
 > PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
 > (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
@@ -210,11 +210,20 @@ plink --bfile ../ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --missi
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.imiss, and
 > variant-based missing data report written to
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.lmiss.
+
 	
-* Then, plot in R
+* Here's the current directory structure within GWAS_QC/preImputation/	
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.log
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.nosex
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.imiss
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.lmiss
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.log
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.nosex
 
+	
+* Now, let's make some plots in R
 ```
-
 # Read in 1000 Genomes DATA
 setwd("GWAS_QC")
 het <- read.csv(file.path("GWAS_QC", "ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het"), sep="")
