@@ -33,7 +33,7 @@
 module load plink/1.9
 module load plink/2.0
 module load bcftools/1.9
-module load vcftools/0.1.12c
+module load vcftools/0.1.12c # used by bcftools so may not need to be directly loaded
 module load tabix/0.2.6
 module load liftOver/20180423
 module load R
@@ -57,12 +57,12 @@ mkdir GWAS_QC/postImpuatation
 
 ```
 .
-├──GWAS_QC/
+├── GWAS_QC/
     ├── rawData/
-    ├──preImputation/
-    |    └───VCFfiles/
-    ├──Imputed/
-    └───postImputation/	
+    ├── preImputation/
+    |    └── VCFfiles/
+    ├── Imputed/
+    └── postImputation/	
 ```
 
 
@@ -109,7 +109,13 @@ gunzip ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz
 * Then recode the `.vcf` file as `.bed`, `.bim`, `.bed`. 
 ```
 plink2 --vcf ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
-```	
+```
+</details>
+
+
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
 When we check the directory, the following files should be unzipped:
 ```
 ls 
@@ -145,6 +151,24 @@ ls
 	```
 </details>
 
+```
+.
+├── GWAS_QC/
+    ├── rawData/
+    |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bed
+    |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bim
+    |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam
+    |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.log
+    |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf
+    |    ├── CreateTOPMed.pl
+    |    ├── CreateTOPMed.zip
+    |    ├── LICENSE.txt
+    |    └──PASS.Variants.TOPMed_freeze5_hg38_dbSNP.tab.gz
+    ├──preImputation/
+    |    └── VCFfiles/
+    ├──Imputed/
+    └── postImputation/	
+```
 
 
 ## PART 2 -- Pre-Imputation
