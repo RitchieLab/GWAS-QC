@@ -18,7 +18,7 @@
 </p>
 
 
-# NOTE: This entire repo is under active construction and code will be mismatched at this time. Follow it at your own risk and judgment. It will be updated over the coming months.
+# NOTE: This entire repo is under active construction and code will be mismatched at this time.
 
 # Basic Overview
 * We chose a publicly available dataset from the International Genome Sample Resource (IGSR) (www.internationalgenome.org). IGSR created and maintains the 1000 Genomes Project (1kGP) to provide a public catalog of common human genetic variation and genotype data. The 1kGP dataset has been kept up to date with current reference data sets, thus it is available for both GRCh37 and GRCh38. The latter is utilized here because the 2014 update increased the quantity of loci represented, resolved more than 1000 issues from the previous version of the assembly, and overall provides a better basis for alignment and subsequent analysis. Additionally, IGSR’s continued efforts will lead to the incorporation of various populations to the data which were not previously captured.
