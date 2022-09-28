@@ -193,10 +193,12 @@ cd preImputation
 	<hr>
 	
 * First, run plink commands to calculate heterogeneity and missingness for the data 
+
 ```
 module load plink/2.0
 plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --het --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het
 ```
+
 * Output:
 > PLINK v2.00a3LM 64-bit Intel (28 Oct 2020)     www.cog-genomics.org/plink/2.0/
 > (C) 2005-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
@@ -223,6 +225,7 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 ```	
 plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --missing --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss
 ```
+
 * Output:
 > PLINK v2.00a3LM 64-bit Intel (28 Oct 2020)     www.cog-genomics.org/plink/2.0/
 > (C) 2005-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
@@ -278,8 +281,6 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 ```
 
 	
-### UNCHANGED BELOW ###
-	
 * Now, let's make some plots in R so first we need to enter into R in the terminal. You can run R code in Rstudio or your preferred IDE. 
 	
 ```
@@ -287,10 +288,12 @@ R
 ```
 
 * Read in the relevant data for the plots
+
 ```
 # Read in 1000 Genomes DATA
 setwd("preImputation/")
 het <- read.csv(file.path("ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het"), sep="")
+```
 >  X.FID     IID O.HOM. E.HOM. OBS_CT         F
 > 1     0 HG00096 634762 608326 867229 0.1021090
 > 2     0 HG00097 635035 607916 866659 0.1048090
@@ -333,6 +336,7 @@ rbPal <- colorRampPalette(c('#6baed6','#deebf7'))
 to_plot$Col <- rbPal(200)[as.numeric(cut(to_plot$F_MISS,breaks = 200))]
 
 png("1000_Genomes_Affy6_3450samples.png")
+	       
 # Making the plot
 plot(to_plot$F_MISS,to_plot$HR, 
      col = ifelse(to_plot$HR <= HR_mean-(3*HR_SD), "#c6dbef", 
@@ -359,6 +363,8 @@ dev.off()
 </details>
 	
 
+### UNCHANGED BELOW ###
+	
 ### Step 3 - Update first column of file which has zeros
 
 <details> 
