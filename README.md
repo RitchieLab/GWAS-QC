@@ -257,7 +257,7 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 ```
 .
 ├── GWAS_QC/
-    ├── rawData/ (current directory)
+    ├── rawData/ 
     |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bed
     |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bim
     |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam
@@ -267,7 +267,7 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
     |    ├── CreateTOPMed.zip
     |    ├── LICENSE.txt
     |    └── PASS.Variants.TOPMed_freeze5_hg38_dbSNP.tab.gz
-    ├──preImputation/
+    ├──preImputation/ (current directory)
     |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het
     |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.log
     |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.log
