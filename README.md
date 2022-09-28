@@ -57,7 +57,7 @@ mkdir GWAS_QC/postImpuatation
 
 ```
 .
-├── <b> GWAS_QC/ </b>
+├── <pre> GWAS_QC/ </pre>
     ├── rawData/
     ├── preImputation/
     |    └── VCFfiles/
@@ -156,7 +156,7 @@ ls
 ```
 .
 ├── GWAS_QC/
-    ├── <b> rawData/ </b>
+    ├── <pre> rawData/ </pre>
     |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bed
     |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bim
     |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam
