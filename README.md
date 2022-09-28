@@ -44,7 +44,17 @@ module load R
 ## Set up working directory
 <details> 
 	<summary>👇 How to set up your directory structure for the GWAS QC workflow </summary>
-	<hr>
+	<hr>	
+```
+mkdir GWAS_QC
+mkdir GWAS_QC/rawData
+mkdir GWAS_QC/preImputation
+mkdir GWAS_QC/preImputation/VCFfiles
+mkdir GWAS_QC/Imputed
+mkdir GWAS_QC/postImpuatation
+```	
+</details>
+
 ```
 .
 ├──GWAS_QC/
@@ -54,18 +64,6 @@ module load R
 	├──Imputed/
 	└───postImputation/	
 ```
-
-	
-```
-mkdir GWAS_QC
-mkdir GWAS_QC/rawData
-mkdir GWAS_QC/preImputation
-mkdir GWAS_QC/preImputation/VCFfiles
-mkdir GWAS_QC/Imputed
-mkdir GWAS_QC/postImpuatation
-```	
-
-</details>
 
 
 ## Notes on PLINK v1.9 and v2.0
