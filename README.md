@@ -34,7 +34,8 @@ module load plink/1.9-20210416
 module load plink/2.0
 module load bcftools/1.9
 module load vcftools/0.1.12c # used by bcftools so may not need to be directly loaded
-module load tabix/0.2.6
+module load tabix/0.2.6 # this one might not work -- let me know if it's a problem use htslib instead (below)
+module load htslib
 module load liftOver/20180423
 module load R
 ```
