@@ -67,6 +67,7 @@ mkdir GWAS_QC/postImpuatation
     |    └── VCFfiles/
     ├── Imputed/
     └── postImputation/	
+    
 ```
 
 
