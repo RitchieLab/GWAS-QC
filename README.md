@@ -374,7 +374,7 @@ dev.off()
 	<hr>
 	
 ```
-cat ../ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam | awk '{print $1,$2,$2,$2}' > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_toUpdate.txt
+cat ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam | awk '{print $1,$2,$2,$2}' > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_toUpdate.txt
 
 plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --update-ids ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_auto_toUpdate.txt --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated
 ```
