@@ -315,6 +315,7 @@ het <- read.csv(file.path("ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_p
 ```
 miss <- read.csv(file.path("ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.smiss"), sep="")
 ```
+> ```
 >  X.FID     IID MISSING_CT OBS_CT     F_MISS
 > 1     0 HG00096       1403 905531 0.00154937
 > 2     0 HG00097       2016 905531 0.00222632
@@ -322,6 +323,7 @@ miss <- read.csv(file.path("ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_
 > 4     0 HG00099       2042 905531 0.00225503
 > 5     0 HG00100       3210 905531 0.00354488
 > 6     0 HG00101       2428 905531 0.00268130
+> ```
 
 ```
 # Organize the data
@@ -611,6 +613,7 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 ```
 head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim
 ```
+> ```
 > 1       rs10458597      0       564621  T       C
 > 1       rs12565286      0       721290  C       G
 > 1       rs12082473      0       740857  A       G
@@ -621,7 +624,7 @@ head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_che
 > 1       rs2980300       0       785989  C       T
 > 1       rs2905036       0       792480  T       C
 > 1       rs11240777      0       798959  A       G
-
+> ```
 </details>
 
 	
