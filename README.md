@@ -39,6 +39,7 @@ module load htslib
 module load perl
 module load liftOver/20180423
 module load R
+	
 ```
 </details>
 
@@ -54,6 +55,7 @@ mkdir GWAS_QC/preImputation
 mkdir GWAS_QC/preImputation/VCFfiles
 mkdir GWAS_QC/Imputed
 mkdir GWAS_QC/postImpuatation
+	
 ```	
 </details>
 
@@ -93,6 +95,7 @@ mkdir GWAS_QC/postImpuatation
 * Enter your GWAS_QC directory 
 ```
 cd GWAS_QC/rawData/
+	
 ```
 * Download -- First, we need to download the publicly available dataset from the 1000 Genomes Project (1KGP). The data is Affy6.0 genotype data for 3,450 individuals with population-level data. 
 
@@ -102,24 +105,29 @@ cd GWAS_QC/rawData/
 	- Dowload using wget command:
 
 ```
-wget http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/hd_genotype_chip/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz	
+wget http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/hd_genotype_chip/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz
+	
 ```
 
 * At this point `ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz` should be in your GWAS_QC directory.
 
 ```
 gunzip ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz
+	
 ```
 
 * Then recode the `.vcf` file as `.bed`, `.bim`, `.bed`. 
 
 ```
 plink2 --vcf ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
+	
 ```
 
 * When we check the directory, the following files should be unzipped:
+
 ```
 ls 
+	
 ```
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bed 
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bim 
@@ -150,12 +158,14 @@ ls
 	- Note: If you run the curl command that's given on the site, the filename will be different 
 	- After downloading both files, move them to the GWAS_QC directory, and execute the following command to convert VCF to an HRC formatted reference legend according to the code provided by McCarthy Tools:
 	```
-	./CreateTOPMed.pl -i ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz	
+	./CreateTOPMed.pl -i ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz
+	
 	```
 	- By default this will create a file filtered for variants flagged as PASS only, if you wish to use all variants the -a flag overrides this. To override the default output file naming use -o filename.
 	- If you get an error in the above step, try this variation. Both were run successfully on a local computer and server using perl/5.30.0. Depending on your setup, this may take a few hours to run:
 	```
 	perl CreateTOPMed.pl -i ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz	
+	
 	```
 </details>
 
@@ -188,6 +198,7 @@ ls
 	
 ```
 cd preImputation
+	
 ```
 </details>
 
@@ -203,6 +214,7 @@ cd preImputation
 ```
 module load plink/2.0
 plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --het --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het
+	
 ```
 
 * Output:
@@ -230,6 +242,7 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 
 ```	
 plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --missing --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss
+	
 ```
 
 * Output:
@@ -299,6 +312,7 @@ R
 # Read in 1000 Genomes DATA
 setwd("preImputation/")
 het <- read.csv(file.path("ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het"), sep="")
+       
 ```
 
 ```
@@ -310,6 +324,7 @@ X.FID     IID O.HOM. E.HOM. OBS_CT         F
 4     0 HG00099 635235 607948 866667 0.1054700
 5     0 HG00100 633342 607067 865511 0.1016670
 6     0 HG00101 633098 607641 866215 0.0984509
+       
 ```
 
 ```
