@@ -365,6 +365,22 @@ dev.off()
 </details>
 	
 
+### Step 3 - Update first column of file which has zeros
+
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
+	
+```
+cd preImputation/
+
+cat ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam | awk '{print $1,$2,$2,$2}' > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_toUpdate.txt
+
+plink2 --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --update-ids ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_toUpdate.txt --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated
+```
+</details>
+
+
 ### UNCHANGED BELOW ###
 	
 ### Step 3 - Update first column of file which has zeros
