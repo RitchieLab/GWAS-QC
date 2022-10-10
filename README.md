@@ -372,31 +372,36 @@ dev.off()
 	<hr>
 	
 ```
-cd preImputation/
-
 cat ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam | awk '{print $1,$2,$2,$2}' > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_toUpdate.txt
 
 plink2 --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --update-ids ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_toUpdate.txt --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated
 ```
+> PLINK v2.00a3LM 64-bit Intel (5 May 2021)      www.cog-genomics.org/plink/2.0/
+> (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+> Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.log.
+> Options in effect:
+>  --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
+>  --make-bed
+>  --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated
+>  --update-ids ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_toUpdate.txt
+> Start time: Mon Oct 10 16:25:54 2022
+> 128235 MiB RAM detected; reserving 64117 MiB for main workspace.
+> Using up to 56 threads (change this with --threads).
+> 3450 samples (0 females, 0 males, 3450 ambiguous; 3450 founders) loaded from
+> ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam.
+> 905788 variants loaded from
+> ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bim.
+> Note: No phenotype data present.
+> --update-ids: 3450 samples updated.
+> Writing ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.fam ...
+> done.
+> Writing ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.bim ...
+> done.
+> Writing ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.bed ...
+> done.
+
 </details>
 
-
-### UNCHANGED BELOW ###
-	
-### Step 3 - Update first column of file which has zeros
-
-<details> 
-	<summary>👇 Steps and code </summary>
-	<hr>
-	
-```
-cat ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam | awk '{print $1,$2,$2,$2}' > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_toUpdate.txt
-
-plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --update-ids ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_auto_toUpdate.txt --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated
-```
-</details>
-	
-	
 ### Step 4 -- Add sex phenotype
 	
 <details> 
@@ -406,20 +411,107 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --update-
 * First make sex file from 20130606_g1k.ped file
 
 ```
-join -1 1 -2 1 <(cat ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.fam |sort -k1,1) <(cat 20130606_g1k.ped |awk -F '\t' '{print $2,$5}' |sort -k1,1) |awk '{print $1,$2,$7}' > sex_file.txt
+join -1 1 -2 1 <(cat ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.fam |sort -k1,1) <(cat ../rawData/20130606_g1k.ped |awk -F '\t' '{print $2,$5}' |sort -k1,1) |awk '{print $1,$2,$7}' > sex_file.txt
 ```
-* Then update .fam file to include sex phenotype
 
+* Then update .fam file to include sex phenotype
 ```
 plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated --update-sex sex_file.txt --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex
 ```
+> PLINK v2.00a3LM 64-bit Intel (5 May 2021)      www.cog-genomics.org/plink/2.0/
+> (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+> Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.log.
+> Options in effect:
+>   --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated
+>   --make-bed
+>   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex
+>   --update-sex sex_file.txt
+> Start time: Mon Oct 10 16:30:08 2022
+> 128235 MiB RAM detected; reserving 64117 MiB for main workspace.
+> Using up to 56 threads (change this with --threads).
+> 3450 samples (0 females, 0 males, 3450 ambiguous; 3450 founders) loaded from
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.fam.
+> 905788 variants loaded from
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.bim.
+> Note: No phenotype data present.
+> --update-sex: 3450 samples updated.
+> Writing
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.fam ...
+> done.
+> Writing
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.bim ...
+> done.
+> Writing
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.bed ...
+> done.
+> End time: Mon Oct 10 16:30:11 2022	
+	
+	
 * Next, check sex and remove sex inconsistencies
+```
+plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex --check-sex 
+```
+> //' > plink.sexcheck_listPLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
+> (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+> Logging to plink.log.
+> Options in effect:
+>   --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex
+>   --check-sex
+> 128235 MB RAM detected; reserving 64117 MB for main workspace.
+> 905788 variants loaded from .bim file.
+> 3450 people (1715 males, 1735 females) loaded from .fam.
+> Using 1 thread (no multithreaded calculations invoked).
+> Before main variant filters, 3450 founders and 0 nonfounders present.
+> Calculating allele frequencies... done.
+> Warning: 219657 het. haploid genotypes present (see plink.hh ); many commands
+> treat these as missing.
+> Warning: Nonmissing nonmale Y chromosome genotype(s) present; many commands
+> treat these as missing.
+> Total genotyping rate is 0.996711.
+> 905788 variants and 3450 people pass filters and QC.
+> Note: No phenotypes present.
+> --check-sex: 36449 Xchr and 0 Ychr variant(s) scanned, 577 problems detected.
+> Report written to plink.sexcheck .
+
+	
+```
+cat plink.sexcheck |  grep PROBLEM | sed 's/^ *//' > plink.sexcheck_list
+```
 
 ```
-plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex --check-sex 
-cat plink.sexcheck |  grep PROBLEM | sed 's/^ *//' > plink.sexcheck_list
 plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex --remove plink.sexcheck_list --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked
 ```
+> PLINK v2.00a3LM 64-bit Intel (5 May 2021)      www.cog-genomics.org/plink/2.0/
+> (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+> Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.log.
+> Options in effect:
+>   --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex
+>   --make-bed
+>   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked
+>   --remove plink.sexcheck_list
+> Start time: Mon Oct 10 16:35:55 2022
+> 128235 MiB RAM detected; reserving 64117 MiB for main workspace.
+> Using up to 56 threads (change this with --threads).
+> 3450 samples (1735 females, 1715 males; 3450 founders) loaded from
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.fam.
+> 905788 variants loaded from
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.bim.
+> Note: No phenotype data present.
+> --remove: 2873 samples remaining.
+> 2873 samples (1160 females, 1713 males; 2873 founders) remaining after main
+> filters.
+> Writing
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.fam
+> ... done.
+> Writing
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.bim
+> ... done.
+> Writing
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.bed
+> ... done.
+> End time: Mon Oct 10 16:35:57 2022
+
+
 </details>
 	
 ### Step 5 -- Remove SNP variants that do not have SNP IDs
@@ -432,6 +524,35 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 echo . > noSNP
 plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked --exclude noSNP --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots
 ```
+> PLINK v2.00a3LM 64-bit Intel (5 May 2021)      www.cog-genomics.org/plink/2.0/
+> (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+> Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.log.
+> Options in effect:
+>   --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked
+>   --exclude noSNP
+>   --make-bed
+>   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots
+> Start time: Mon Oct 10 16:38:29 2022
+> 128235 MiB RAM detected; reserving 64117 MiB for main workspace.
+> Using up to 56 threads (change this with --threads).
+> 2873 samples (1160 females, 1713 males; 2873 founders) loaded from
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.fam.
+> 905788 variants loaded from
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.bim.
+> Note: No phenotype data present.
+> --exclude: 887969 variants remaining.
+> 887969 variants remaining after main filters.
+> Writing
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.fam
+> ... done.
+> Writing
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.bim
+> ... done.
+> Writing
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.bed
+> ... done.
+> End time: Mon Oct 10 16:38:32 2022
+
 </details>
 	
 
@@ -443,10 +564,68 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 	
 ```
 plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots --geno 0.05 --mind 0.1 --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC
+```
+> PLINK v2.00a3LM 64-bit Intel (5 May 2021)      www.cog-genomics.org/plink/2.0/
+> (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+> Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.log.
+> Options in effect:
+>   --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots
+>   --geno 0.05
+>   --make-bed
+>   --mind 0.1
+>   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC
+> Start time: Mon Oct 10 16:40:32 2022
+> 128235 MiB RAM detected; reserving 64117 MiB for main workspace.
+> Using up to 56 threads (change this with --threads).
+> 2873 samples (1160 females, 1713 males; 2873 founders) loaded from
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.fam.
+> 887969 variants loaded from
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.bim.
+> Note: No phenotype data present.
+> Calculating sample missingness rates... done.
+> 0 samples removed due to missing genotype data (--mind).
+> 2873 samples (1160 females, 1713 males; 2873 founders) remaining after main
+> filters.
+> Calculating allele frequencies... done.
+> --geno: 7979 variants removed due to missing genotype data.
+> 879990 variants remaining after main filters.
+> Writing
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.fam
+> ... done.
+> Writing
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim
+> ... done.
+> Writing
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bed
+> ... done.
+> End time: Mon Oct 10 16:40:34 2022
 
+```
 head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim
 ```
+> 1       rs10458597      0       564621  T       C
+> 1       rs12565286      0       721290  C       G
+> 1       rs12082473      0       740857  A       G
+> 1       rs3094315       0       752566  A       G
+> 1       rs2286139       0       761732  T       C
+> 1       rs11240776      0       765269  G       A
+> 1       rs2980319       0       777122  T       A
+> 1       rs2980300       0       785989  C       T
+> 1       rs2905036       0       792480  T       C
+> 1       rs11240777      0       798959  A       G
+
 </details>
+
+	
+
+### UNCHANGED BELOW ###
+	
+
+
+
+	
+
+
 	
 
 
