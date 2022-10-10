@@ -761,7 +761,7 @@ wc -l <filename>
 To use: plink_pca.sh script
 * TO-DO Confirm that we are able to share this code with people...
 
-module load plink_pca.sh 
+module load plink_pca
 plink_pca.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38 -g PCA_no1KG
 
 Makes 5 files
