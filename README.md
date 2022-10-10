@@ -102,18 +102,22 @@ cd GWAS_QC/rawData/
 	- Dowload using wget command:
 
 ```
-wget http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/hd_genotype_chip/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz
-	
-```	
+wget http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/hd_genotype_chip/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz	
+```
+
 * At this point `ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz` should be in your GWAS_QC directory.
+
 ```
 gunzip ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz
 ```
+
 * Then recode the `.vcf` file as `.bed`, `.bim`, `.bed`. 
+
 ```
 plink2 --vcf ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 ```
-	* When we check the directory, the following files should be unzipped:
+
+* When we check the directory, the following files should be unzipped:
 ```
 ls 
 ```
