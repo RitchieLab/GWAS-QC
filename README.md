@@ -316,7 +316,6 @@ het <- read.csv(file.path("ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_p
        
 ```
 
-```
 Output: 
 X.FID     IID O.HOM. E.HOM. OBS_CT         F
 1     0 HG00096 634762 608326 867229 0.1021090
@@ -325,8 +324,7 @@ X.FID     IID O.HOM. E.HOM. OBS_CT         F
 4     0 HG00099 635235 607948 866667 0.1054700
 5     0 HG00100 633342 607067 865511 0.1016670
 6     0 HG00101 633098 607641 866215 0.0984509
-       
-```
+      
 
 ```
 miss <- read.csv(file.path("ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.smiss"), sep="")
