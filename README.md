@@ -39,7 +39,6 @@ module load htslib
 module load perl
 module load liftOver/20180423
 module load R
-	
 ```
 </details>
 
@@ -54,8 +53,7 @@ mkdir GWAS_QC/rawData
 mkdir GWAS_QC/preImputation
 mkdir GWAS_QC/preImputation/VCFfiles
 mkdir GWAS_QC/Imputed
-mkdir GWAS_QC/postImpuatation
-	
+mkdir GWAS_QC/postImpuatation	
 ```	
 </details>
 
@@ -67,7 +65,6 @@ mkdir GWAS_QC/postImpuatation
     |    └── VCFfiles/
     ├── Imputed/
     └── postImputation/	
-    
 ```
 
 
