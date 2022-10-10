@@ -681,15 +681,6 @@ cat liftover_exclude.txt | grep -v "#" | awk '{print $5}' > exclude_liftover.txt
 	
 </details>
 
-	
-
-
-### UNCHANGED BELOW ###
-	
-
-
-
-	
 
 ### Step 8 -- Exclude data
 	
@@ -738,16 +729,25 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 ```
 wc -l <filename>
 ```
-> 905788 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.bim
-> 905788 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.bim
-> 905788 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.bim
-> 887969 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.bim
-> 879990 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim 
-> 834872 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim 
+> * 905788 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.bim
+> * 905788 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.bim
+> * 905788 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.bim
+> * 887969 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.bim
+> * 879990 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim 
+> * 834872 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim 
 >	* TO-DO Van got 843232 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim
 
 </details>
 	
+
+	
+
+
+### UNCHANGED BELOW ###
+	
+
+
+
 	
 ### Step 9 -- Principal Component Analysis (PCA)
 	
@@ -759,7 +759,7 @@ wc -l <filename>
 
 ```
 To use: plink_pca.sh script
-Confirm that we are able to share this code with people...
+* TO-DO Confirm that we are able to share this code with people...
 
 module load plink_pca.sh 
 plink_pca.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38 -g PCA_no1KG
