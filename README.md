@@ -626,20 +626,6 @@ head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_che
 > 1       rs11240777      0       798959  A       G
 > ```
 </details>
-
-	
-
-### UNCHANGED BELOW ###
-	
-
-
-
-	
-
-
-	
-
-
 	
 
 ### Step 7 -- LiftOver the data
@@ -653,29 +639,38 @@ head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_che
 
 ```
 cat ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim | awk '{print "chr"$1, $4, ($4+1), $4, $2}' > liftover_input.BED
+```
 
-[tcherlin@superman Unfiltered]$ head liftover_input.BED
- chr1 564621 564622 564621 rs10458597
- chr1 721290 721291 721290 rs12565286
- chr1 740857 740858 740857 rs12082473
- chr1 752566 752567 752566 rs3094315
- chr1 761732 761733 761732 rs2286139
- chr1 765269 765270 765269 rs11240776
- chr1 777122 777123 777122 rs2980319
- chr1 785989 785990 785989 rs2980300
- chr1 792480 792481 792480 rs2905036
- chr1 798959 798960 798959 rs11240777 
-
-sed -i 's/chr23/chrX/g' liftover_input.BED #I don't think this is a problem with this dataset
+* Check output
+```
+head liftover_input.BED
 
 ```
-	- Then, dowload the correct liftover file
-		- http://hgdownload.cse.ucsc.edu/goldenpath/hg18/liftOver/
-		- hg18ToHg38.over.chain
+> ```
+> chr1 564621 564622 564621 rs10458597
+> chr1 721290 721291 721290 rs12565286
+> chr1 740857 740858 740857 rs12082473
+> chr1 752566 752567 752566 rs3094315
+> chr1 761732 761733 761732 rs2286139
+> chr1 765269 765270 765269 rs11240776
+> chr1 777122 777123 777122 rs2980319
+> chr1 785989 785990 785989 rs2980300
+> chr1 792480 792481 792480 rs2905036
+> chr1 798959 798960 798959 rs11240777 
+> ```
+
+```
+sed -i 's/chr23/chrX/g' liftover_input.BED #I don't think this is a problem with this dataset
+```
+
+* Then, dowload the correct liftover file
+	- http://hgdownload.cse.ucsc.edu/goldenpath/hg18/liftOver/
+	- hg18ToHg38.over.chain
 ```
 wget http://hgdownload.cse.ucsc.edu/goldenpath/hg18/liftOver/hg18ToHg38.over.chain
 ```	
-	- Finally, perform the actual liftOver
+
+* Finally, perform the actual liftOver
 ```
 liftOver liftover_input.BED hg18ToHg38.over.chain liftover_newmap.txt liftover_exclude.txt
 
@@ -687,7 +682,15 @@ cat liftover_exclude.txt | grep -v "#" | awk '{print $5}' > exclude_liftover.txt
 </details>
 
 	
+
+
+### UNCHANGED BELOW ###
 	
+
+
+
+	
+
 ### Step 8 -- Exclude data
 	
 <details> 
@@ -698,20 +701,50 @@ cat liftover_exclude.txt | grep -v "#" | awk '{print $5}' > exclude_liftover.txt
 ```
 plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC --exclude exclude_liftover.txt --update-map update_map.txt --not-chr X, Y --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38
 ```
+> PLINK v2.00a3LM 64-bit Intel (5 May 2021)      www.cog-genomics.org/plink/2.0/
+> (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+> Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.log.
+> Options in effect:
+>   --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC
+>   --exclude exclude_liftover.txt
+>   --make-bed
+>   --not-chr X, Y
+>   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38
+>   --update-map update_map.txt
+> Start time: Mon Oct 10 17:06:21 2022
+> 128235 MiB RAM detected; reserving 64117 MiB for main workspace.
+> Using up to 56 threads (change this with --threads).
+> 2873 samples (1160 females, 1713 males; 2873 founders) loaded from
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.fam.
+> 843232 out of 879990 variants loaded from
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim.
+> Note: No phenotype data present.
+> --update-map: 0 values updated.
+> --exclude: 843232 variants remaining.
+> 843232 variants remaining after main filters.
+> Writing
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.fam
+> ... done.
+> Writing
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim
+> ... done.
+> Writing
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bed
+> ... done.
+> End time: Mon Oct 10 17:06:23 2022
+
 
 * Final pre-imputation variant count is 834,972 SNPs
-
-	905788 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.bim
-
-	905788 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.bim
-
-	905788 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.bim
-
-	887969 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.bim
-
-	879990 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim 
-
-	834872 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim 
+```
+wc -l <filename>
+```
+> 905788 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.bim
+> 905788 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.bim
+> 905788 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.bim
+> 887969 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.bim
+> 879990 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim 
+> 834872 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim 
+>	* TO-DO Van got 843232 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim
 
 </details>
 	
