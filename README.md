@@ -998,16 +998,7 @@ perl ../rawData/HRC-1000G-check-bim.pl -r ../rawData/PASS.Variants.TOPMed_freeze
 >  ID and allele mismatching 15272; where HRC is . 0
 >  Duplicates removed 0
 > ```
- 
-* Run the Run-plink.sh script, which is generate by perl script 
-* Pulls out chromosome info and makes VCF files
-```
-sed -i ‘s/plink/plink2/’ Run-plink.sh
- sed -i 's/--recode vcf/--recode vcf --output-chr chrM/g' Run-plink.sh
- chmod +x ./Run-plink.sh
- ./Run-plink.sh
-> ```
-	
+ 	
 	
 * Van's output
 > ```
@@ -1042,7 +1033,14 @@ sed -i ‘s/plink/plink2/’ Run-plink.sh
 > Duplicates removed 0
 > ```
  
-
+* Run the Run-plink.sh script, which is generate by perl script 
+* Pulls out chromosome info and makes VCF files
+```
+sed -i ‘s/plink/plink2/’ Run-plink.sh
+ sed -i 's/--recode vcf/--recode vcf --output-chr chrM/g' Run-plink.sh
+ chmod +x ./Run-plink.sh
+ ./Run-plink.sh
+```
 </details>
 	
 
