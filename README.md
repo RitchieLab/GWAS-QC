@@ -297,7 +297,7 @@ R
 
 ```
 # Read in 1000 Genomes DATA
-setwd("preImputation/")
+setwd("~/GWAS_QC/preImputation/")
 het <- read.csv(file.path("ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het"), sep="")     
 ```
 
@@ -928,7 +928,9 @@ plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_wi
 ```
 
 * Then, Compare variants to TOPMED panel
-	- The perl script is created by the 
+	- The perl script is created by the Wayner Tools group: https://www.well.ox.ac.uk/~wrayner/tools/
+	- Make sure you've downloaded the following file: HRC-1000G-check-bim-v4.3.0.zip
+	- Unzip and add the HRC-1000G-check-bim.pl script to your preImputation directory
 
 ```
 perl ~/group/projects/PMBB/QC_Imputation/scripts/HRC-1000G-check-bim.pl -r ~/group/projects/PMBB/QC_Imputation/scripts/PASS.Variants.TOPMed_freeze5_hg38_dbSNP.tab -h -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim -f ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_freq.frq
