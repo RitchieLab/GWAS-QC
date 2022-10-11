@@ -947,11 +947,12 @@ head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_che
 
 * Then, compare variants to TOPMED panel
 	- The perl script is created by the Wayner Tools group: https://www.well.ox.ac.uk/~wrayner/tools/
-	- Make sure you've downloaded the following file: HRC-1000G-check-bim-v4.3.0.zip
-	- Unzip and add the HRC-1000G-check-bim.pl script to your preImputation directory
+	- Make sure you've downloaded the following file: `HRC-1000G-check-bim-v4.3.0.zip`
+	- Unzip and add the `HRC-1000G-check-bim.pl` script to your rawData/ directory
+	- Remember that we already have `PASS.Variants.TOPMed_freeze5_hg38_dbSNP.tab`
 
 ```
-perl HRC-1000G-check-bim.pl -r PASS.Variants.TOPMed_freeze5_hg38_dbSNP.tab -h -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim -f ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_freq.frq
+perl ../rawData/HRC-1000G-check-bim.pl -r ../rawData/PASS.Variants.TOPMed_freeze5_hg38_dbSNP.tab -h -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim -f ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_freq.frq
 ```
 
 * Tess's output
