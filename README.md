@@ -1079,7 +1079,7 @@ chmod +x ./Run-plink.sh
 > PLINK v2.00a3LM 64-bit Intel (5 May 2021)      www.cog-genomics.org/plink/2.0/
 > (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 > Error: Duplicate --output-chr flag.
-```
+> ```
 
 </details>
 	
