@@ -931,48 +931,51 @@ head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_che
 
 ```
 perl HRC-1000G-check-bim.pl -r PASS.Variants.TOPMed_freeze5_hg38_dbSNP.tab -h -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim -f ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_freq.frq
- 
-Displayed
- Matching to HRC
- 
- Position Matches
-  ID matches HRC 0
-  ID Doesn't match HRC 832317
-  Total Position Matches 832317
- ID Match
-  Position different from HRC 0
- No Match to HRC 10845
- Skipped (MT) 0
- Total in bim file 843162
- Total processed 843162 
+```
 
-  ID matches HRC 0
-  ID Doesn't match HRC 832317
-  Total Position Matches 832317
- ID Match
-  Position different from HRC 0
- No Match to HRC 10845
- Skipped (MT) 0
- Total in bim file 843162
- Total processed 843162
-
- Indels 0
-
- SNPs not changed 1686
- SNPs to change ref alt 795615
- Strand ok 797298
- Total Strand ok 797301
- 
- Strand to change 10
- Total checked 832317
- Total checked Strand 797308
- Total removed for allele Frequency diff > 0.2 163426
- Palindromic SNPs with Freq > 0.4 19737
-
- Non Matching alleles 15272
- ID and allele mismatching 15272; where HRC is . 0
- Duplicates removed 0
- ```
+* Tess's output
+> ```
+> Displayed
+>  Matching to HRC
+>  
+>  Position Matches
+>   ID matches HRC 0
+>   ID Doesn't match HRC 832317
+>   Total Position Matches 832317
+>  ID Match
+>   Position different from HRC 0
+>  No Match to HRC 10845
+>  Skipped (MT) 0
+>  Total in bim file 843162
+>  Total processed 843162 
+> 
+>   ID matches HRC 0
+>   ID Doesn't match HRC 832317
+>   Total Position Matches 832317
+>  ID Match
+>   Position different from HRC 0
+>  No Match to HRC 10845
+>  Skipped (MT) 0
+>  Total in bim file 843162
+>  Total processed 843162
+> 
+>  Indels 0
+> 
+>  SNPs not changed 1686
+>  SNPs to change ref alt 795615
+>  Strand ok 797298
+>  Total Strand ok 797301
+>  
+>  Strand to change 10
+>  Total checked 832317
+>  Total checked Strand 797308
+>  Total removed for allele Frequency diff > 0.2 163426
+>  Palindromic SNPs with Freq > 0.4 19737
+> 
+>  Non Matching alleles 15272
+>  ID and allele mismatching 15272; where HRC is . 0
+>  Duplicates removed 0
+> ```
  
 * Run the Run-plink.sh script, which is generate by perl script 
 * Pulls out chromosome info and makes VCF files
@@ -981,7 +984,7 @@ sed -i ‘s/plink/plink2/’ Run-plink.sh
  sed -i 's/--recode vcf/--recode vcf --output-chr chrM/g' Run-plink.sh
  chmod +x ./Run-plink.sh
  ./Run-plink.sh
-```
+> ```
 </details>
 	
 
