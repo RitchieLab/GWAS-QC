@@ -1068,10 +1068,10 @@ chmod +x ./Run-plink.sh
 > /project/ritchie02/projects/cphg-gwas-qc/GWAS_QC/preImputation/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated.bim.
 > Note: No phenotype data present.
 > Writing
-/project/ritchie02/projects/cphg-gwas-qc/GWAS_QC/preImputation/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated-chr22.fam
+> /project/ritchie02/projects/cphg-gwas-qc/GWAS_QC/preImputation/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated-chr22.fam
 > ... done.
 > Writing
-/project/ritchie02/projects/cphg-gwas-qc/GWAS_QC/preImputation/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated-chr22.bim
+> /project/ritchie02/projects/cphg-gwas-qc/GWAS_QC/preImputation/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated-chr22.bim
 > ... done.
 > Writing
 > /project/ritchie02/projects/cphg-gwas-qc/GWAS_QC/preImputation/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated-chr22.bed
