@@ -957,7 +957,6 @@ perl ../rawData/HRC-1000G-check-bim.pl -r ../rawData/PASS.Variants.TOPMed_freeze
 
 * Tess's output
 > ```
-> Displayed
 >  Matching to HRC
 >  
 >  Position Matches
