@@ -1174,7 +1174,9 @@ drop_relateds.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Upda
 <details> 
 	<summary>👇 Steps and code </summary>
 	<hr>
-![image](https://user-images.githubusercontent.com/30478823/195202926-a29a096e-81e9-4429-b669-0571b525fc8d.png)
+
+![image](https://user-images.githubusercontent.com/30478823/195203144-bf28dd0a-78e7-41bb-a6f6-19729ff5f48d.png)
+
 
 </details>
 		
