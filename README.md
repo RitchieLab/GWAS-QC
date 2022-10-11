@@ -1098,9 +1098,14 @@ drop_relateds.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Upda
 	<summary>👇 Steps and code </summary>
 	<hr>
 	
+</details>
+		
 <details> 
 	<summary>👇 TOPMed Server Output </summary>
 	<hr>	
+	
+</details>
+	
 	
 ### Step 15 -- Download Imputed Data to Working Directory
 	
@@ -1121,6 +1126,7 @@ for file in *.zip; do 7z e $file -p"<password>"; done
 ![image](https://user-images.githubusercontent.com/30478823/154745163-97f3cb23-03db-487c-9638-63830eec92cc.png)
 </details>
 
+	
 ## PART 4 -- Post-Imputation QC
 ### Step 16 -- 
 ### TODO - NEED TO UPDATE IMAGES & CODE
