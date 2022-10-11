@@ -1055,6 +1055,32 @@ sed -i 's/--recode vcf/--recode vcf --output-chr chrM/g' Run-plink.sh
 chmod +x ./Run-plink.sh
 ./Run-plink.sh
 ```
+
+* Example output:
+> ```
+> Start time: Tue Oct 11 17:18:24 2022
+> 128235 MiB RAM detected; reserving 64117 MiB for main workspace.
+> Using up to 56 threads (change this with --threads).
+> 2873 samples (1160 females, 1713 males; 2873 founders) loaded from
+> /project/ritchie02/projects/cphg-gwas-qc/GWAS_QC/preImputation/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated.fam.
+> 236 out of 21694 variants loaded from
+> /project/ritchie02/projects/cphg-gwas-qc/GWAS_QC/preImputation/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated.bim.
+> Note: No phenotype data present.
+> Writing
+/project/ritchie02/projects/cphg-gwas-qc/GWAS_QC/preImputation/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated-chr22.fam
+> ... done.
+> Writing
+/project/ritchie02/projects/cphg-gwas-qc/GWAS_QC/preImputation/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated-chr22.bim
+> ... done.
+> Writing
+> /project/ritchie02/projects/cphg-gwas-qc/GWAS_QC/preImputation/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated-chr22.bed
+> ... done.
+> End time: Tue Oct 11 17:18:24 2022
+> PLINK v2.00a3LM 64-bit Intel (5 May 2021)      www.cog-genomics.org/plink/2.0/
+> (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+> Error: Duplicate --output-chr flag.
+```
+
 </details>
 	
 
