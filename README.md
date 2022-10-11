@@ -1034,7 +1034,7 @@ perl ../rawData/HRC-1000G-check-bim.pl -r ../rawData/PASS.Variants.TOPMed_freeze
 > ```
  
 * Run the Run-plink.sh script, which is generate by perl script 
-* Pulls out chromosome info and makes VCF files
+	- Pulls out chromosome info and makes VCF files
 ```
 sed -i ‘s/plink/plink2/’ Run-plink.sh
  sed -i 's/--recode vcf/--recode vcf --output-chr chrM/g' Run-plink.sh
