@@ -1098,6 +1098,40 @@ export BCFTOOLS_PLUGINS=/appl/bcftools-1.9/libexec/bcftools/
 for i in {1..22}; do bcftools +fixref ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated-chr$i'.vcf' -Ov -o ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated_flipped_chr$i'.vcf' -- -d -f ~/group/projects/PMBB/QC_Imputation/scripts/resources_broad_hg38_v0_Homo_sapiens_assembly38.fasta -m flip; done
 ```
 
+* Example Output:
+> ```
+> # SC, guessed strand convention
+> SC      TOP-compatible  0
+> SC      BOT-compatible  0
+> # ST, substitution types
+> ST      A>C     2       0.8%
+> ST      A>G     28      11.9%
+> ST      A>T     1       0.4%
+> ST      C>A     3       1.3%
+> ST      C>G     3       1.3%
+> ST      C>T     81      34.3%
+> ST      G>A     73      30.9%
+> ST      G>C     3       1.3%
+> ST      G>T     5       2.1%
+> ST      T>A     0       0.0%
+> ST      T>C     35      14.8%
+> ST      T>G     2       0.8%
+> # NS, Number of sites:
+> NS      total           236
+> NS      ref match       236     100.0%
+> NS      ref mismatch    0       0.0%
+> NS      flipped         0       0.0%
+> NS      swapped         0       0.0%
+> NS      flip+swap       0       0.0%
+> NS      unresolved      7       3.0%
+> NS      fixed pos       0       0.0%
+> NS      skipped         0
+> NS      non-ACGT        0
+> NS      non-SNP         0
+> NS      non-biallelic   0
+> ```
+	
+	
 * Sort VCF and zip 
 ```
 for i in {1..22}; do vcf-sort ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated_flipped_chr$i.vcf | bgzip -c > VCFfiles/ALL.wgs.nhgri_coriell_affy_6.20140825_ImputationInput_TOPMED_chr$i.vcf.gz; done
