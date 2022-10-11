@@ -652,12 +652,12 @@ head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_che
 	- First, make BED coordinate file
 
 ```
-cat ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim | awk '{print "chr"$1, $4, ($4+1), $4, $2}' > liftover_input.BED
+cat ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim | awk '{print "chr"$1, $4, ($4+1), $4, $2}' > liftover_input.bed
 ```
 
 * Check output
 ```
-head liftover_input.BED
+head liftover_input.bed
 
 ```
 > ```
@@ -674,7 +674,7 @@ head liftover_input.BED
 > ```
 
 ```
-sed -i 's/chr23/chrX/g' liftover_input.BED #I don't think this is a problem with this dataset
+sed -i 's/chr23/chrX/g' liftover_input.bed #I don't think this is a problem with this dataset
 ```
 
 * Then, dowload the correct liftover file
@@ -686,7 +686,7 @@ wget http://hgdownload.cse.ucsc.edu/goldenpath/hg18/liftOver/hg18ToHg38.over.cha
 
 * Finally, perform the actual liftOver
 ```
-liftOver liftover_input.BED hg18ToHg38.over.chain liftover_newmap.txt liftover_exclude.txt
+liftOver liftover_input.bed hg18ToHg38.over.chain liftover_newmap.txt liftover_exclude.txt
 
 sed -i 's/chr//g' liftover_newmap.txt
 awk '{print $5,$2}' liftover_newmap.txt > update_map.txt
