@@ -1076,7 +1076,7 @@ scp -r login@serveraddress:/~/GWAS_QC/VCFfiles/ ~/Desktop/
 </details>
 	
 
-### Step 13 -- Last Pre-Impuation step - Calculate relateds (need later, for GWAS)
+### Step 13 -- Last Pre-Imputation step to calculate relateds which will be needed later for GWAS
 
 <details> 
 	<summary>👇 Steps and code </summary>
