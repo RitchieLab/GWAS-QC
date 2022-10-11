@@ -69,6 +69,7 @@ mkdir GWAS_QC/postImpuatation
 
 
 ## Notes on PLINK v1.9 and v2.0
+* HEREIN, ALL USAGE OF PLINK 1.9 INDICATED BY "plink" AND PLINK 2.0 BY "plink2"
 * Not all commands are portable between PLINK version 1.9 and version 2.0. Since PLINK v2.0 is under heavy active development, the developers urge users to check certain results against an earlier, more widely-used version of PLINK. Some functions are available in v1.9 which are not in v2.0, and vice versa. Some of the same functions will produce different file formats and outputs as well.
 * Original version of PLINK: 1.07, https://zzz.bwh.harvard.edu/plink/plink2.shtml 
 * Beta version: 1.90, https://www.cog-genomics.org/plink/1.9/
@@ -741,29 +742,19 @@ wc -l <filename>
 	
 
 	
-
-
-### UNCHANGED BELOW ###
-	
-
-
-
-	
 ### Step 9 -- Principal Component Analysis (PCA)
 	
 <details> 
 	<summary>👇 Steps and code </summary>
 	<hr>
 
-* First, run PCA on data
+* First, run PCA on data using the plink_pca.sh script
 
 ```
-To use: plink_pca.sh script
-* TO-DO Confirm that we are able to share this code with people...
-
 module load plink_pca
 plink_pca.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38 -g PCA_no1KG
 ```
+
 > ```
 > ...(some other printed output above this too)
 > 128235 MB RAM detected; reserving 64117 MB for main workspace.
@@ -858,7 +849,7 @@ ls plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.geno*
 > * plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_variance.txt 
 
 * Then, create Scree and PCA plots in R
-
+#### TODO JAKOB PLZ UPDATE ####
 ```
 library(cowplot); library(tidyverse)
 
@@ -897,7 +888,7 @@ plot_grid(scree_plot,
           labels = "AUTO", label_size = 17, 
           label_x = -0.005, label_y = 1.02)
 ```
-#### Can be viewed as Figure XX in paper
+#### This generates a plot similar to Figure 6 from the paper
 ![image](https://user-images.githubusercontent.com/66582523/183430931-e91733c5-8fde-4914-a931-945f6f297486.png)
 
 </details>
@@ -910,22 +901,28 @@ plot_grid(scree_plot,
 	<hr>
 	
 * First, calculate frequencies
-	- !!! This needs to be done using plink 1.9 !!!
+	- !!! This needs to be done using Plink 1.9 !!! Check Plink version by typing "plink" and "plink2" on the command line.
 ```
 plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38 --freq --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_freq
-
-[tcherlin@superman Unfiltered]$ head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_freq.frq
-  CHR          SNP   A1   A2          MAF  NCHROBS
-    1   rs10458597    T    C      0.00733     5730
-    1   rs12565286    C    G      0.03481     5716
-    1   rs12082473    A    G      0.07056     5726
-    1    rs3094315    G    A       0.3353     5732
-    1    rs2286139    C    T       0.4201     5732
-    1   rs11240776    G    A     0.008188     5740
-    1    rs2980319    A    T       0.2963     5740
-    1    rs2980300    T    C       0.4287     5678
-    1    rs2905036    C    T      0.03063     5746 
 ```
+
+* Examine the output
+```
+head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_freq.frq
+```
+
+> ```
+>   CHR          SNP   A1   A2          MAF  NCHROBS
+>     1   rs10458597    T    C      0.00733     5730
+>     1   rs12565286    C    G      0.03481     5716
+>     1   rs12082473    A    G      0.07056     5726
+>     1    rs3094315    G    A       0.3353     5732
+>     1    rs2286139    C    T       0.4201     5732
+>     1   rs11240776    G    A     0.008188     5740
+>     1    rs2980319    A    T       0.2963     5740
+>     1    rs2980300    T    C       0.4287     5678
+>     1    rs2905036    C    T      0.03063     5746 
+> ```
 
 * Then, Compare variants to TOPMED panel
 	- The perl script is created by the Wayner Tools group: https://www.well.ox.ac.uk/~wrayner/tools/
@@ -987,8 +984,7 @@ sed -i ‘s/plink/plink2/’ Run-plink.sh
 ```
 </details>
 	
-	
-# NEED LINKS TO DOWNLOAD DATA 
+
 
 <details> 
 	<summary>👇 Steps and code </summary>
@@ -1003,14 +999,10 @@ for i in {1..22}; do bcftools +fixref ALL.wgs.nhgri_coriell_affy_6.20140825.geno
 ```
 </details>
 	
-	
-# NEED LINKS TO DOWNLOAD DATA
-
+### Step 11 - Sort and zip files to create VCF files for imputation
 <details> 
 	<summary>👇 Steps and code </summary>
-	<hr>
-	
-### Step 11 - Sort and zip files to create VCF files for imputation
+	<hr>	
 ```
 for i in {1..22}; do vcf-sort ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38-updated_flipped_chr$i.vcf | bgzip -c > VCFfiles/ALL.wgs.nhgri_coriell_affy_6.20140825_ImputationInput_TOPMED_chr$i.vcf.gz; done
 ```
