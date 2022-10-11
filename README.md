@@ -1100,6 +1100,7 @@ for i in {1..22}; do bcftools +fixref ALL.wgs.nhgri_coriell_affy_6.20140825.geno
 
 * Example Output:
 > ```
+> ...repeated multiple times...
 > # SC, guessed strand convention
 > SC      TOP-compatible  0
 > SC      BOT-compatible  0
