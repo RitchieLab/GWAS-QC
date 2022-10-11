@@ -837,7 +837,7 @@ plink_pca.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_
 > ```	
 	
 	
-* The output should be 5 files that are made:
+* The command should have made an output of 5 files:
 ```
 ls plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.geno*
 ```
@@ -906,6 +906,27 @@ plot_grid(scree_plot,
 plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38 --freq --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_freq
 ```
 
+> ```
+> PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
+> (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+> Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_freq.log.
+> Options in effect:
+>   --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38
+>   --freq
+>   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_freq
+> 
+> 128235 MB RAM detected; reserving 64117 MB for main workspace.
+> 843232 variants loaded from .bim file.
+> 2873 people (1713 males, 1160 females) loaded from .fam.
+> Using 1 thread (no multithreaded calculations invoked).
+> Before main variant filters, 2873 founders and 0 nonfounders present.
+> Calculating allele frequencies... done.
+> Total genotyping rate is 0.997609.
+> --freq: Allele frequencies (founders only) written to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_freq.frq
+> .
+
+	
 * Examine the output
 ```
 head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_freq.frq
