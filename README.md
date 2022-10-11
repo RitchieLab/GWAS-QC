@@ -763,16 +763,78 @@ To use: plink_pca.sh script
 
 module load plink_pca
 plink_pca.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38 -g PCA_no1KG
-
-Makes 5 files
- 
- tcherlin@superman preImputation]$ ls plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.geno*
- plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.eval
- plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.evec
- plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.excluded
- plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_ScreePlot.png
- plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_variance.txt 
 ```
+> Pruned 15643 variants from chromosome 5, leaving 15452.
+> Pruned 16122 variants from chromosome 6, leaving 15251.
+> Pruned 13104 variants from chromosome 7, leaving 13343.
+> Pruned 12860 variants from chromosome 8, leaving 13062.
+> Pruned 11610 variants from chromosome 9, leaving 11571.
+> Pruned 13056 variants from chromosome 10, leaving 13071.
+> Pruned 12506 variants from chromosome 11, leaving 11918.
+> Pruned 11280 variants from chromosome 12, leaving 11950.
+> Pruned 9480 variants from chromosome 13, leaving 9483.
+> Pruned 7267 variants from chromosome 14, leaving 8155.
+> Pruned 6011 variants from chromosome 15, leaving 7515.
+> Pruned 6407 variants from chromosome 16, leaving 8114.
+> Pruned 4564 variants from chromosome 17, leaving 6281.
+> Pruned 6978 variants from chromosome 18, leaving 7804.
+> Pruned 2692 variants from chromosome 19, leaving 3985.
+> Pruned 5791 variants from chromosome 20, leaving 6533.
+> Pruned 3195 variants from chromosome 21, leaving 3735.
+> Pruned 2418 variants from chromosome 22, leaving 3478.
+> Pruning complete.  230655 of 471514 variants removed.
+> Marker lists written to
+> plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.ld_list.prune.in
+> and
+> plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.ld_list.prune.out
+> .
+> PLINK v1.90b6.18 64-bit (16 Jun 2020)          www.cog-genomics.org/plink/1.9/
+> (C) 2005-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
+> Logging to plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.log.
+> Options in effect:
+>   --bfile preld.plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38
+>   --extract plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.ld_list.prune.in
+>   --make-bed
+>   --out plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38
+> 128235 MB RAM detected; reserving 64117 MB for main workspace.
+> 471514 variants loaded from .bim file.
+> 2873 people (1713 males, 1160 females) loaded from .fam.
+> --extract: 240859 variants remaining.
+> Using 1 thread (no multithreaded calculations invoked).
+> Before main variant filters, 2873 founders and 0 nonfounders present.
+> Calculating allele frequencies... done.
+> Total genotyping rate is 0.99744.
+> 240859 variants and 2873 people pass filters and QC.
+> Note: No phenotypes present.
+> --make-bed to
+> plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bed
+> +
+> plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim
+> +
+> plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.fam
+> ... done.
+> rm: cannot remove ‘preld.plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.nosex’: > No such file or directory
+> rm: cannot remove ‘preld.plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.*.extracted.*’: No such file or directory
+> rm: cannot remove ‘preld.plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bed’: No such file or directory
+> rm: cannot remove ‘preld.plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim’: No such file or directory
+> rm: cannot remove ‘preld.plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.fam’: No such file or directory
+> rm: cannot remove ‘preld.plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.log’: No such file or directory
+> par_f=/tmp/tmp.2OQ8Ahb50A
+> running smartpca...
+	
+	
+	
+* The output should be 5 files that are made:
+```
+ls plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.geno*
+```
+
+> * plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.eval
+> * plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.evec
+> * plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.excluded
+> * plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_ScreePlot.png
+> * plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_variance.txt 
+
 * Then, create Scree and PCA plots in R
 
 ```
