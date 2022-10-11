@@ -764,6 +764,21 @@ To use: plink_pca.sh script
 module load plink_pca
 plink_pca.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38 -g PCA_no1KG
 ```
+> ```
+> ...(some other printed output above this too)
+> 128235 MB RAM detected; reserving 64117 MB for main workspace.
+> 471514 variants loaded from .bim file.
+> 2873 people (1713 males, 1160 females) loaded from .fam.
+> Using 1 thread.
+> Before main variant filters, 2873 founders and 0 nonfounders present.
+> Calculating allele frequencies... done.
+> Total genotyping rate is 0.997655.
+> 471514 variants and 2873 people pass filters and QC.
+> Note: No phenotypes present.
+> Pruned 19116 variants from chromosome 1, leaving 18784.
+> Pruned 19194 variants from chromosome 2, leaving 19285.
+> Pruned 16293 variants from chromosome 3, leaving 16882.
+> Pruned 15068 variants from chromosome 4, leaving 15207.
 > Pruned 15643 variants from chromosome 5, leaving 15452.
 > Pruned 16122 variants from chromosome 6, leaving 15251.
 > Pruned 13104 variants from chromosome 7, leaving 13343.
@@ -821,7 +836,14 @@ plink_pca.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_
 > rm: cannot remove ‘preld.plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.log’: No such file or directory
 > par_f=/tmp/tmp.2OQ8Ahb50A
 > running smartpca...
-	
+> *> *> *Registered S3 methods overwritten by 'tibble':
+>   method     from
+>   format.tbl pillar
+>   print.tbl  pillar
+> Created Scree plot file plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_ScreePlot.png
+> Created plot data file plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_variance.txt
+> rm: cannot remove ‘preld.plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.*’: No such file or directory
+> ```	
 	
 	
 * The output should be 5 files that are made:
@@ -1038,7 +1060,7 @@ drop_relateds.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Upda
 </details>
 	
 	
-## Step 15 -- Download Imputed Data to Working Directory
+### Step 15 -- Download Imputed Data to Working Directory
 	
 <details> 
 	<summary>👇 Steps and code </summary>
