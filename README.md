@@ -297,7 +297,7 @@ R
 * Read in the relevant data for the plots
 
 ```
-# Read in 1000 Genomes DATA
+# Read in 1000 Genomes data
 setwd("~/GWAS_QC/preImputation/")
 het <- read.csv(file.path("ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het"), sep="")     
 ```
@@ -901,7 +901,7 @@ plot_grid(scree_plot,
 	<hr>
 	
 * First, calculate frequencies
-	- !!! This needs to be done using Plink 1.9 !!! Check Plink version by typing "plink" and "plink2" on the command line.
+	- Note: This needs to be done using Plink 1.9. Check Plink version by typing "plink" and "plink2" on the command line.
 ```
 plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38 --freq --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_freq
 ```
@@ -924,7 +924,7 @@ head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_che
 >     1    rs2905036    C    T      0.03063     5746 
 > ```
 
-* Then, Compare variants to TOPMED panel
+* Then, compare variants to TOPMED panel
 	- The perl script is created by the Wayner Tools group: https://www.well.ox.ac.uk/~wrayner/tools/
 	- Make sure you've downloaded the following file: HRC-1000G-check-bim-v4.3.0.zip
 	- Unzip and add the HRC-1000G-check-bim.pl script to your preImputation directory
