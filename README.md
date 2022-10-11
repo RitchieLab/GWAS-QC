@@ -679,7 +679,7 @@ sed -i 's/chr23/chrX/g' liftover_input.bed #I don't think this is a problem with
 
 * Then, dowload the correct liftover file
 	- http://hgdownload.cse.ucsc.edu/goldenpath/hg18/liftOver/
-	- hg18ToHg38.over.chain
+	- `hg18ToHg38.over.chain`
 ```
 wget http://hgdownload.cse.ucsc.edu/goldenpath/hg18/liftOver/hg18ToHg38.over.chain
 ```	
