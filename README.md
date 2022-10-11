@@ -1099,15 +1099,9 @@ drop_relateds.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Upda
 	<summary>👇 Steps and code </summary>
 	<hr>
 	
-### TODO - NEED TO UPDATE IMAGES & CODE
-
-![image](https://user-images.githubusercontent.com/30478823/154597606-bc2f8b09-2741-493e-9c4a-dabdf238bd23.png)
-![image](https://user-images.githubusercontent.com/30478823/154598027-ea78546d-e645-460a-bab7-b41fead62356.png)
-![image](https://user-images.githubusercontent.com/30478823/154598503-691c4973-2858-4ff0-a9ac-95360317b405.png)
-![image](https://user-images.githubusercontent.com/30478823/154600698-1d443de3-6691-4af9-a078-6bdb8f113e5a.png)
-![image](https://user-images.githubusercontent.com/30478823/154738461-b951ab13-75b3-417f-bfc1-1e461dc4cf47.png)
-</details>
-	
+<details> 
+	<summary>👇 TOPMed Server Output </summary>
+	<hr>	
 	
 ### Step 15 -- Download Imputed Data to Working Directory
 	
