@@ -1049,8 +1049,8 @@ sed -i ‘s/plink/plink2/’ Run-plink.sh
 <details> 
 	<summary>👇 Steps and code </summary>
 	<hr>
+
 * Flip files
- 
  ```
 export BCFTOOLS_PLUGINS=/appl/bcftools-1.9/libexec/bcftools/
 
