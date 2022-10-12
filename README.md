@@ -1194,13 +1194,25 @@ drop_relateds.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Upda
 	<hr>
 	
 ```
-# Download the completed imputation files using the wget commands provided by TOPMed to the location where you'll be working with it
-
-# Location
+* Download the completed imputation files using the wget commands provided by TOPMed to the location where you'll be working with it
+	
+* Location
+```
 ~group/scratch/van/cphg-gwas-qc-imputed-data
-
-# Unzip the files and enter the password that was emailed to you from TOPMed inside the quotes
-module load p7zip
+```
+	
+*Copy Imputed files to server
+```
+mkdir Imputed
+cd Imputed/
+curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/616370/144eb06bfd18c7a14aa72671a3103234a50e2415d9b2e43586a260bdbb3a4c7d | bash
+curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/616374/66ca12c225ed79c39c283f305e377f5803a83dc3aad0681dfdf21bfb0449bd46 | bash
+*url -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/616376/7b158045a95809c27aee7b5806a455ce2977164675db7186e7654041d37eab2e | bash
+curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/616377/f5444ab88373082dac818b052a8cd5e383371cc7a5d8014b355f9f0f59e2326d | bash	
+```
+	
+* Unzip the files and enter the password that was emailed to you from TOPMed inside the quotes module load p7zip
+```
 for file in *.zip; do 7z e $file -p"<password>"; done
 ```
 ![image](https://user-images.githubusercontent.com/30478823/154745163-97f3cb23-03db-487c-9638-63830eec92cc.png)
@@ -1208,15 +1220,123 @@ for file in *.zip; do 7z e $file -p"<password>"; done
 
 	
 ## PART 4 -- Post-Imputation QC
-### Step 16 -- 
-### TODO - NEED TO UPDATE IMAGES & CODE
+### Step 16 -- Merge Chromosomes
+	
 	
 <details> 
 	<summary>👇 Steps and code </summary>
 	<hr>
-	
-Much of the QC can be done in PLINK. For ease start by converting the output from the imputation from `vcf.gz` to bed/bim/fam file format.
 
+	
+* After unzipping we need to merge the files to do downstream analsysis 
+	
+* First make mergelist.txt file
+	
+```	
+seq 2 22 | sed 's/^/chr/' > mergelist.txt
+```
+
+	
+* NEED PLINK1.9 for merge
+```
+module load plink/1.9
+```
+* Merge chromosome files into 1 bim/bed/bam file
+**THIS TAKES A LONG TIME**
+```
+plink --bfile chr1 --merge-list mergelist.txt --make-bed --out merged	
+```
+	
+## PART 4 -- Post-Imputation QC
+### Step 17 -- Run QC Commands
+	
+	
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>	
+
+NEED PLINK 2 for these QC Steps	
+#Run QC Commands
+
+	
+# First update the .fam files to have the correct ID orientation	
+```
+head merged.fam	
+```
+See that it's weird	
+```
+
+This code will reorient that .fam files to be usable for downstream analysis
+```
+cat merged.fam | awk '{print $1,$2}' | sed s'/_/ /g' | awk '{print $1,$2"_"$2,$2,$3}' > merged_toUpdate.txt
+plink2 --bfile merged --update-ids merged_toUpdate.txt --make-bed --out merged_Updated
+head merged_Updated.fam
+```
+
+	
+```
+plink2 --bfile merged_Updated --geno 0.01 --make-bed --out merged_Updated_1_geno
+plink2 --bfile merged_Updated_1_geno --mind 0.01 --maf 0.05 --hardy --make-bed --out merged_Updated_2_QC
+```
+	
+	
+## PART 4 -- Post-Imputation QC
+### Step 18 --Remove Relateds
+	
+	
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>		
+```	
+cat  ~/group/personal/jakob/gwas/cphg/affy/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome.genome | awk '{print $2,$2,$4,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14}' > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome_updated.genome
+
+vi ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome_updated.genome
+##Manually change the header so it is FID1 IID1 FID2 IID2
+
+#Actually remove the relateds
+drop_relateds.sh -b merged_Updated_2_QC -i ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome_updated.genome -p merged_Updated_2_QC_remove_related
+```
+
+## PART 5 -- GWAS
+### Step 18 -- Run GWAS
+	
+	
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
+```
+plink2 --bfile merged_Updated_2_QC_remove_related_related_dropped --pheno 1KG_SEX_PCA_pheno.txt --pheno-name Pheno1 --covar 1KG_SEX_PCA_pheno.txt --covar-name Sex-PC5 --glm firth-fallback cols=+a1freq  hide-covar --out GWAS_SEX_wPC_Pheno1
+```	
+
+## PART 5 -- GWAS
+### Step 18 -- Manhattan Plot
+	
+	
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>
+Create Manhattan plot ans qq plot
+In R (either make script and run form the command line or download merged_10_rand_wPCA_2.Pheno.glm.logistic.hybrid file and do in RStudio)
+
+The file has a # in front of CHROM and R won’t read it as a header, need to fix file. This may be a plink2 issue.
+head merged_10_rand_wPCA_2.Pheno.glm.logistic.hybrid 
+
+
+
+	
+	Much of the QC can be done in PLINK. For ease start by converting the output from the imputation from `vcf.gz` to bed/bim/fam file format.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 ```
 #!/bin/bash
 
