@@ -1245,8 +1245,9 @@ module load plink/1.9
 ```
 plink --bfile chr1 --merge-list mergelist.txt --make-bed --out merged	
 ```
+
+</details>
 	
-## PART 4 -- Post-Imputation QC
 ### Step 17 -- Run QC Commands
 	
 	
@@ -1279,7 +1280,7 @@ plink2 --bfile merged_Updated_1_geno --mind 0.01 --maf 0.05 --hardy --make-bed -
 ```
 </details>	
 	
-## PART 4 -- Post-Imputation QC
+
 ### Step 18 --Remove Relateds
 	
 	
@@ -1296,6 +1297,7 @@ vi ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome_updat
 drop_relateds.sh -b merged_Updated_2_QC -i ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome_updated.genome -p merged_Updated_2_QC_remove_related
 ```
 </details>
+	
 ## PART 5 -- GWAS
 ### Step 18 -- Run GWAS
 	
