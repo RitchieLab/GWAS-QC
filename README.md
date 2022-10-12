@@ -1200,13 +1200,13 @@ drop_relateds.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Upda
 ~group/scratch/van/cphg-gwas-qc-imputed-data
 ```
 	
-*Copy Imputed files to server
+* Copy Imputed files to server
 ```
 mkdir Imputed
 cd Imputed/
 curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/616370/144eb06bfd18c7a14aa72671a3103234a50e2415d9b2e43586a260bdbb3a4c7d | bash
 curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/616374/66ca12c225ed79c39c283f305e377f5803a83dc3aad0681dfdf21bfb0449bd46 | bash
-*url -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/616376/7b158045a95809c27aee7b5806a455ce2977164675db7186e7654041d37eab2e | bash
+curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/616376/7b158045a95809c27aee7b5806a455ce2977164675db7186e7654041d37eab2e | bash
 curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/616377/f5444ab88373082dac818b052a8cd5e383371cc7a5d8014b355f9f0f59e2326d | bash	
 ```
 	
@@ -1277,7 +1277,7 @@ head merged_Updated.fam
 plink2 --bfile merged_Updated --geno 0.01 --make-bed --out merged_Updated_1_geno
 plink2 --bfile merged_Updated_1_geno --mind 0.01 --maf 0.05 --hardy --make-bed --out merged_Updated_2_QC
 ```
-	
+</details>	
 	
 ## PART 4 -- Post-Imputation QC
 ### Step 18 --Remove Relateds
@@ -1295,7 +1295,7 @@ vi ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome_updat
 #Actually remove the relateds
 drop_relateds.sh -b merged_Updated_2_QC -i ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome_updated.genome -p merged_Updated_2_QC_remove_related
 ```
-
+</details>
 ## PART 5 -- GWAS
 ### Step 18 -- Run GWAS
 	
