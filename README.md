@@ -1192,7 +1192,7 @@ drop_relateds.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Upda
 <details> 
 	<summary>👇 Steps and code </summary>
 	<hr>
-</details>	
+	
 ```
 * Download the completed imputation files using the wget commands provided by TOPMed to the location where you'll be working with it
 	
@@ -1215,7 +1215,7 @@ curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/616377/f5444ab8837
 ```
 for file in *.zip; do 7z e $file -p"<password>"; done
 ```
-![image](https://user-images.githubusercontent.com/30478823/154745163-97f3cb23-03db-487c-9638-63830eec92cc.png)
+
 </details>
 
 	
