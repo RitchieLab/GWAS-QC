@@ -679,10 +679,19 @@ sed -i 's/chr23/chrX/g' liftover_input.bed #I don't think this is a problem with
 
 * Then, dowload the correct liftover file
 	- http://hgdownload.cse.ucsc.edu/goldenpath/hg18/liftOver/
-	- `hg18ToHg38.over.chain`
+	- dowload `hg18ToHg38.over.chain.gz` to your local computer
+	- If doing analysis on server, transfer file to working directory using scp
+	- unzip the data
+	
+* Transfer file to working directory on server
 ```
-wget http://hgdownload.cse.ucsc.edu/goldenpath/hg18/liftOver/hg18ToHg38.over.chain
+scp /home/directory/path/hg18ToHg38.over.chain.gz /server/directory/path/
 ```	
+
+* Unzip file
+```
+gunzip 	hg18ToHg38.over.chain.gz
+```
 
 * Finally, perform the actual liftOver
 ```
@@ -691,6 +700,19 @@ liftOver liftover_input.bed hg18ToHg38.over.chain liftover_newmap.txt liftover_e
 sed -i 's/chr//g' liftover_newmap.txt
 awk '{print $5,$2}' liftover_newmap.txt > update_map.txt
 cat liftover_exclude.txt | grep -v "#" | awk '{print $5}' > exclude_liftover.txt
+head exclude_liftover.txt
+```
+```
+rs613882
+rs615185
+rs17457350
+rs17423513
+rs10492935
+rs17423547
+rs10915404
+rs557477
+rs560335
+rs565941
 ```
 	
 </details>
