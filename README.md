@@ -1259,20 +1259,44 @@ NEED PLINK 2 for these QC Steps
 #Run QC Commands
 
 	
-# First update the .fam files to have the correct ID orientation	
+*  First update the .fam files to have the correct ID orientation	
 ```
 head merged.fam	
 ```
-See that it's weird	
-```
+0 HG00096_HG00096 0 0 0 -9
+0 HG00098_HG00098 0 0 0 -9
+0 HG00101_HG00101 0 0 0 -9
+0 HG00102_HG00102 0 0 0 -9
+0 HG00105_HG00105 0 0 0 -9
+0 HG00106_HG00106 0 0 0 -9
+0 HG00107_HG00107 0 0 0 -9
+0 HG00108_HG00108 0 0 0 -9
+0 HG00109_HG00109 0 0 0 -9
+0 HG00111_HG00111 0 0 0 -9
 
-This code will reorient that .fam files to be usable for downstream analysis
+
+* This code will reorient that .fam files to be usable for plink tools downstream analysis
+* Col 1 = FID
+* Col 2 = IID
+* Col 3 = XXX
+* Col 4 = XXX
+* Col 5 = XXX
+* Col 6 = XXX
 ```
 cat merged.fam | awk '{print $1,$2}' | sed s'/_/ /g' | awk '{print $1,$2"_"$2,$2,$3}' > merged_toUpdate.txt
 plink2 --bfile merged --update-ids merged_toUpdate.txt --make-bed --out merged_Updated
 head merged_Updated.fam
 ```
-
+HG00096	HG00096	0	0	0	-9
+HG00098	HG00098	0	0	0	-9
+HG00101	HG00101	0	0	0	-9
+HG00102	HG00102	0	0	0	-9
+HG00105	HG00105	0	0	0	-9
+HG00106	HG00106	0	0	0	-9
+HG00107	HG00107	0	0	0	-9
+HG00108	HG00108	0	0	0	-9
+HG00109	HG00109	0	0	0	-9
+HG00111	HG00111	0	0	0	-9
 	
 ```
 plink2 --bfile merged_Updated --geno 0.01 --make-bed --out merged_Updated_1_geno
