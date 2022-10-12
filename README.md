@@ -1248,7 +1248,7 @@ plink --bfile chr1 --merge-list mergelist.txt --make-bed --out merged
 
 </details>
 	
-### Step 17 -- Run QC Commands
+### Step 17 -- Run pre-QC Commands
 	
 	
 <details> 
@@ -1263,6 +1263,7 @@ NEED PLINK 2 for these QC Steps
 ```
 head merged.fam	
 ```
+```	
 0 HG00096_HG00096 0 0 0 -9
 0 HG00098_HG00098 0 0 0 -9
 0 HG00101_HG00101 0 0 0 -9
@@ -1273,7 +1274,7 @@ head merged.fam
 0 HG00108_HG00108 0 0 0 -9
 0 HG00109_HG00109 0 0 0 -9
 0 HG00111_HG00111 0 0 0 -9
-
+```
 
 * This code will reorient that .fam files to be usable for plink tools downstream analysis
 * Col 1 = FID
@@ -1287,6 +1288,7 @@ cat merged.fam | awk '{print $1,$2}' | sed s'/_/ /g' | awk '{print $1,$2"_"$2,$2
 plink2 --bfile merged --update-ids merged_toUpdate.txt --make-bed --out merged_Updated
 head merged_Updated.fam
 ```
+```
 HG00096	HG00096	0	0	0	-9
 HG00098	HG00098	0	0	0	-9
 HG00101	HG00101	0	0	0	-9
@@ -1297,15 +1299,61 @@ HG00107	HG00107	0	0	0	-9
 HG00108	HG00108	0	0	0	-9
 HG00109	HG00109	0	0	0	-9
 HG00111	HG00111	0	0	0	-9
-	
 ```
+```
+ls 
+```
+* Should have the following files:
+```
+merged_Updated.bed
+merged_Updated.bim
+merged_Updated.fam
+merged_Updated.log
+```
+* If you don't, open the merged_Updated.log file and try to discern the error. It's possible you ran the code in the wrong directory.
+</details>	
+
+### Step 18 -- Run QC Commands
+	
+	
+<details> 
+	<summary>👇 Steps and code </summary>
+	<hr>	
+
+* Want to QC on 
+	- geno 0.01 (geno filters out all variants with missing call rates exceeding the provided value to be removed)
+	- mind 0.01 (filters out al lthe samples with missing call rates exceeding the provided value to be removed)
+	- maf 0.05 (filters out all variants with minor allele frequency below the provided threshold)
+	- hardy (writes a list of genotype counts and Hardy-Weinberg equilibrium exact test statistics to plink.hwe) *** Tess check on this, not sure if it's necessary
+```	
 plink2 --bfile merged_Updated --geno 0.01 --make-bed --out merged_Updated_1_geno
+ls merged_Updated_1_geno.*
+```
+* Should have the following files:
+```
+merged_Updated_1_geno.bed
+merged_Updated_1_geno.bim
+merged_Updated_1_geno.fam
+merged_Updated_1_geno.log
+```
 plink2 --bfile merged_Updated_1_geno --mind 0.01 --maf 0.05 --hardy --make-bed --out merged_Updated_2_QC
 ```
+```
+ls merged_Updated2_QC.*
+```
+* Should have the following files:
+```
+merged_Updated_2_QC.bed
+merged_Updated_2_QC.bim
+merged_Updated_2_QC.fam
+merged_Updated_2_QC.hardy
+merged_Updated_2_QC.log
+```
+	
 </details>	
 	
 
-### Step 18 --Remove Relateds
+### Step 19 --Remove Relateds
 	
 	
 <details> 
