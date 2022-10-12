@@ -1192,7 +1192,7 @@ drop_relateds.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Upda
 <details> 
 	<summary>👇 Steps and code </summary>
 	<hr>
-	
+</details>	
 ```
 * Download the completed imputation files using the wget commands provided by TOPMed to the location where you'll be working with it
 	
