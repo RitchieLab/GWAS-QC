@@ -1366,7 +1366,6 @@ ls merged_Updated2_QC.*
 merged_Updated_2_QC.bed
 merged_Updated_2_QC.bim
 merged_Updated_2_QC.fam
-merged_Updated_2_QC.hardy
 merged_Updated_2_QC.log
 ```
 	
@@ -1374,7 +1373,6 @@ merged_Updated_2_QC.log
 	
 
 ### Step 19 --Remove Relateds
-	
 	
 <details> 
 	<summary>👇 Steps and code </summary>
@@ -1396,9 +1394,11 @@ vi ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome_updat
 ```
 
 * Actually remove the relateds
+```
 drop_relateds.sh -b merged_Updated_2_QC -i ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome_updated.genome -p merged_Updated_2_QC_remove_related
 ```
 </details>
+	
 	
 ## PART 5 -- GWAS
 ### Step 20 -- Run GWAS
@@ -1419,10 +1419,10 @@ drop_relateds.sh -b merged_Updated_2_QC -i ALL.wgs.nhgri_coriell_affy_6.20140825
 ```
 plink2 --bfile merged_Updated_2_QC_remove_related_related_dropped --pheno 1KG_SEX_PCA_pheno.txt --pheno-name Pheno1 --covar 1KG_SEX_PCA_pheno.txt --covar-name Sex-PC5 --glm firth-fallback cols=+a1freq  hide-covar --out GWAS_SEX_wPC_Pheno1
 ```	
-
-## PART 5 -- GWAS
-### Step 18 -- Manhattan Plot
+</details>
 	
+
+### Step 21 -- Manhattan Plot
 	
 <details> 
 	<summary>👇 Steps and code </summary>
