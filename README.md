@@ -1344,26 +1344,24 @@ merged_Updated.log
 
 * Want to QC on 
 	- geno 0.01 (geno filters out all variants with missing call rates exceeding the provided value to be removed)
-	- mind 0.01 (filters out al lthe samples with missing call rates exceeding the provided value to be removed)
-	- maf 0.05 (filters out all variants with minor allele frequency below the provided threshold)
-	- hardy (writes a list of genotype counts and Hardy-Weinberg equilibrium exact test statistics to plink.hwe) *** Tess check on this, not sure if it's necessary
 ```	
 plink2 --bfile merged_Updated --geno 0.01 --make-bed --out merged_Updated_1_geno
 ls merged_Updated_1_geno.*
 ```
-* Should have the following files:
 ```
 merged_Updated_1_geno.bed
 merged_Updated_1_geno.bim
 merged_Updated_1_geno.fam
 merged_Updated_1_geno.log
 ```
-plink2 --bfile merged_Updated_1_geno --mind 0.01 --maf 0.05 --hardy --make-bed --out merged_Updated_2_QC
+* Want to QC on 
+	- mind 0.01 (filters out al lthe samples with missing call rates exceeding the provided value to be removed)
+	- maf 0.05 (filters out all variants with minor allele frequency below the provided threshold)
+	- hardy (writes a list of genotype counts and Hardy-Weinberg equilibrium exact test statistics to plink.hwe) 
 ```
-```
+plink2 --bfile merged_Updated_1_geno --mind 0.01 --maf 0.05 --hwe 0.05 --make-bed --out merged_Updated_2_QC
 ls merged_Updated2_QC.*
 ```
-* Should have the following files:
 ```
 merged_Updated_2_QC.bed
 merged_Updated_2_QC.bim
@@ -1381,24 +1379,43 @@ merged_Updated_2_QC.log
 <details> 
 	<summary>👇 Steps and code </summary>
 	<hr>		
+# NEED CODE FORM JAKOB
 ```	
 cat  ~/group/personal/jakob/gwas/cphg/affy/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome.genome | awk '{print $2,$2,$4,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14}' > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome_updated.genome
-
+```
+	
+* Manually change the header so it is FID1 IID1 FID2 IID2
+	- Steps
+	- i to initiate insert mode
+	- Delete headers 1-4
+	- Replace with FID1, IID1, FID2, IID2 (Space separated)
+	- esc to exit from the insert mode
+	- ZZ to close and save the file
+```
 vi ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome_updated.genome
-##Manually change the header so it is FID1 IID1 FID2 IID2
+```
 
-#Actually remove the relateds
+* Actually remove the relateds
 drop_relateds.sh -b merged_Updated_2_QC -i ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome_updated.genome -p merged_Updated_2_QC_remove_related
 ```
 </details>
 	
 ## PART 5 -- GWAS
-### Step 18 -- Run GWAS
+### Step 20 -- Run GWAS
 	
 	
 <details> 
 	<summary>👇 Steps and code </summary>
 	<hr>
+* This is the GWAS command
+	- Descriptions taken from https://www.cog-genomics.org/plink/
+	- pheno (Tells plink this is the phenotype file. The flag causes phenotype values to be read from the 3rd column of the specified space- or tab-delimited file, instead of the .fam or .ped file. The first and second columns of that file must contain family and within-family IDs, respectively.)
+	- pheno-name (Lets you select a column by title. (In order to use --pheno-name, there must be a header row with first two entries 'FID' and 'IID'.) The new --pheno-merge flag tells PLINK to use the phenotype value in the .fam/.ped file when no value is present in the --pheno file; without it, the phenotype is always treated as missing in this case.)
+	- covar (designates the file to load covariates from. The file format is the same as for --pheno (optional header line, FID and IID in first two columns, covariates in remaining columns). By default, the main phenotype is set to missing if any covariate is missing)
+	- covar-name (Lets you specify a subset of covariates to load, by column name; separate multiple column names with spaces or commas, and use dashes to designate ranges.)
+	- glm (PLINK 2.0's primary association analysis command)
+	- cols=+a1freq (need to find better explaination for this)
+	-hide-covar (removes covariate-specific lines from the main report)
 ```
 plink2 --bfile merged_Updated_2_QC_remove_related_related_dropped --pheno 1KG_SEX_PCA_pheno.txt --pheno-name Pheno1 --covar 1KG_SEX_PCA_pheno.txt --covar-name Sex-PC5 --glm firth-fallback cols=+a1freq  hide-covar --out GWAS_SEX_wPC_Pheno1
 ```	
@@ -1411,7 +1428,7 @@ plink2 --bfile merged_Updated_2_QC_remove_related_related_dropped --pheno 1KG_SE
 	<summary>👇 Steps and code </summary>
 	<hr>
 Create Manhattan plot ans qq plot
-In R (either make script and run form the command line or download merged_10_rand_wPCA_2.Pheno.glm.logistic.hybrid file and do in RStudio)
+In R (either make script and run from the command line or download merged_10_rand_wPCA_2.Pheno.glm.logistic.hybrid file and do in RStudio)
 
 The file has a # in front of CHROM and R won’t read it as a header, need to fix file. This may be a plink2 issue.
 head merged_10_rand_wPCA_2.Pheno.glm.logistic.hybrid 
