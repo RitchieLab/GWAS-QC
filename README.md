@@ -47,6 +47,7 @@ module load R
 <details> 
 	<summary>👇 How to set up your directory structure for the GWAS QC workflow </summary>
 	<hr>	
+
 ```
 mkdir GWAS_QC
 mkdir GWAS_QC/rawData
@@ -69,7 +70,7 @@ mkdir GWAS_QC/postImpuatation
 
 
 ## Notes on PLINK v1.9 and v2.0
-* HEREIN, ALL USAGE OF PLINK 1.9 INDICATED BY "plink" AND PLINK 2.0 BY "plink2"
+* HEREIN, ALL USAGE OF PLINK 1.9 IS INDICATED BY "plink" AND PLINK 2.0 BY "plink2"
 * Not all commands are portable between PLINK version 1.9 and version 2.0. Since PLINK v2.0 is under heavy active development, the developers urge users to check certain results against an earlier, more widely-used version of PLINK. Some functions are available in v1.9 which are not in v2.0, and vice versa. Some of the same functions will produce different file formats and outputs as well.
 * Original version of PLINK: 1.07, https://zzz.bwh.harvard.edu/plink/plink2.shtml 
 * Beta version: 1.90, https://www.cog-genomics.org/plink/1.9/
