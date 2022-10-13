@@ -303,7 +303,8 @@ R
 ```
 # Read in 1000 Genomes data
 setwd("~/GWAS_QC/preImputation/")
-het <- read.csv(file.path("ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het"), sep="")     
+het <- read.csv(file.path("ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het"), sep="")
+head(het)
 ```
 
 > ```
@@ -319,6 +320,7 @@ het <- read.csv(file.path("ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_p
 
 ```
 miss <- read.csv(file.path("ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.smiss"), sep="")
+head(miss)
 ```
 > ```
 >  X.FID     IID MISSING_CT OBS_CT     F_MISS
