@@ -887,7 +887,6 @@ ls plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.geno*
 > * plink_pca.ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_variance.txt 
 
 * Then, create Scree and PCA plots in R
-#### TODO JAKOB PLZ UPDATE ####
 ```
 library(cowplot); library(tidyverse)
 
