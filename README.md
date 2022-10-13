@@ -907,18 +907,29 @@ scree_plot <- ggplot(pve, aes(PC, Variance)) +
   scale_x_continuous(breaks=c(1,5,10,15,20))
 
 pca_one_two <- pca[-1,1:3]
-names(pca_one_two) <- c("Individual.ID", "PC1","PC2")
-to_plot <- pca_one_two %>% left_join(ped %>% select(Individual.ID, Population), 
-                                     by = "Individual.ID")
-pc_plot <- to_plot %>% 
+names(pca_one_two)  <- c("Individual.ID", "PC1","PC2")
+
+pc_plot <- pca_one_two %>% 
+  left_join(ped %>% 
+              select(Individual.ID, Population), 
+            by = "Individual.ID") %>% 
+  # Collapse to Superpopulations
+  mutate(Population = fct_collapse(Population, 
+                                   AFR = c("YRI","LWK","GWD","MSL","ESN"),
+                                   AMR = c("ASW","ACB","MXL","PUR","CLM","PEL"),
+                                   EAS = c("CHB","JPT","CHS","CDX","KHV"), #,"CHD"), # Denver Chinese not in our data set
+                                   EUR = c("CEU","TSI","GBR","FIN","IBS"),
+                                   SAS = c("GIH","PJL","BEB","STU","ITU")),
+         Population = factor(Population, levels = c("AFR","AMR","EAS","EUR","SAS"))) %>% 
   ggplot(aes(PC1, PC2, color = Population)) +
-  geom_point() + 
+  geom_point(alpha = 0.8) + 
   theme_light() +
   theme(axis.text.y = element_text(angle = 90, size = 13, hjust = 0.5),
         axis.text.x = element_text(size = 13),
         axis.title = element_text(size = 15),
         legend.title = element_text(size = 15),
-        legend.text = element_text(size = 12))
+        legend.text = element_text(size = 12)) +
+  scale_color_manual(values = palette.colors(palette = "set1"))
 
 # Figure dimensions: 7x7
 plot_grid(scree_plot,
