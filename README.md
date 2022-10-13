@@ -937,7 +937,7 @@ plot_grid(scree_plot,
           label_x = -0.005, label_y = 1.02)
 ```
 #### This generates a plot similar to Figure 6 from the paper
-![image](https://user-images.githubusercontent.com/66582523/183430931-e91733c5-8fde-4914-a931-945f6f297486.png)
+![Figure_6](https://user-images.githubusercontent.com/86791191/195680420-c6a84bb3-d02f-4b53-90bd-4cfc5b22ddb5.png)
 
 </details>
 	
