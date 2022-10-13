@@ -334,17 +334,17 @@ miss <- read.csv(file.path("ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_
 # Organize the data
 library(dplyr)
 x <- miss %>% select(IID, F_MISS)
-y <- het %>% mutate(HR = (`OBS_CT`-`O.HOM.`)/`OBS_CT`) %>% select(IID,HR) ## 1000 Genomes
+y <- het %>% mutate(HR = (`OBS_CT`-`O.HOM.`)/`OBS_CT`) %>% select(IID, HR) ## 1000 Genomes
 to_plot <- inner_join(x,y, by = "IID")
 
 # Calculate mean and sd of HR
-HR_mean=mean(y$HR)
+HR_mean <- mean(y$HR)
 HR_mean
-HR_SD=sd(y$HR)
+HR_SD <- sd(y$HR)
 HR_SD
 
 # Calculate mean of Missingness
-MISS_mean=mean(x$F_MISS)
+MISS_mean <- mean(x$F_MISS)
 MISS_mean
 
 # Establish color scheme
@@ -363,13 +363,13 @@ plot(to_plot$F_MISS,to_plot$HR,
      ylab = "Heterozygosity rate", 
      pch = 19,
      cex = 0.5)
-    # These commands make the threshold lines for HR and Missingness 
-    # according to the H3ABioNet tutorial
-    abline(h=HR_mean+(3*HR_SD),col=2,lty=3)
-    abline(h=HR_mean-(3*HR_SD),col=2,lty=3)
-    abline(v=MISS_mean,col=2,lty=3)
-    abline(v=MISS_mean-(0.05*MISS_mean),col=1,lty=3)
-    abline(v=MISS_mean+(0.05*MISS_mean),col=4,lty=3)
+# These commands make the threshold lines for HR and Missingness 
+# according to the H3ABioNet tutorial
+abline(h=HR_mean+(3*HR_SD),col=2,lty=3)
+abline(h=HR_mean-(3*HR_SD),col=2,lty=3)
+abline(v=MISS_mean,col=2,lty=3)
+abline(v=MISS_mean-(0.05*MISS_mean),col=1,lty=3)
+abline(v=MISS_mean+(0.05*MISS_mean),col=4,lty=3)
 dev.off()
 
 ```
