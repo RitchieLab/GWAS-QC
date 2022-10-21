@@ -1472,11 +1472,13 @@ head GWAS_SEX_wPC_Pheno1.Pheno1.glm.logistic.hybrid
 1	982858	chr1:982858:C:G	C	G	G	0.102332	N	ADD	2873	0.814884	0.0883895	-2.31599	0.020559	.
 ```
 * In order to run the Rscipt that will make the Manhattan plot and qqPlot we need to remove the # at the beginning of the first line (might take a little while because the file is so big) -- alternately you can open file with vi editor and delete the # (like above)
-```
+
+	```
 sed -i 's/#//' GWAS_SEX_wPC_Pheno1.Pheno1.glm.logistic.hybrid
 head GWAS_SEX_wPC_Pheno1.Pheno1.glm.logistic.hybrid
 ```
-```
+
+	```
 CHROM	POS	ID	REF	ALT	A1	A1_FREQ	FIRTH?	TEST	OBS_CT	OR	LOG(OR)_SE	Z_STAT	P	ERRCODE
 1	875400	chr1:875400:G:C	G	C	C	0.0567351	N	ADD	2873	1.09219	0.11778	0.748741	0.454013	.
 1	913448	chr1:913448:GA:G	GA	G	G	0.0602158	N	ADD	2873	1.06114	0.117834	0.503606	0.614538	.
@@ -1570,9 +1572,11 @@ plink --bfile postimp/merged3_maf --remove postimp/related_IDs --make-bed --out 
 	
 	
 ## Resources for Performing GWAS
+	
 Below are some additional resources we found online for performing GWAS. Due to time constraints, we were not able to fully vet every resource listed below.
 ### Review Paper overview of GWAS
-	* Genome-wide association studies review: * Genome-wide association studies review paper: https://www.nature.com/articles/s43586-021-00056-9
+	* Genome-wide association studies review: 
+	* Genome-wide association studies review paper: https://www.nature.com/articles/s43586-021-00056-9
 		- Table 1 outlines open access tools that can be applied at each stage of GWAS
 ### PLINK
 	* PLINK Documentation for Association Analysis: https://www.cog-genomics.org/plink/1.9/assoc
