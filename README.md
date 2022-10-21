@@ -1228,19 +1228,14 @@ drop_relateds.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Upda
 	
 * Download the completed imputation files using the wget commands provided by TOPMed to the location where you'll be working with it
 	
-* Location
+* Change to the appropriate location
 ```
-~group/scratch/van/cphg-gwas-qc-imputed-data
+cd GWAS_QC/Imputed/
 ```
 	
-* Copy Imputed files to server
+* Copy imputed files to your working directory from the TOPMed Imputation Server. The output will be a curl command that you can copy & paste to run in your active directory. Below is an example:
 ```
-mkdir Imputed
-cd Imputed/
-curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/616370/144eb06bfd18c7a14aa72671a3103234a50e2415d9b2e43586a260bdbb3a4c7d | bash
-curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/616374/66ca12c225ed79c39c283f305e377f5803a83dc3aad0681dfdf21bfb0449bd46 | bash
-curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/616376/7b158045a95809c27aee7b5806a455ce2977164675db7186e7654041d37eab2e | bash
-curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/616377/f5444ab88373082dac818b052a8cd5e383371cc7a5d8014b355f9f0f59e2326d | bash	
+curl -sL <URL> | bash	
 ```
 	
 * Unzip the files and enter the password that was emailed to you from TOPMed inside the quotes module load p7zip
