@@ -1410,6 +1410,7 @@ drop_relateds.sh -b merged_Updated_2_QC -i ALL.wgs.nhgri_coriell_affy_6.20140825
 We recommend the following resources and tutorials developed for performing GWAS. Due to time constraints, we were not able to fully vet every resource listed below.
 * Genome-wide association studies review paper: https://www.nature.com/articles/s43586-021-00056-9
 	- Table 1 outlines open access tools that can be applied at each stage of GWAS
+* Methods and Tools in Genome-wide Association Studies: https://link.springer.com/protocol/10.1007/978-1-4939-8618-7_5
 * Comphrehensive tutorial about GWAS and PRS by MareesAT: https://github.com/MareesAT/GWA_tutorial/
 * GWAS Data Cleaning tutorial by the GENEVA Coordinating Center: https://www.bioconductor.org/packages/devel/bioc/vignettes/GWASTools/inst/doc/DataCleaning.pdf
 * GWAS QC - theory and steps by the Pan African Bioinformatics Network for H3Africa: https://www.bioinf.wits.ac.za/courses/AIMS/QC_data.pdf 
