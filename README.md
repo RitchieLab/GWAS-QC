@@ -1406,13 +1406,16 @@ drop_relateds.sh -b merged_Updated_2_QC -i ALL.wgs.nhgri_coriell_affy_6.20140825
 </details>
 	
 	
-## Resources for Performing GWAS
-	
-Below are some additional resources we found online for performing GWAS. Due to time constraints, we were not able to fully vet every resource listed below.
-### Review Paper overview of GWAS
-	* Genome-wide association studies review: 
-	* Genome-wide association studies review paper: https://www.nature.com/articles/s43586-021-00056-9
-		- Table 1 outlines open access tools that can be applied at each stage of GWAS
+# Related Resources
+We recommend the following resources and tutorials developed for performing GWAS. Due to time constraints, we were not able to fully vet every resource listed below.
+* Genome-wide association studies review: 
+* Genome-wide association studies review paper: https://www.nature.com/articles/s43586-021-00056-9
+	- Table 1 outlines open access tools that can be applied at each stage of GWAS
+* Comphrehensive tutorial about GWAS and PRS by MareesAT: https://github.com/MareesAT/GWA_tutorial/
+* GWAS Data Cleaning tutorial by the GENEVA Coordinating Center: https://www.bioconductor.org/packages/devel/bioc/vignettes/GWASTools/inst/doc/DataCleaning.pdf
+* GWAS QC - theory and steps by the Pan African Bioinformatics Network for H3Africa: https://www.bioinf.wits.ac.za/courses/AIMS/QC_data.pdf 
+* The International Sample Genome Resource (IGSR) GitHub: https://github.com/igsr 
+
 ### PLINK
 	* PLINK Documentation for Association Analysis: https://www.cog-genomics.org/plink/1.9/assoc
 	* Using PLINK for Genome-Wide Association Study: https://lsl.sinica.edu.tw/Activities/class/files/20210506821.pdf
@@ -1426,15 +1429,6 @@ Below are some additional resources we found online for performing GWAS. Due to 
 	* Regenie Documentation: https://rgcgithub.github.io/regenie/options/
 	* Glow tutorial which implements a distribute version of the Regenie method: https://glow.readthedocs.io/en/latest/tutorial.html
 	* DNAnexus GWAS on the Research Analysis Platform using regenie: https://www.youtube.com/watch?v=762PVlyZJ-U
-	
-	
-# Related Resources
-We recommend the following resources and tutorials developed for performing GWAS:
-* Comphrehensive tutorial about GWAS and PRS by MareesAT: https://github.com/MareesAT/GWA_tutorial/
-* GWAS Data Cleaning tutorial by the GENEVA Coordinating Center: https://www.bioconductor.org/packages/devel/bioc/vignettes/GWASTools/inst/doc/DataCleaning.pdf
-* GWAS QC - theory and steps by the Pan African Bioinformatics Network for H3Africa: https://www.bioinf.wits.ac.za/courses/AIMS/QC_data.pdf 
-* The International Sample Genome Resource (IGSR) GitHub: https://github.com/igsr 
-
 
 # License
 * To be decided. Suggestions welcome.
