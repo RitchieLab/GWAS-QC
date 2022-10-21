@@ -18,8 +18,6 @@
 </p>
 
 
-# NOTE: This entire repo is under active construction and code will be mismatched at this time.
-
 # Basic Overview
 * We chose a publicly available dataset from the International Genome Sample Resource (IGSR) (www.internationalgenome.org). IGSR created and maintains the 1000 Genomes Project (1kGP) to provide a public catalog of common human genetic variation and genotype data. The 1kGP dataset has been kept up to date with current reference data sets, thus it is available for both GRCh37 and GRCh38. The latter is utilized here because the 2014 update increased the quantity of loci represented, resolved more than 1000 issues from the previous version of the assembly, and overall provides a better basis for alignment and subsequent analysis. Additionally, IGSR’s continued efforts will lead to the incorporation of various populations to the data which were not previously captured.
 
@@ -1576,103 +1574,24 @@ plink --bfile postimp/merged3_maf --remove postimp/related_IDs --make-bed --out 
 </details>
 	
 	
-## PART 5 Performing GWAS
-### Step 17 -- GWAS with PLINK or Regenie
-### TODO - NEED TO UPDATE IMAGES & CODE
-   
+## Resources for Performing GWAS
+Below are some additional resources we found online for performing GWAS. Due to time constraints, we were not able to fully vet every resource listed below.
+### Review Paper overview of GWAS
+	* Genome-wide association studies review: * Genome-wide association studies review paper: https://www.nature.com/articles/s43586-021-00056-9
+		- Table 1 outlines open access tools that can be applied at each stage of GWAS
 ### PLINK
-
-<details> 
-	<summary>👇 Steps and code </summary>
-	<hr>
-	
-With the phenotype/covariate file in the right format, here are the commands to perform the GWAS. The furst includes just sex as a covaraite, while the second command include sex and the firts 6 PCs as covariates.
-
-
-```
-plink --bfile postimp/merged6_related --logistic --pheno data/cov_pheno_rand.txt --pheno-name Pheno --covar data/cov_pheno_rand.txt --covar-name SEX --allow-no-sex --out postimp/merged9_rand_noPCA --hide-covar
-```
-
-```
-plink --bfile postimp/merged6_related --logistic --pheno data/cov_pheno_rand.txt --pheno-name Pheno --covar data/cov_pheno_rand.txt --covar-name SEX-PC6 --allow-no-sex --out postimp/merged10_rand_wPCA --hide-covar
-```
-
-The GWAS results can be visualized with a QQ-plot and a manhattan plot. These can be generated in R.
-
-```
-library(ggplot2)
-library(plyr)
-library(gridExtra)
-library(qqman)
-library(RColorBrewer)
-ppi <-300
-
-d <- read.table("postimp/merged10_rand_wPCA.assoc.logistic", header=T) # takes a few minutes to read in
-d$logP = -log10(d$P)
-data_sorted <- d[order(d$CHR, d$BP), ]
-data_sorted$order <- seq(1:length(data_sorted$CHR))
-
-group.colors <- c("1"="black","2"="red","3"="blue","4"="green","5"="gray","6"="purple","7"="yellow","8"="pink","9"="black","10"="red","11"="blue","12"="green","13"="gray","14"="purple","15"="yellow","16"="pink","17"="black","18"="red","19"="blue","20"="green","21"="gray","22"="purple")
-
-p <- ggplot(data_sorted, aes(order, logP, colour=factor(CHR),)) + geom_point(size=1) +scale_colour_manual(values=group.colors,name="Chromosome") +xlab("CHR") + ylab("-log10P") +theme(text=element_text(size=20))+
- theme(axis.ticks = element_blank(), axis.text.x = element_blank()) + ggtitle("CHPG: adjusted with PC1-6 and SEX")
-ggsave(p, filename="postimp/figures/cphg_plink_PC1-6_SEX_manhattan.png",dpi=300, height=7, width=20, units="in", type="cairo-png")
-png("postimp/figures/cphg_plink_PC1-6_SEX_qq.png", height=7, width=7, units="in", res=300, type="cairo-png")
-qq(d$P, main="CHPG: adjusted with PC1-6 and SEX")
-dev.off()
-# Might take long (~10 minutes) to generate figures
-```
-</details>
-	
-	
+	* PLINK Documentation for Association Analysis: https://www.cog-genomics.org/plink/1.9/assoc
+	* Using PLINK for Genome-Wide Association Study: https://lsl.sinica.edu.tw/Activities/class/files/20210506821.pdf
+	* Plink Tutorial from BIOS25328 Cancer Genomics Class: https://bios25328.hakyimlab.org/post/2021/04/09/plink-tutorial/
+	* GWAS and PLINK Practical: https://ibg.colorado.edu/cdrom2019/colodro_grasby/GWAS_QC_part2/GWAS_QC_part2_practical.pdf
+### SAIGE
+	* SAIGE GWAS Walkthrough: https://documentation.dnanexus.com/science/scientific-guides/saige-gwas-walkthrough
+	* SAIGE Github: https://github.com/weizhouUMICH/SAIGE
+	GWAS in large-scale biobanks and cohorts: https://www.colorado.edu/ibg/sites/default/files/attached-files/boulderworkshop-saige-part2.pdf
 ### Regenie
-
-<details> 
-	<summary>👇 Steps and code </summary>
-	<hr>
-	
-Ok so here is the steps I took to create bgen sample file required to run Regenie:
-*info.gz files from imputed data contains all the snp information, so I just want to extract 1 snp name out of it:
-```
-zcat ~/group/scratch/van/cphg-gwas-qc-data/imputed-data/chr22.info.gz | head -4
-```
-```
-SNP	REF(0)	ALT(1)	ALT_Frq	MAF	AvgCall	Rsq	Genotyped	LooRsq	EmpR	EmpRsq	Dose0	Dose1
-chr22:10581332:TATG:T	TATG	T	0.00013	0.00013	0.99988	0.42729	Imputed	-	-	-	-	-
-chr22:10625878:T:C	T	C	0.00014	0.00014	0.99987	0.40740	Imputed	-	-	-	-	-
-chr22:10670252:G:T	G	T	0.00010	0.00010	0.99990	0.51619	Imputed	-	-	-	-	-
-```
-
-So I am using the very first snp name (irrelevant which one you pick) to extract just 1 snp out of huge vcf file and create binary file with just 1 snp, so I can quickly check the *fam file.
-
-```
-plink2 --vcf chr22.dose.vcf.gz --id-delim _ --snp chr22:10581332:TATG:T --make-bed --out test22
-```
-This step create binary test22.bed/bim/fam PLINK files.
-*fam file contains the sample information in this format:
-```
-HG00096 HG00096 0	0	0	-9
-HG00097 HG00097 0	0	0	-9
-HG00099 HG00099 0	0	0	-9
-```
-I need it to change this to this format to create bgen sample file:
-```
-ID_1 ID_2 missing sex
-0 0 0 D
-HG00096 HG00096 0 NA
-HG00097 HG00097 0 NA
-```
-```
-awk '{print $1,$2,"0","NA"}' test22.fam > cphg_sample.txt
-```
-And I manually added in 2 line header.
-
-These specific steps are not all that important, but you need to get used to the idea of how to find the info you need from where.
-
-```
-<code>
-```
-</details> 
+	* Regenie Documentation: https://rgcgithub.github.io/regenie/options/
+	* Glow tutorial which implements a distribute version of the Regenie method: https://glow.readthedocs.io/en/latest/tutorial.html
+	* DNAnexus GWAS on the Research Analysis Platform using regenie: https://www.youtube.com/watch?v=762PVlyZJ-U
 	
 	
 # Related Resources
