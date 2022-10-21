@@ -1205,7 +1205,7 @@ drop_relateds.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Upda
 * Theoretically, phased means that the two strands on each Chr are separated to identify which regions come from each parent whereas no phasing means that they are not separated. Essentially, for imputation phasing is the first step which is done in reference to the reference genome panel.
 
 <details> 
-	<summary>👇 Steps and code </summary>
+	<summary>👇 Steps for form entry </summary>
 	<hr>
 
 ![image](https://user-images.githubusercontent.com/30478823/195203144-bf28dd0a-78e7-41bb-a6f6-19729ff5f48d.png)
@@ -1216,7 +1216,15 @@ drop_relateds.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Upda
 <details> 
 	<summary>👇 TOPMed Server Output </summary>
 	<hr>	
-	
+* Click on the "Jobs" tab at the top to view your current jobs
+* Select the relevant job run to view your results and download the completed data
+* The data will expire within a certain timeframe
+* There will be sections for: Input Validation, Quality Control, Quality Control (Report), Pre-phasing and Imputation, and Data Compression and Encryption
+![image](https://user-images.githubusercontent.com/30478823/197097052-5936e080-732d-4678-b6a4-f15058c2a029.png)
+![image](https://user-images.githubusercontent.com/30478823/197097105-cc631c01-7931-4b66-8c07-9fd4a2267b0b.png)
+
+
+
 </details>
 	
 	
