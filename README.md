@@ -1417,18 +1417,19 @@ We recommend the following resources and tutorials developed for performing GWAS
 * The International Sample Genome Resource (IGSR) GitHub: https://github.com/igsr 
 
 ### PLINK
-	* PLINK Documentation for Association Analysis: https://www.cog-genomics.org/plink/1.9/assoc
-	* Using PLINK for Genome-Wide Association Study: https://lsl.sinica.edu.tw/Activities/class/files/20210506821.pdf
-	* Plink Tutorial from BIOS25328 Cancer Genomics Class: https://bios25328.hakyimlab.org/post/2021/04/09/plink-tutorial/
-	* GWAS and PLINK Practical: https://ibg.colorado.edu/cdrom2019/colodro_grasby/GWAS_QC_part2/GWAS_QC_part2_practical.pdf
+* PLINK Documentation for Association Analysis: https://www.cog-genomics.org/plink/1.9/assoc
+* Using PLINK for Genome-Wide Association Study: https://lsl.sinica.edu.tw/Activities/class/files/20210506821.pdf
+* Plink Tutorial from BIOS25328 Cancer Genomics Class: https://bios25328.hakyimlab.org/post/2021/04/09/plink-tutorial/
+* GWAS and PLINK Practical: https://ibg.colorado.edu/cdrom2019/colodro_grasby/GWAS_QC_part2/GWAS_QC_part2_practical.pdf
 ### SAIGE
-	* SAIGE GWAS Walkthrough: https://documentation.dnanexus.com/science/scientific-guides/saige-gwas-walkthrough
-	* SAIGE Github: https://github.com/weizhouUMICH/SAIGE
-	GWAS in large-scale biobanks and cohorts: https://www.colorado.edu/ibg/sites/default/files/attached-files/boulderworkshop-saige-part2.pdf
+* SAIGE GWAS Walkthrough: https://documentation.dnanexus.com/science/scientific-guides/saige-gwas-walkthrough
+* SAIGE Github: https://github.com/weizhouUMICH/SAIGE
+GWAS in large-scale biobanks and cohorts: https://www.colorado.edu/ibg/sites/default/files/attached-files/boulderworkshop-saige-part2.pdf
+
 ### Regenie
-	* Regenie Documentation: https://rgcgithub.github.io/regenie/options/
-	* Glow tutorial which implements a distribute version of the Regenie method: https://glow.readthedocs.io/en/latest/tutorial.html
-	* DNAnexus GWAS on the Research Analysis Platform using regenie: https://www.youtube.com/watch?v=762PVlyZJ-U
+* Regenie Documentation: https://rgcgithub.github.io/regenie/options/
+* Glow tutorial which implements a distribute version of the Regenie method: https://glow.readthedocs.io/en/latest/tutorial.html
+* DNAnexus GWAS on the Research Analysis Platform using regenie: https://www.youtube.com/watch?v=762PVlyZJ-U
 
 # License
 * To be decided. Suggestions welcome.
