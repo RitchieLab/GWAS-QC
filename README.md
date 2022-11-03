@@ -290,48 +290,17 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 ```
 
 	
-* Now, let's make some plots in R so first we need to enter into R in the terminal. You can run R code in Rstudio or your preferred IDE. 
-	
-```
-R
-```
 
-* Read in the relevant data for the plots
-
-```
-# Read in 1000 Genomes data
-setwd("~/GWAS_QC/preImputation/")
-het <- read.csv(file.path("ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het"), sep="")
-head(het)
-```
-
-> ```
-> Output: 
-> X.FID     IID O.HOM. E.HOM. OBS_CT         F
-> 1     0 HG00096 634762 608326 867229 0.1021090
-> 2     0 HG00097 635035 607916 866659 0.1048090
-> 3     0 HG00098 629539 604988 861939 0.0955457
-> 4     0 HG00099 635235 607948 866667 0.1054700
-> 5     0 HG00100 633342 607067 865511 0.1016670
-> 6     0 HG00101 633098 607641 866215 0.0984509
-> ```      
-
-```
-miss <- read.csv(file.path("ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.smiss"), sep="")
-head(miss)
-```
-> ```
->  X.FID     IID MISSING_CT OBS_CT     F_MISS
-> 1     0 HG00096       1403 905531 0.00154937
-> 2     0 HG00097       2016 905531 0.00222632
-> 3     0 HG00098       6899 905531 0.00761873
-> 4     0 HG00099       2042 905531 0.00225503
-> 5     0 HG00100       3210 905531 0.00354488
-> 6     0 HG00101       2428 905531 0.00268130
-> ```
-
-* Run Rscript to produce heterogeneity vs. missingness plot.
-* Files needed: .imiss and .het
+* Plot heterogeneity vs. missingness
+* Needed: 
+	- Code_Heterogeneity_Missingness.R
+	- PMBB-Release-2020-2.0_genetic_genotype.imiss 
+	- PMBB-Release-2020-2.0_genetic_genotype.het
+* Input: 
+	- Code_Heterogeneity_Missingness.R
+	- PMBB-Release-2020-2.0_genetic_genotype (file prefix)
+* Output:
+	- PMBB-Release-2020-2.0_genetic_genotype_plot.pdf
 ```
 Rscript Code_Heterogeneity_Missingness.R PMBB-Release-2020-2.0_genetic_genotype
 
