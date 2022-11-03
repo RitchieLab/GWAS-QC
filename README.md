@@ -330,47 +330,10 @@ head(miss)
 > 6     0 HG00101       2428 905531 0.00268130
 > ```
 
+* Run Rscript to produce heterogeneity vs. missingness plot.
+* Files needed: .imiss and .het
 ```
-# Organize the data
-library(dplyr)
-x <- miss %>% select(IID, F_MISS)
-y <- het %>% mutate(HR = (`OBS_CT`-`O.HOM.`)/`OBS_CT`) %>% select(IID, HR) ## 1000 Genomes
-to_plot <- inner_join(x,y, by = "IID")
-
-# Calculate mean and sd of HR
-HR_mean <- mean(y$HR)
-HR_mean
-HR_SD <- sd(y$HR)
-HR_SD
-
-# Calculate mean of Missingness
-MISS_mean <- mean(x$F_MISS)
-MISS_mean
-
-# Establish color scheme
-rbPal <- colorRampPalette(c('#6baed6','#deebf7'))
-
-to_plot$Col <- rbPal(200)[as.numeric(cut(to_plot$F_MISS,breaks = 200))]
-
-png("1000_Genomes_Affy6_3450samples.png")
-	       
-# Making the plot
-plot(to_plot$F_MISS,to_plot$HR, 
-     col = ifelse(to_plot$HR <= HR_mean-(3*HR_SD), "#c6dbef", 
-                  ifelse(to_plot$HR >= HR_mean+(3*HR_SD), "#c6dbef", to_plot$Col2)),
-     las = 1, 
-     xlab = "Proportion of Missing Genotypes",
-     ylab = "Heterozygosity rate", 
-     pch = 19,
-     cex = 0.5)
-# These commands make the threshold lines for HR and Missingness 
-# according to the H3ABioNet tutorial
-abline(h=HR_mean+(3*HR_SD),col=2,lty=3)
-abline(h=HR_mean-(3*HR_SD),col=2,lty=3)
-abline(v=MISS_mean,col=2,lty=3)
-abline(v=MISS_mean-(0.05*MISS_mean),col=1,lty=3)
-abline(v=MISS_mean+(0.05*MISS_mean),col=4,lty=3)
-dev.off()
+Rscript Code_Heterogeneity_Missingness.R PMBB-Release-2020-2.0_genetic_genotype
 
 ```
 
