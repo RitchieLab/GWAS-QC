@@ -291,8 +291,8 @@ ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.lmiss.
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.log
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.log
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.smiss
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.vmiss
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.imiss
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.lmiss
 ```
 .
 ├── GWAS_QC/
@@ -310,8 +310,8 @@ ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.lmiss.
     |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het
     |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.log
     |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.log
-    |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.smiss
-    |    └── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.vmiss
+    |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.imiss
+    |    └── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.lmiss
     ├──Imputed/
     └── postImputation/	
 ```
