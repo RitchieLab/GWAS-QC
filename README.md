@@ -294,7 +294,7 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 * Plot heterogeneity vs. missingness
 * Needed: 
 	- Code_Heterogeneity_Missingness.R
-	- ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het.imiss 
+	- ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.imiss 
 	- ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het
 * Input: 
 	- Code_Heterogeneity_Missingness.R
