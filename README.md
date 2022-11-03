@@ -303,10 +303,9 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 	- PMBB-Release-2020-2.0_genetic_genotype_plot.pdf
 ```
 Rscript Code_Heterogeneity_Missingness.R PMBB-Release-2020-2.0_genetic_genotype
-
 ```
 
-![1000 Genomes Affy6_3450samples](https://user-images.githubusercontent.com/66582523/183427858-1eaf5f79-4001-4dbf-8222-0c2d50fe7a74.png)
+[PMBB-Release-2020-2.0_genetic_genotype_plot.pdf](https://github.com/RitchieLab/GWAS-QC/files/9931326/PMBB-Release-2020-2.0_genetic_genotype_plot.pdf)
 
 * Figure 2 uses the same code as above, on example internal data
 </details>
