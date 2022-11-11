@@ -13,8 +13,7 @@
   <a href="#basic-overview">Basic Overview</a> •
   <a href="#set-up">Set Up</a> •
   <a href="#workflow-steps">Workflow Steps</a> •
-  <a href="#related-resources">Related Resources</a> •
-  <a href="#license">License</a>
+  <a href="#related-resources">Related Resources</a>
 </p>
 
 
@@ -1398,5 +1397,3 @@ GWAS in large-scale biobanks and cohorts: https://www.colorado.edu/ibg/sites/def
 * Glow tutorial which implements a distribute version of the Regenie method: https://glow.readthedocs.io/en/latest/tutorial.html
 * DNAnexus GWAS on the Research Analysis Platform using regenie: https://www.youtube.com/watch?v=762PVlyZJ-U
 
-# License
-* To be decided. Suggestions welcome.
