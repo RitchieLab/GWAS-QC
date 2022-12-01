@@ -18,7 +18,7 @@
 
 # To Be Updated
 * Upload plink_pca code needs to uploaded 
-* Upload heterogeneity and missingness code 
+* ✅ Upload heterogeneity and missingness code 
 * Upload scree plot / pca plot code added as an R script that you can run easily
 * Upload drop_relateds.sh but we need to adapt the dependencies / paths
 * Fix any hardcoded paths
@@ -1361,6 +1361,25 @@ merged_Updated_2_QC.log
 	<summary>👇 Steps and code </summary>
 	<hr>		
 ```	
+# Get sex inconsistent samples (from raw)
+plink --bfile ~/group/personal/tess/GWAS_Tutorial/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --check-sex --out prefix_checksex
+
+awk '{ if ($4 == 0) { print $2} }' prefix_checksex.sexcheck > nosex.txt
+# Remove sex inconsistent samples (from raw)
+plink --bfile ~/group/personal/tess/GWAS_Tutorial/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --remove nosex.txt --make-bed --out prefix_nosex
+# Call rate (95% snp call rate / 90% sample call rate)
+plink --bfile prefix_nosex --geno 0.05 --mind 0.1 --make-bed --out prefix_call
+# MAF
+plink --bfile prefix_call --maf 0.05 --make-bed --out prefix_maf
+# Pruning down to 99,999
+plink --bfile prefix_maf --indep-pairwise 50 5 0.12831 --out prune_100k
+# Keep those samples (Around 97k are autosomal)
+plink --bfile prefix_maf --extract prune_100k.prune.in --make-bed --out prefix_pruned
+# IBD
+plink --bfile prefix_pruned --genome --out prefix_pruned_100k_genome
+
+
+
 cat  ~/group/personal/jakob/gwas/cphg/affy/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome.genome | awk '{print $2,$2,$4,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14}' > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome_updated.genome
 ```
 	
