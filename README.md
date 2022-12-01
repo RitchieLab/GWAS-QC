@@ -22,6 +22,8 @@
 * Upload scree plot / pca plot code added as an R script that you can run easily
 * Upload drop_relateds.sh but we need to adapt the dependencies / paths
 * Fix any hardcoded paths
+* Add file with simulated phenotypes
+* Repeat to clarify specific Plink versions
 
 
 # Basic Overview
