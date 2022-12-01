@@ -24,6 +24,7 @@
 * Fix any hardcoded paths
 * Add file with simulated phenotypes
 * Repeat to clarify specific Plink versions
+* Upload all the steps for .genome file at the end of the tutorial
 
 
 # Basic Overview
