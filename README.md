@@ -16,6 +16,13 @@
   <a href="#related-resources">Related Resources</a>
 </p>
 
+# To Be Updated
+* Upload plink_pca code needs to uploaded 
+* Upload heterogeneity and missingness code 
+* Upload scree plot / pca plot code added as an R script that you can run easily
+* Upload drop_relateds.sh but we need to adapt the dependencies / paths
+* Fix any hardcoded paths
+
 
 # Basic Overview
 * We chose a publicly available dataset from the International Genome Sample Resource (IGSR) (www.internationalgenome.org). IGSR created and maintains the 1000 Genomes Project (1kGP) to provide a public catalog of common human genetic variation and genotype data. The 1kGP dataset has been kept up to date with current reference data sets, thus it is available for both GRCh37 and GRCh38. The latter is utilized here because the 2014 update increased the quantity of loci represented, resolved more than 1000 issues from the previous version of the assembly, and overall provides a better basis for alignment and subsequent analysis. Additionally, IGSR’s continued efforts will lead to the incorporation of various populations to the data which were not previously captured.
@@ -1349,7 +1356,6 @@ merged_Updated_2_QC.log
 <details> 
 	<summary>👇 Steps and code </summary>
 	<hr>		
-# NEED CODE FORM JAKOB
 ```	
 cat  ~/group/personal/jakob/gwas/cphg/affy/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome.genome | awk '{print $2,$2,$4,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14}' > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome_updated.genome
 ```
