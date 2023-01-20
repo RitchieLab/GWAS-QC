@@ -333,8 +333,6 @@ ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.lmiss.
 	- Code_Heterogeneity_Missingness.R
 	- ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.imiss 
 	- ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het
-* Input: 
-	- Code_Heterogeneity_Missingness.R
 	- PMBB-Release-2020-2.0_genetic_genotype (file prefix)
 * Output:
 	- ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_HM_plot.pdf
