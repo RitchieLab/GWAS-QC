@@ -94,22 +94,24 @@ module load R
 	<summary>👇 Steps and code </summary>
 	<hr>
 	
-* Enter your GWAS_QC directory 
-```
-cd GWAS_QC/rawData/
-```
+	
 * Download -- First, we need to download the publicly available dataset from the 1000 Genomes Project (1KGP). The data is Affy6.0 genotype data for 3,450 individuals with population-level data. 
 
 * Files can be found here: http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/hd_genotype_chip/
 * Two download options 
-	- Download directly to your local computer by clicking the hyperlink for `ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz`
-	- Dowload using wget command:
+	- Download directly to your local computer by clicking the hyperlink for `ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz` and move it to your working directory
+	- OR Dowload using wget command, for example:
 
+* Enter your GWAS_QC directory 
+```
+cd GWAS_QC/rawData/
+```
+	
 ```
 wget http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/hd_genotype_chip/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz
 ```
 
-* At this point `ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz` should be in your GWAS_QC directory.
+* At this point `ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz` should be in your GWAS_QC/rawData/ directory.
 
 ```
 gunzip ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz	
