@@ -145,6 +145,10 @@ ls
 * You will also want to dowload the pedigree information, which can be downloaded here:
 	- https://www.internationalgenome.org/faq/can-i-get-phenotype-gender-and-family-relationship-information-for-the-individuals/
 	-  20130606_g1k.ped
+
+```
+wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/working/20130606_sample_info/20130606_g1k.ped
+```	
 	
 * You also need to dowload the TOPMed reference panel and code from the McCarthy Tools website
 	- https://www.well.ox.ac.uk/~wrayner/tools/ 
