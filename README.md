@@ -193,7 +193,7 @@ wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/working/20130606_sample_
 
 
 ## PART 2 -- Pre-Imputation
-### Step 1 - Enter the preImpuatation directory
+### Step 1 - Enter the preImputation directory
 
 <details> 
 	<summary>👇 Steps and code </summary>
