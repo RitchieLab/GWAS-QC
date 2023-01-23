@@ -32,6 +32,29 @@
 * We chose a publicly available dataset from the International Genome Sample Resource (IGSR) (www.internationalgenome.org). IGSR created and maintains the 1000 Genomes Project (1kGP) to provide a public catalog of common human genetic variation and genotype data. The 1kGP dataset has been kept up to date with current reference data sets, thus it is available for both GRCh37 and GRCh38. The latter is utilized here because the 2014 update increased the quantity of loci represented, resolved more than 1000 issues from the previous version of the assembly, and overall provides a better basis for alignment and subsequent analysis. Additionally, IGSR’s continued efforts will lead to the incorporation of various populations to the data which were not previously captured.
 
 # Set Up
+## Set up working directory
+<details> 
+	<summary>👇 How to set up your directory structure for the GWAS QC workflow </summary>
+	<hr>	
+
+```
+mkdir GWAS_QC
+
+# use -p option to create multiple directories at once
+mkdir -p GWAS_QC/rawData GWAS_QC/preImputation GWAS_QC/preImputation/VCFfiles GWAS_QC/Imputed GWAS_QC/postImpuatation	
+```	
+</details>
+
+```
+.
+├── GWAS_QC/ (current directory)
+    ├── rawData/
+    ├── preImputation/
+    |    └── VCFfiles/
+    ├── Imputed/
+    └── postImputation/	
+```
+
 ## Modules in BASH
 <details> 
 	<summary>👇 How to load modules </summary>
@@ -49,33 +72,6 @@ module load liftOver/20180423
 module load R
 ```
 </details>
-
-
-## Set up working directory
-<details> 
-	<summary>👇 How to set up your directory structure for the GWAS QC workflow </summary>
-	<hr>	
-
-```
-mkdir GWAS_QC
-mkdir GWAS_QC/rawData
-mkdir GWAS_QC/preImputation
-mkdir GWAS_QC/preImputation/VCFfiles
-mkdir GWAS_QC/Imputed
-mkdir GWAS_QC/postImpuatation	
-```	
-</details>
-
-```
-.
-├── GWAS_QC/ (current directory)
-    ├── rawData/
-    ├── preImputation/
-    |    └── VCFfiles/
-    ├── Imputed/
-    └── postImputation/	
-```
-
 
 ## Notes on PLINK v1.9 and v2.0
 * HEREIN, ALL USAGE OF PLINK 1.9 IS INDICATED BY "plink" AND PLINK 2.0 BY "plink2"
