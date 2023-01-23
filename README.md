@@ -170,6 +170,7 @@ wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/working/20130606_sample_
 	```
 	perl CreateTOPMed.pl -i ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz	
 	```
+	- Since it takes awhile to run, you may want to submit a job to the queue if you're working on a shared cluster
 </details>
 
 ```
