@@ -155,11 +155,12 @@ wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/working/20130606_sample_
 	- Midway down the page there are instructions for Usage with the TOPMed reference panel
 	- Download `CreateTOPMed.zip` from the McCarthy Tools website
 	![image](https://user-images.githubusercontent.com/30478823/192685817-b8e3cc46-045d-4381-a55b-24e9e74bb64d.png)
-	- Click on the link to navigate to the Bravo site where this can be downloaded from
+	- Click on the link to navigate to the Bravo site where `ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz` can be downloaded from
 	- Click on dbSNP in the top right panel and click "Download VCF" button to download `ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz` file
 	![image](https://user-images.githubusercontent.com/30478823/192685864-a94ededb-84b0-4cd3-b921-ad627ff0f463.png)
 	- Note: If you run the curl command that's given on the site, the filename will be different 
-	- After downloading both files, move them to the GWAS_QC/rawData/ directory, and execute the following command to convert VCF to an HRC formatted reference legend according to the code provided by McCarthy Tools:
+	- After downloading both files, move them to the GWAS_QC/rawData/ directory, and unzip the  `CreateTOPMed.zip` file
+	- Then execute the following command to convert VCF to an HRC formatted reference legend according to the code provided by McCarthy Tools:
 	```
 	./CreateTOPMed.pl -i ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz
 	```
