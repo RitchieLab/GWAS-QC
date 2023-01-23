@@ -39,8 +39,6 @@
 	<hr>	
 
 ```
-mkdir GWAS_QC
-
 # use -p option to create multiple directories at once
 mkdir -p GWAS_QC/rawData GWAS_QC/preImputation GWAS_QC/preImputation/VCFfiles GWAS_QC/Imputed GWAS_QC/postImpuatation	
 ```	
