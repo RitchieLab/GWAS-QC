@@ -61,7 +61,6 @@ mkdir -p GWAS_QC/rawData GWAS_QC/preImputation GWAS_QC/preImputation/VCFfiles GW
 	
 ```
 module load plink/1.9-20210416
-module load plink/2.0
 module load bcftools/1.9
 module load vcftools/0.1.12c # used by bcftools so may not need to be directly loaded
 module load tabix/0.2.6 # this one might not work -- let me know if it's a problem use htslib instead (below)
