@@ -120,7 +120,7 @@ gunzip ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf.gz
 * Then recode the `.vcf` file as `.bed`, `.bim`, `.bed`. 
 
 ```
-plink2 --vcf ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped	
+plink --vcf ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped	
 ```
 
 * When we check the directory, the following files should be unzipped:
