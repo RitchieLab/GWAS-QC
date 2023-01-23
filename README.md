@@ -25,6 +25,7 @@
 * Add file with simulated phenotypes
 * Repeat to clarify specific Plink versions
 * Make a note of ideal imputed graph vs the tutorial imputed R-sq graph
+* Locate Jakob's .genome file: *~/group/personal/jakob/gwas/cphg/affy/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome.genome* 
 * ✅ Upload all the steps for .genome file at the end of the tutorial
 
 
