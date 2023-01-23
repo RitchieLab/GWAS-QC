@@ -207,6 +207,10 @@ cd preImputation
 	
 * First, run plink commands to calculate heterogeneity and missingness for the data 
 
+To calculate heterogeneity, you can use the --het command in Plink. The command would look like this: *plink --bfile [file_name] --het*
+
+This will calculate the heterozygosity for each individual in the dataset and write the results to a file called "[file_name].het".
+	
 ```
 module load plink/1.9
 plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --het --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het	
@@ -238,7 +242,16 @@ Note: No phenotypes present.
 --het: 868601 variants scanned, report written to
 ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het .
 ```
+
+To calculate missingness, you can use the --missing command in Plink. The command would look like this: *plink --bfile [file_name] --missing* 
 	
+This will calculate the proportion of missing genotypes for each individual in the dataset and write the results to a file called "[file_name].lmiss"
+
+You can also use the --missing2 command which will report the frequency of missing genotypes at each variant, the command is: *plink --bfile [file_name] --missing2*
+
+This will give a file with extension .lmiss2 which will have frequency of missing genotypes for each variant	
+
+
 ```	
 plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --missing --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss	
 ```
