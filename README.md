@@ -575,10 +575,10 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 	<hr>
 	
 ```
-plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots --geno 0.05 --mind 0.1 --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC
+plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots --geno 0.05 --mind 0.1 --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC
 ```
 > ```
-> PLINK v2.00a3LM 64-bit Intel (5 May 2021)      www.cog-genomics.org/plink/2.0/
+> PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
 > (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 > Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.log.
 > Options in effect:
@@ -587,31 +587,30 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 >   --make-bed
 >   --mind 0.1
 >   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC
-> Start time: Mon Oct 10 16:40:32 2022
-> 128235 MiB RAM detected; reserving 64117 MiB for main workspace.
-> Using up to 56 threads (change this with --threads).
-> 2873 samples (1160 females, 1713 males; 2873 founders) loaded from
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.fam.
-> 887969 variants loaded from
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.bim.
-> Note: No phenotype data present.
-> Calculating sample missingness rates... done.
-> 0 samples removed due to missing genotype data (--mind).
-> 2873 samples (1160 females, 1713 males; 2873 founders) remaining after main
-> filters.
+> 
+> 193057 MB RAM detected; reserving 96528 MB for main workspace.
+> 887969 variants loaded from .bim file.
+> 2873 people (1713 males, 1160 females) loaded from .fam.
+> 0 people removed due to missing genotype data (--mind).
+> Using 1 thread (no multithreaded calculations invoked).
+> Before main variant filters, 2873 founders and 0 nonfounders present.
 > Calculating allele frequencies... done.
-> --geno: 7979 variants removed due to missing genotype data.
-> 879990 variants remaining after main filters.
-> Writing
+> Warning: 209889 het. haploid genotypes present (see
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.hh
+> ); many commands treat these as missing.
+> Warning: Nonmissing nonmale Y chromosome genotype(s) present; many commands
+> treat these as missing.
+> Total genotyping rate is 0.996683.
+> 7979 variants removed due to missing genotype data (--geno).
+> 879990 variants and 2873 people pass filters and QC.
+> Note: No phenotypes present.
+> --make-bed to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bed
+> +
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim
+> +
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.fam
 > ... done.
-> Writing
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim
-> ... done.
-> Writing
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bed
-> ... done.
-> End time: Mon Oct 10 16:40:34 2022
 > ```
 
 ```
