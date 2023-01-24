@@ -422,10 +422,10 @@ join -1 1 -2 1 <(cat ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Upd
 
 * Then update .fam file to include sex phenotype
 ```
-plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated --update-sex sex_file.txt --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex
+plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated --update-sex sex_file.txt --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex
 ```
 > ```
-> PLINK v2.00a3LM 64-bit Intel (5 May 2021)      www.cog-genomics.org/plink/2.0/
+> PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
 > (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 > Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.log.
 > Options in effect:
@@ -433,25 +433,29 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated -
 >   --make-bed
 >   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex
 >   --update-sex sex_file.txt
-> Start time: Mon Oct 10 16:30:08 2022
-> 128235 MiB RAM detected; reserving 64117 MiB for main workspace.
-> Using up to 56 threads (change this with --threads).
-> 3450 samples (0 females, 0 males, 3450 ambiguous; 3450 founders) loaded from
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.fam.
-> 905788 variants loaded from
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.bim.
-> Note: No phenotype data present.
-> --update-sex: 3450 samples updated.
-> Writing
+> 
+> 193057 MB RAM detected; reserving 96528 MB for main workspace.
+> 905788 variants loaded from .bim file.
+> 3450 people (0 males, 0 females, 3450 ambiguous) loaded from .fam.
+> Ambiguous sex IDs written to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.nosex .
+> --update-sex: 3450 people updated.
+> Using 1 thread (no multithreaded calculations invoked).
+> Before main variant filters, 3450 founders and 0 nonfounders present.
+> Calculating allele frequencies... done.
+> Warning: 219657 het. haploid genotypes present (see
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.hh );
+> many commands treat these as missing.
+> Warning: Nonmissing nonmale Y chromosome genotype(s) present; many commands
+> treat these as missing.
+> Total genotyping rate is 0.996711.
+> 905788 variants and 3450 people pass filters and QC.
+> Note: No phenotypes present.
+> --make-bed to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.bed +
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.bim +
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.fam ...
-> done.
-> Writing
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.bim ...
-> done.
-> Writing
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.bed ...
-> done.
-> End time: Mon Oct 10 16:30:11 2022	
+> done.	
 > ```	
 	
 * Next, check sex and remove sex inconsistencies
