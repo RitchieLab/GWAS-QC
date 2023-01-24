@@ -324,7 +324,9 @@ ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.lmiss.
 ```
 .
 ├── GWAS_QC/
-    ├── rawData/ 
+    ├── rawData/
+    |    ├── 20130606_g1k.ped
+    |    ├── ALL.TOPMed_freeze5_hg38_dbSNP.vcf.gz
     |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bed
     |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bim
     |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam
