@@ -753,7 +753,7 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 > End time: Mon Oct 10 17:06:23 2022
 > ```
 
-* Final pre-imputation variant count is 834,972 SNPs
+* Final pre-imputation variant count is 834,872 SNPs
 ```
 wc -l <filename>
 ```
