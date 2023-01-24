@@ -356,11 +356,11 @@ ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.lmiss.
 	- Code_Heterogeneity_Missingness.R
 	- ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.imiss 
 	- ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het
-	- PMBB-Release-2020-2.0_genetic_genotype (file prefix)
-* Output:
-	- ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_HM_plot.pdf
+* Input file: ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
+* Output file: ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_HM_plot.pdf
+
 ```
-Rscript Code_Heterogeneity_Missingness.R ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
+Rscript Code_Heterogeneity_Missingness.R ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_HM_plot.pdf
 ```
 	
 <img width="686" alt="Screen Shot 2022-11-03 at 1 45 56 PM" src="https://user-images.githubusercontent.com/66582523/199796370-91260dee-bedb-4bd1-b65d-f6244c08df1f.png">
