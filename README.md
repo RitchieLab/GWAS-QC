@@ -337,9 +337,12 @@ ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.lmiss.
     ├──preImputation/ (current directory)
     |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het
     |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.log
-    |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.log
+    |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.nosex
     |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.imiss
-    |    └── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.lmiss
+    |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.lmiss
+    |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.log
+    |    ├── ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.nosex
+    |    └── sex_file.txt
     ├──Imputed/
     └── postImputation/	
 ```
