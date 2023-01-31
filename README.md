@@ -648,7 +648,6 @@ cat ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_chec
 * Check output
 ```
 head liftover_input.bed
-
 ```
 > ```
 > chr1 564621 564622 564621 rs10458597
@@ -668,28 +667,51 @@ sed -i 's/chr23/chrX/g' liftover_input.bed #I don't think this is a problem with
 ```
 
 * Then, download the correct liftover file
-	- http://hgdownload.cse.ucsc.edu/goldenpath/hg18/liftOver/
-	- dowload `hg18ToHg38.over.chain.gz` to your local computer
+	- http://hgdownload.cse.ucsc.edu/goldenpath/hg19/liftOver/
+	- dowload `hg19ToHg38.over.chain.gz` to your local computer
 	- If doing analysis on server, transfer file to working directory using scp
 	- unzip the data
 	
 * Transfer file to working directory on server
 ```
-scp /home/directory/path/hg18ToHg38.over.chain.gz /server/directory/path/
+scp /home/directory/path/hg19ToHg38.over.chain.gz /server/directory/path/
 ```	
 
 * Unzip file
 ```
-gunzip 	hg18ToHg38.over.chain.gz
+gunzip 	hg19ToHg38.over.chain.gz
 ```
 
 * Finally, perform the actual liftOver
 ```
-liftOver liftover_input.bed hg18ToHg38.over.chain liftover_newmap.txt liftover_exclude.txt
+liftOver liftover_input.bed hg19ToHg38.over.chain liftover_newmap.txt liftover_exclude.txt
+```
+* You will end up with two output files `liftover_newmap.txt` and `liftover_exclude.txt`
+* `liftover_newmap.txt` will contain the coordinates of each SNP in assembly `GRCh38` after the liftover in column 2
+```
+head liftover_newmap.txt
+```
+```
+chr1    629241  629242  564621  rs10458597
+chr1    785910  785911  721290  rs12565286
+chr1    805477  805478  740857  rs12082473
+chr1    817186  817187  752566  rs3094315
+chr1    826352  826353  761732  rs2286139
+chr1    829889  829890  765269  rs11240776
+chr1    841742  841743  777122  rs2980319
+chr1    850609  850610  785989  rs2980300
+chr1    857100  857101  792480  rs2905036
+chr1    863579  863580  798959  rs11240777
+```
 
-sed -i 's/chr//g' liftover_newmap.txt
-awk '{print $5,$2}' liftover_newmap.txt > update_map.txt
-cat liftover_exclude.txt | grep -v "#" | awk '{print $5}' > exclude_liftover.txt
+* To double check that this worked correctly take the first SNP `rs10458597` and look it up in dbSNP https://www.ncbi.nlm.nih.gov/snp/
+	
+	
+<img width="808" alt="Screen Shot 2023-01-31 at 3 13 02 PM" src="https://user-images.githubusercontent.com/66582523/215872229-be837816-fb34-4b3b-a1b3-7559b9474ce2.png">
+
+* You should see that SNP `rs10458597` is in position `629241` in assembly `GRCh38` but position `564621` in assembly `GRCh37`
+* `liftover_exclude.txt` will contain the SNPs that were not able to be aligned during the liftOver process
+```
 head exclude_liftover.txt
 ```
 ```
@@ -703,7 +725,15 @@ rs10915404
 rs557477
 rs560335
 rs565941
+```	
+	
+* Some formatting is required for both files before moving on to Step 8	
 ```
+sed -i 's/chr//g' liftover_newmap.txt
+awk '{print $5,$2}' liftover_newmap.txt > update_map.txt
+cat liftover_exclude.txt | grep -v "#" | awk '{print $5}' > exclude_liftover.txt
+```
+
 	
 </details>
 
