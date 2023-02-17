@@ -173,6 +173,7 @@ wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/working/20130606_sample_
 	- Since it takes awhile to run, you may want to submit a job to the queue if you're working on a shared cluster
 </details>
 
+* This is how the file system should look at the end of Step 2
 ```
 .
 ├── GWAS_QC/
@@ -227,29 +228,29 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 
 * Output:
 ```
-PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
-(C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
-Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.log.
-Options in effect:
-  --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
-  --het
-  --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het
-
-128235 MB RAM detected; reserving 64117 MB for main workspace.
-905788 variants loaded from .bim file.
-3450 people (0 males, 0 females, 3450 ambiguous) loaded from .fam.
-Ambiguous sex IDs written to
-ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.nosex .
-Using 1 thread (no multithreaded calculations invoked).
-Before main variant filters, 3450 founders and 0 nonfounders present.
-Calculating allele frequencies... done.
-Warning: Nonmissing nonmale Y chromosome genotype(s) present; many commands
-treat these as missing.
-Total genotyping rate is 0.996712.
-905788 variants and 3450 people pass filters and QC.
-Note: No phenotypes present.
---het: 868601 variants scanned, report written to
-ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het .
+> PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
+> (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+> Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.log.
+> Options in effect:
+>   --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
+>   --het
+>   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het
+> 
+> 128235 MB RAM detected; reserving 64117 MB for main workspace.
+> 905788 variants loaded from .bim file.
+> 3450 people (0 males, 0 females, 3450 ambiguous) loaded from .fam.
+> Ambiguous sex IDs written to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.nosex .
+> Using 1 thread (no multithreaded calculations invoked).
+> Before main variant filters, 3450 founders and 0 nonfounders present.
+> Calculating allele frequencies... done.
+> Warning: Nonmissing nonmale Y chromosome genotype(s) present; many commands
+> treat these as missing.
+> Total genotyping rate is 0.996712.
+> 905788 variants and 3450 people pass filters and QC.
+> Note: No phenotypes present.
+> --het: 868601 variants scanned, report written to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het .
 ```
 
 To calculate missingness, you can use the --missing command in Plink. The command would look like this: *plink --bfile [file_name] --missing* 
@@ -267,52 +268,31 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 
 * Output:
 ```
-PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
-(C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
-Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.log.
-Options in effect:
-  --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
-  --het
-  --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het
-
-128235 MB RAM detected; reserving 64117 MB for main workspace.
-905788 variants loaded from .bim file.
-3450 people (0 males, 0 females, 3450 ambiguous) loaded from .fam.
-Ambiguous sex IDs written to
-ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.nosex .
-Using 1 thread (no multithreaded calculations invoked).
-Before main variant filters, 3450 founders and 0 nonfounders present.
-Calculating allele frequencies... done.
-Warning: Nonmissing nonmale Y chromosome genotype(s) present; many commands
-treat these as missing.
-Total genotyping rate is 0.996712.
-905788 variants and 3450 people pass filters and QC.
-Note: No phenotypes present.
---het: 868601 variants scanned, report written to
-ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het .
-	PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
-(C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
-Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.log.
-Options in effect:
-  --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
-  --missing
-  --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss
-
-128235 MB RAM detected; reserving 64117 MB for main workspace.
-905788 variants loaded from .bim file.
-3450 people (0 males, 0 females, 3450 ambiguous) loaded from .fam.
-Ambiguous sex IDs written to
-ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.nosex .
-Using 1 thread (no multithreaded calculations invoked).
-Before main variant filters, 3450 founders and 0 nonfounders present.
-Calculating allele frequencies... done.
-Warning: Nonmissing nonmale Y chromosome genotype(s) present; many commands
-treat these as missing.
-Total genotyping rate is 0.996712.
---missing: Sample missing data report written to
-ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.imiss, and
-variant-based missing data report written to
-ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.lmiss.
+> PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
+> (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+> Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.log.
+> Options in effect:
+>   --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
+>   --het
+>   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het
+> 
+> 128235 MB RAM detected; reserving 64117 MB for main workspace.
+> 905788 variants loaded from .bim file.
+> > 3450 people (0 males, 0 females, 3450 ambiguous) loaded from .fam.
+> Ambiguous sex IDs written to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.nosex .
+> Using 1 thread (no multithreaded calculations invoked).
+> Before main variant filters, 3450 founders and 0 nonfounders present.
+> Calculating allele frequencies... done.
+> Warning: Nonmissing nonmale Y chromosome genotype(s) present; many commands
+> treat these as missing.
+> Total genotyping rate is 0.996712.
+> 905788 variants and 3450 people pass filters and QC.
+> Note: No phenotypes present.
+> --het: 868601 variants scanned, report written to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het .
+> 	PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
+> (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 ```
 	
 * Here's the current directory structure within GWAS_QC/preImputation/	
@@ -356,11 +336,11 @@ ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.lmiss.
 	- Code_Heterogeneity_Missingness.R
 	- ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.imiss 
 	- ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het
-	- PMBB-Release-2020-2.0_genetic_genotype (file prefix)
-* Output:
-	- ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_HM_plot.pdf
+* Input file: ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
+* Output file: ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_HM_plot.pdf
+
 ```
-Rscript Code_Heterogeneity_Missingness.R ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
+Rscript Code_Heterogeneity_Missingness.R ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_HM_plot.pdf
 ```
 	
 <img width="686" alt="Screen Shot 2022-11-03 at 1 45 56 PM" src="https://user-images.githubusercontent.com/66582523/199796370-91260dee-bedb-4bd1-b65d-f6244c08df1f.png">
@@ -380,7 +360,8 @@ cat ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam | awk
 
 plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --update-ids ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_toUpdate.txt --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated
 ```
-> ```
+
+```
 > PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
 > (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 > Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.log.
@@ -408,7 +389,7 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.bed +
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.bim +
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.fam ... done.
-> ```
+```
 	
 </details>
 
@@ -426,10 +407,10 @@ join -1 1 -2 1 <(cat ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Upd
 
 * Then update .fam file to include sex phenotype
 ```
-plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated --update-sex sex_file.txt --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex
+plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated --update-sex sex_file.txt --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex
 ```
 > ```
-> PLINK v2.00a3LM 64-bit Intel (5 May 2021)      www.cog-genomics.org/plink/2.0/
+> PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
 > (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 > Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.log.
 > Options in effect:
@@ -437,25 +418,29 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated -
 >   --make-bed
 >   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex
 >   --update-sex sex_file.txt
-> Start time: Mon Oct 10 16:30:08 2022
-> 128235 MiB RAM detected; reserving 64117 MiB for main workspace.
-> Using up to 56 threads (change this with --threads).
-> 3450 samples (0 females, 0 males, 3450 ambiguous; 3450 founders) loaded from
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.fam.
-> 905788 variants loaded from
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.bim.
-> Note: No phenotype data present.
-> --update-sex: 3450 samples updated.
-> Writing
+> 
+> 193057 MB RAM detected; reserving 96528 MB for main workspace.
+> 905788 variants loaded from .bim file.
+> 3450 people (0 males, 0 females, 3450 ambiguous) loaded from .fam.
+> Ambiguous sex IDs written to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.nosex .
+> --update-sex: 3450 people updated.
+> Using 1 thread (no multithreaded calculations invoked).
+> Before main variant filters, 3450 founders and 0 nonfounders present.
+> Calculating allele frequencies... done.
+> Warning: 219657 het. haploid genotypes present (see
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.hh );
+> many commands treat these as missing.
+> Warning: Nonmissing nonmale Y chromosome genotype(s) present; many commands
+> treat these as missing.
+> Total genotyping rate is 0.996711.
+> 905788 variants and 3450 people pass filters and QC.
+> Note: No phenotypes present.
+> --make-bed to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.bed +
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.bim +
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.fam ...
-> done.
-> Writing
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.bim ...
-> done.
-> Writing
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.bed ...
-> done.
-> End time: Mon Oct 10 16:30:11 2022	
+> done.	
 > ```	
 	
 * Next, check sex and remove sex inconsistencies
@@ -492,10 +477,10 @@ cat plink.sexcheck |  grep PROBLEM | sed 's/^ *//' > plink.sexcheck_list
 ```
 
 ```
-plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex --remove plink.sexcheck_list --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked
+plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex --remove plink.sexcheck_list --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked
 ```
 > ```
-> PLINK v2.00a3LM 64-bit Intel (5 May 2021)      www.cog-genomics.org/plink/2.0/
+> PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
 > (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 > Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.log.
 > Options in effect:
@@ -503,27 +488,29 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 >   --make-bed
 >   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked
 >   --remove plink.sexcheck_list
-> Start time: Mon Oct 10 16:35:55 2022
-> 128235 MiB RAM detected; reserving 64117 MiB for main workspace.
-> Using up to 56 threads (change this with --threads).
-> 3450 samples (1735 females, 1715 males; 3450 founders) loaded from
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.fam.
-> 905788 variants loaded from
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.bim.
-> Note: No phenotype data present.
-> --remove: 2873 samples remaining.
-> 2873 samples (1160 females, 1713 males; 2873 founders) remaining after main
-> filters.
-> Writing
+> 
+> 193057 MB RAM detected; reserving 96528 MB for main workspace.
+> 905788 variants loaded from .bim file.
+> 3450 people (1715 males, 1735 females) loaded from .fam.
+> --remove: 2873 people remaining.
+> Using 1 thread (no multithreaded calculations invoked).
+> Before main variant filters, 2873 founders and 0 nonfounders present.
+> Calculating allele frequencies... done.
+> Warning: 209918 het. haploid genotypes present (see
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.hh
+> ); many commands treat these as missing.
+> Warning: Nonmissing nonmale Y chromosome genotype(s) present; many commands
+> treat these as missing.
+> Total genotyping rate in remaining samples is 0.996672.
+> 905788 variants and 2873 people pass filters and QC.
+> Note: No phenotypes present.
+> --make-bed to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.bed
+> +
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.bim
+> +
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.fam
 > ... done.
-> Writing
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.bim
-> ... done.
-> Writing
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.bed
-> ... done.
-> End time: Mon Oct 10 16:35:57 2022
 > ```
 
 </details>
@@ -536,10 +523,10 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 	
 ```
 echo . > noSNP
-plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked --exclude noSNP --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots
+plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked --exclude noSNP --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots
 ```
 > ```
-> PLINK v2.00a3LM 64-bit Intel (5 May 2021)      www.cog-genomics.org/plink/2.0/
+> PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
 > (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 > Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.log.
 > Options in effect:
@@ -547,26 +534,29 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 >   --exclude noSNP
 >   --make-bed
 >   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots
-> Start time: Mon Oct 10 16:38:29 2022
-> 128235 MiB RAM detected; reserving 64117 MiB for main workspace.
-> Using up to 56 threads (change this with --threads).
-> 2873 samples (1160 females, 1713 males; 2873 founders) loaded from
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.fam.
-> 905788 variants loaded from
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.bim.
-> Note: No phenotype data present.
+> 
+> 193057 MB RAM detected; reserving 96528 MB for main workspace.
+> 905788 variants loaded from .bim file.
+> 2873 people (1713 males, 1160 females) loaded from .fam.
 > --exclude: 887969 variants remaining.
-> 887969 variants remaining after main filters.
-> Writing
+> Using 1 thread (no multithreaded calculations invoked).
+> Before main variant filters, 2873 founders and 0 nonfounders present.
+> Calculating allele frequencies... done.
+> Warning: 209889 het. haploid genotypes present (see
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.hh
+> ); many commands treat these as missing.
+> Warning: Nonmissing nonmale Y chromosome genotype(s) present; many commands
+> treat these as missing.
+> > Total genotyping rate is 0.996683.
+> 887969 variants and 2873 people pass filters and QC.
+> Note: No phenotypes present.
+> --make-bed to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.bed
+> +
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.bim
+> +
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.fam
 > ... done.
-> Writing
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.bim
-> ... done.
-> Writing
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.bed
-> ... done.
-> End time: Mon Oct 10 16:38:32 2022
 > ```
 	
 </details>
@@ -579,10 +569,10 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 	<hr>
 	
 ```
-plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots --geno 0.05 --mind 0.1 --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC
+plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots --geno 0.05 --mind 0.1 --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC
 ```
 > ```
-> PLINK v2.00a3LM 64-bit Intel (5 May 2021)      www.cog-genomics.org/plink/2.0/
+> PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
 > (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 > Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.log.
 > Options in effect:
@@ -591,31 +581,30 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 >   --make-bed
 >   --mind 0.1
 >   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC
-> Start time: Mon Oct 10 16:40:32 2022
-> 128235 MiB RAM detected; reserving 64117 MiB for main workspace.
-> Using up to 56 threads (change this with --threads).
-> 2873 samples (1160 females, 1713 males; 2873 founders) loaded from
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.fam.
-> 887969 variants loaded from
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.bim.
-> Note: No phenotype data present.
-> Calculating sample missingness rates... done.
-> 0 samples removed due to missing genotype data (--mind).
-> 2873 samples (1160 females, 1713 males; 2873 founders) remaining after main
-> filters.
+> 
+> 193057 MB RAM detected; reserving 96528 MB for main workspace.
+> 887969 variants loaded from .bim file.
+> 2873 people (1713 males, 1160 females) loaded from .fam.
+> 0 people removed due to missing genotype data (--mind).
+> Using 1 thread (no multithreaded calculations invoked).
+> Before main variant filters, 2873 founders and 0 nonfounders present.
 > Calculating allele frequencies... done.
-> --geno: 7979 variants removed due to missing genotype data.
-> 879990 variants remaining after main filters.
-> Writing
+> Warning: 209889 het. haploid genotypes present (see
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.hh
+> ); many commands treat these as missing.
+> Warning: Nonmissing nonmale Y chromosome genotype(s) present; many commands
+> treat these as missing.
+> Total genotyping rate is 0.996683.
+> 7979 variants removed due to missing genotype data (--geno).
+> 879990 variants and 2873 people pass filters and QC.
+> Note: No phenotypes present.
+> --make-bed to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bed
+> +
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim
+> +
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.fam
 > ... done.
-> Writing
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim
-> ... done.
-> Writing
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bed
-> ... done.
-> End time: Mon Oct 10 16:40:34 2022
 > ```
 
 ```
@@ -652,7 +641,6 @@ cat ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_chec
 * Check output
 ```
 head liftover_input.bed
-
 ```
 > ```
 > chr1 564621 564622 564621 rs10458597
@@ -672,28 +660,51 @@ sed -i 's/chr23/chrX/g' liftover_input.bed #I don't think this is a problem with
 ```
 
 * Then, download the correct liftover file
-	- http://hgdownload.cse.ucsc.edu/goldenpath/hg18/liftOver/
-	- dowload `hg18ToHg38.over.chain.gz` to your local computer
+	- http://hgdownload.cse.ucsc.edu/goldenpath/hg19/liftOver/
+	- dowload `hg19ToHg38.over.chain.gz` to your local computer
 	- If doing analysis on server, transfer file to working directory using scp
 	- unzip the data
 	
 * Transfer file to working directory on server
 ```
-scp /home/directory/path/hg18ToHg38.over.chain.gz /server/directory/path/
+scp /home/directory/path/hg19ToHg38.over.chain.gz /server/directory/path/
 ```	
 
 * Unzip file
 ```
-gunzip 	hg18ToHg38.over.chain.gz
+gunzip 	hg19ToHg38.over.chain.gz
 ```
 
 * Finally, perform the actual liftOver
 ```
-liftOver liftover_input.bed hg18ToHg38.over.chain liftover_newmap.txt liftover_exclude.txt
+liftOver liftover_input.bed hg19ToHg38.over.chain liftover_newmap.txt liftover_exclude.txt
+```
+* You will end up with two output files `liftover_newmap.txt` and `liftover_exclude.txt`
+* `liftover_newmap.txt` will contain the coordinates of each SNP in assembly `GRCh38` after the liftover in column 2
+```
+head liftover_newmap.txt
+```
+```
+chr1    629241  629242  564621  rs10458597
+chr1    785910  785911  721290  rs12565286
+chr1    805477  805478  740857  rs12082473
+chr1    817186  817187  752566  rs3094315
+chr1    826352  826353  761732  rs2286139
+chr1    829889  829890  765269  rs11240776
+chr1    841742  841743  777122  rs2980319
+chr1    850609  850610  785989  rs2980300
+chr1    857100  857101  792480  rs2905036
+chr1    863579  863580  798959  rs11240777
+```
 
-sed -i 's/chr//g' liftover_newmap.txt
-awk '{print $5,$2}' liftover_newmap.txt > update_map.txt
-cat liftover_exclude.txt | grep -v "#" | awk '{print $5}' > exclude_liftover.txt
+* To double check that this worked correctly take the first SNP `rs10458597` and look it up in dbSNP https://www.ncbi.nlm.nih.gov/snp/
+	
+	
+<img width="808" alt="Screen Shot 2023-01-31 at 3 13 02 PM" src="https://user-images.githubusercontent.com/66582523/215872229-be837816-fb34-4b3b-a1b3-7559b9474ce2.png">
+
+* You should see that SNP `rs10458597` is in position `629241` in assembly `GRCh38` but position `564621` in assembly `GRCh37`
+* `liftover_exclude.txt` will contain the SNPs that were not able to be aligned during the liftOver process
+```
 head exclude_liftover.txt
 ```
 ```
@@ -707,7 +718,15 @@ rs10915404
 rs557477
 rs560335
 rs565941
+```	
+	
+* Some formatting is required for both files before moving on to Step 8	
 ```
+sed -i 's/chr//g' liftover_newmap.txt
+awk '{print $5,$2}' liftover_newmap.txt > update_map.txt
+cat liftover_exclude.txt | grep -v "#" | awk '{print $5}' > exclude_liftover.txt
+```
+
 	
 </details>
 
@@ -720,11 +739,11 @@ rs565941
 	
 * Exclude any SNPs that do not liftOver and non-somatic chromosomes (X, Y)
 ```
-plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC --exclude exclude_liftover.txt --update-map update_map.txt --not-chr X, Y --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38
+plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC --exclude exclude_liftover.txt --update-map update_map.txt --not-chr X, Y --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38
 ```
 	
 > ```
-> PLINK v2.00a3LM 64-bit Intel (5 May 2021)      www.cog-genomics.org/plink/2.0/
+> PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
 > (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 > Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.log.
 > Options in effect:
@@ -734,30 +753,29 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 >   --not-chr X, Y
 >   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38
 >   --update-map update_map.txt
-> Start time: Mon Oct 10 17:06:21 2022
-> 128235 MiB RAM detected; reserving 64117 MiB for main workspace.
-> Using up to 56 threads (change this with --threads).
-> 2873 samples (1160 females, 1713 males; 2873 founders) loaded from
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.fam.
-> 843232 out of 879990 variants loaded from
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC.bim.
-> Note: No phenotype data present.
-> --update-map: 0 values updated.
-> --exclude: 843232 variants remaining.
-> 843232 variants remaining after main filters.
-> Writing
+> 
+> 193057 MB RAM detected; reserving 96528 MB for main workspace.
+> 843232 out of 879990 variants loaded from .bim file.
+> 2873 people (1713 males, 1160 females) loaded from .fam.
+> --update-map: 834872 values updated, 36408 variant IDs not present.
+> Warning: Base-pair positions are now unsorted!
+> --exclude: 834872 variants remaining.
+> Using 1 thread (no multithreaded calculations invoked).
+> Before main variant filters, 2873 founders and 0 nonfounders present.
+> Calculating allele frequencies... done.
+> Total genotyping rate is 0.997613.
+> 834872 variants and 2873 people pass filters and QC.
+> Note: No phenotypes present.
+> --make-bed to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bed
+> +
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim
+> +
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.fam
 > ... done.
-> Writing
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim
-> ... done.
-> Writing
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bed
-> ... done.
-> End time: Mon Oct 10 17:06:23 2022
 > ```
 
-* Final pre-imputation variant count is 834,972 SNPs
+* Final pre-imputation variant count is 834,872 SNPs
 ```
 wc -l <filename>
 ```
@@ -1076,7 +1094,6 @@ perl ../rawData/HRC-1000G-check-bim.pl -r ../rawData/PASS.Variants.TOPMed_freeze
 * Run the Run-plink.sh script, which is generate by perl script 
 	- Pulls out chromosome info and makes VCF files
 ```
-sed -i 's/plink/plink2/' Run-plink.sh
 sed -i 's/--recode vcf/--recode vcf --output-chr chrM/g' Run-plink.sh
 chmod +x ./Run-plink.sh
 ./Run-plink.sh
