@@ -631,7 +631,11 @@ head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_che
 	<summary>👇 Steps and code </summary>
 	<hr>
 	
-* We found out that the data was built using hg37 so we will to convert the data to hg38 using the liftOver module
+* The TOPMed Imputation Server can accept either hg37 or hg38 so this liftOver step is redundant.
+* However, we included this step because often times we need to use hg38 for our data so.
+* Please use your best judgement to determine if liftOver is right for you.
+
+* Let's proceed:
 	- First, make BED coordinate file
 
 ```
