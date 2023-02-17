@@ -227,7 +227,7 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 ```
 
 * Output:
-> ```
+```
 > PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
 > (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 > Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.log.
@@ -251,7 +251,7 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 > Note: No phenotypes present.
 > --het: 868601 variants scanned, report written to
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het .
-> ```
+```
 
 To calculate missingness, you can use the --missing command in Plink. The command would look like this: *plink --bfile [file_name] --missing* 
 	
@@ -267,31 +267,33 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 ```
 
 * Output:
-> ```
+```
 > PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
 > (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
-> Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.log.
+> Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.log.
 > Options in effect:
 >   --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
->   --missing
->   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss
+>   --het
+>   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het
 > 
 > 128235 MB RAM detected; reserving 64117 MB for main workspace.
 > 905788 variants loaded from .bim file.
-> 3450 people (0 males, 0 females, 3450 ambiguous) loaded from .fam.
+> > 3450 people (0 males, 0 females, 3450 ambiguous) loaded from .fam.
 > Ambiguous sex IDs written to
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.nosex .
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.nosex .
 > Using 1 thread (no multithreaded calculations invoked).
 > Before main variant filters, 3450 founders and 0 nonfounders present.
 > Calculating allele frequencies... done.
 > Warning: Nonmissing nonmale Y chromosome genotype(s) present; many commands
 > treat these as missing.
 > Total genotyping rate is 0.996712.
-> --missing: Sample missing data report written to
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.imiss, and
-> variant-based missing data report written to
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.lmiss.
-> ```
+> 905788 variants and 3450 people pass filters and QC.
+> Note: No phenotypes present.
+> --het: 868601 variants scanned, report written to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het .
+> 	PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
+> (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+```
 	
 * Here's the current directory structure within GWAS_QC/preImputation/	
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het
@@ -515,10 +517,10 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 	
 ```
 echo . > noSNP
-plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked --exclude noSNP --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots
+plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked --exclude noSNP --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots
 ```
 > ```
-> PLINK v2.00a3LM 64-bit Intel (5 May 2021)      www.cog-genomics.org/plink/2.0/
+> PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
 > (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 > Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.log.
 > Options in effect:
@@ -526,26 +528,29 @@ plink2 --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_w
 >   --exclude noSNP
 >   --make-bed
 >   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots
-> Start time: Mon Oct 10 16:38:29 2022
-> 128235 MiB RAM detected; reserving 64117 MiB for main workspace.
-> Using up to 56 threads (change this with --threads).
-> 2873 samples (1160 females, 1713 males; 2873 founders) loaded from
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.fam.
-> 905788 variants loaded from
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked.bim.
-> Note: No phenotype data present.
+> 
+> 193057 MB RAM detected; reserving 96528 MB for main workspace.
+> 905788 variants loaded from .bim file.
+> 2873 people (1713 males, 1160 females) loaded from .fam.
 > --exclude: 887969 variants remaining.
-> 887969 variants remaining after main filters.
-> Writing
+> Using 1 thread (no multithreaded calculations invoked).
+> Before main variant filters, 2873 founders and 0 nonfounders present.
+> Calculating allele frequencies... done.
+> Warning: 209889 het. haploid genotypes present (see
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.hh
+> ); many commands treat these as missing.
+> Warning: Nonmissing nonmale Y chromosome genotype(s) present; many commands
+> treat these as missing.
+> > Total genotyping rate is 0.996683.
+> 887969 variants and 2873 people pass filters and QC.
+> Note: No phenotypes present.
+> --make-bed to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.bed
+> +
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.bim
+> +
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.fam
 > ... done.
-> Writing
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.bim
-> ... done.
-> Writing
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots.bed
-> ... done.
-> End time: Mon Oct 10 16:38:32 2022
 > ```
 	
 </details>
