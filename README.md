@@ -632,7 +632,7 @@ head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_che
 	<hr>
 	
 * The TOPMed Imputation Server can accept either hg37 or hg38 so this liftOver step is redundant.
-* However, we included this step because often times we need to use hg38 for our data so.
+* However, we included this step because often times we need to use hg38 for our data.
 * Please use your best judgement to determine if liftOver is right for you.
 
 * Let's proceed:
