@@ -267,31 +267,31 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 ```
 
 * Output:
-```
-PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
-(C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
-Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.log.
-Options in effect:
-  --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
-  --missing
-  --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss
-
-128235 MB RAM detected; reserving 64117 MB for main workspace.
-905788 variants loaded from .bim file.
-3450 people (0 males, 0 females, 3450 ambiguous) loaded from .fam.
-Ambiguous sex IDs written to
-ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.nosex .
-Using 1 thread (no multithreaded calculations invoked).
-Before main variant filters, 3450 founders and 0 nonfounders present.
-Calculating allele frequencies... done.
-Warning: Nonmissing nonmale Y chromosome genotype(s) present; many commands
-treat these as missing.
-Total genotyping rate is 0.996712.
---missing: Sample missing data report written to
-ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.imiss, and
-variant-based missing data report written to
-ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.lmiss.
-```
+> ```
+> PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
+> (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+> Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.log.
+> Options in effect:
+>   --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
+>   --missing
+>   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss
+> 
+> 128235 MB RAM detected; reserving 64117 MB for main workspace.
+> 905788 variants loaded from .bim file.
+> 3450 people (0 males, 0 females, 3450 ambiguous) loaded from .fam.
+> Ambiguous sex IDs written to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.nosex .
+> Using 1 thread (no multithreaded calculations invoked).
+> Before main variant filters, 3450 founders and 0 nonfounders present.
+> Calculating allele frequencies... done.
+> Warning: Nonmissing nonmale Y chromosome genotype(s) present; many commands
+> treat these as missing.
+> Total genotyping rate is 0.996712.
+> --missing: Sample missing data report written to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.imiss, and
+> variant-based missing data report written to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.lmiss.
+> ```
 	
 * Here's the current directory structure within GWAS_QC/preImputation/	
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het
