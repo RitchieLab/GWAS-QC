@@ -173,6 +173,7 @@ wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/working/20130606_sample_
 	- Since it takes awhile to run, you may want to submit a job to the queue if you're working on a shared cluster
 </details>
 
+* This is how the file system should look at the end of Step 2
 ```
 .
 ├── GWAS_QC/
