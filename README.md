@@ -270,29 +270,6 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 ```
 PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
 (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
-Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.log.
-Options in effect:
-  --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
-  --het
-  --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het
-
-128235 MB RAM detected; reserving 64117 MB for main workspace.
-905788 variants loaded from .bim file.
-3450 people (0 males, 0 females, 3450 ambiguous) loaded from .fam.
-Ambiguous sex IDs written to
-ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.nosex .
-Using 1 thread (no multithreaded calculations invoked).
-Before main variant filters, 3450 founders and 0 nonfounders present.
-Calculating allele frequencies... done.
-Warning: Nonmissing nonmale Y chromosome genotype(s) present; many commands
-treat these as missing.
-Total genotyping rate is 0.996712.
-905788 variants and 3450 people pass filters and QC.
-Note: No phenotypes present.
---het: 868601 variants scanned, report written to
-ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het .
-	PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
-(C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_miss.log.
 Options in effect:
   --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
