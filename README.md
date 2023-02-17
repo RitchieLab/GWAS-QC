@@ -360,36 +360,36 @@ cat ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam | awk
 
 plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --update-ids ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_toUpdate.txt --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated
 ```
-> ```
-PLINK v1.90p 64-bit (16 Apr 2021)
-Options in effect:
-  --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
-  --make-bed
-  --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated
-  --update-ids ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_toUpdate.txt
-Hostname: superman
-Working directory: /project/ritchie07/personal/ikuzwa/PROJECTS/GWAS_QC/preImputation2.0
-Start time: Mon Jan 23 13:55:46 2023
-Random number seed: 1674500146
-128235 MB RAM detected; reserving 64117 MB for main workspace.
-905788 variants loaded from .bim file.
-3450 people (0 males, 0 females, 3450 ambiguous) loaded from .fam.
-Ambiguous sex IDs written to
-ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.nosex .
---update-ids: 3450 people updated.
-Using 1 thread (no multithreaded calculations invoked).
-Before main variant filters, 3450 founders and 0 nonfounders present.
-Calculating allele frequencies... done.
-Warning: Nonmissing nonmale Y chromosome genotype(s) present; many commands
-treat these as missing.
-Total genotyping rate is 0.996712.
-905788 variants and 3450 people pass filters and QC.
-Note: No phenotypes present.
---make-bed to
-ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.bed +
-ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.bim +
-ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.fam ... done.
-> ```
+
+```
+> PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
+> (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+> Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.log.
+> Options in effect:
+>   --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
+>   --make-bed
+>   --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated
+>   --update-ids ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_toUpdate.txt
+> 
+> 193057 MB RAM detected; reserving 96528 MB for main workspace.
+> 905788 variants loaded from .bim file.
+> 3450 people (0 males, 0 females, 3450 ambiguous) loaded from .fam.
+> Ambiguous sex IDs written to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.nosex .
+> --update-ids: 3450 people updated.
+> Using 1 thread (no multithreaded calculations invoked).
+> Before main variant filters, 3450 founders and 0 nonfounders present.
+> Calculating allele frequencies... done.
+> Warning: Nonmissing nonmale Y chromosome genotype(s) present; many commands
+> treat these as missing.
+> Total genotyping rate is 0.996712.
+> 905788 variants and 3450 people pass filters and QC.
+> Note: No phenotypes present.
+> --make-bed to
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.bed +
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.bim +
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.fam ... done.
+```
 	
 </details>
 
