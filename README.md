@@ -227,7 +227,7 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 ```
 
 * Output:
-```
+> ```
 > PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
 > (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 > Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.log.
@@ -251,7 +251,7 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 > Note: No phenotypes present.
 > --het: 868601 variants scanned, report written to
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het .
-```
+> ```
 
 To calculate missingness, you can use the --missing command in Plink. The command would look like this: *plink --bfile [file_name] --missing* 
 	
@@ -267,7 +267,7 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 ```
 
 * Output:
-```
+> ```
 > PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
 > (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 > Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.log.
@@ -293,7 +293,7 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het .
 > 	PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
 > (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
-```
+> ```
 	
 * Here's the current directory structure within GWAS_QC/preImputation/	
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_het.het
@@ -361,7 +361,7 @@ cat ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam | awk
 plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --update-ids ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_toUpdate.txt --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated
 ```
 
-```
+> ```
 > PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
 > (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 > Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.log.
@@ -389,7 +389,7 @@ plink --bfile ../rawData/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.bed +
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.bim +
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated.fam ... done.
-```
+> ```
 	
 </details>
 
@@ -409,7 +409,7 @@ join -1 1 -2 1 <(cat ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Upd
 ```
 plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated --update-sex sex_file.txt --make-bed --out ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex
 ```
-```
+> ```
 > PLINK v1.90p 64-bit (16 Apr 2021)              www.cog-genomics.org/plink/1.9/
 > (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 > Logging to ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.log.
@@ -441,7 +441,7 @@ plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated --
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.bim +
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex.fam ...
 > done.	
-```	
+> ```	
 	
 * Next, check sex and remove sex inconsistencies
 ```
