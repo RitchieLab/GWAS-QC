@@ -140,7 +140,7 @@ mkdir PCA
 cd PCA
 ```
 * Retrieve the following files from 1000 Genomes
-```
+
 ```
 wget https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/integrated_call_samples_v3.20130502.ALL.panel
 wget -r http://hgdownload.cse.ucsc.edu/gbdb/hg19/1000Genomes/phase3/
