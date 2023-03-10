@@ -1030,7 +1030,6 @@ head ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_che
 perl ../rawData/HRC-1000G-check-bim.pl -r ../rawData/PASS.Variants.TOPMed_freeze5_hg38_dbSNP.tab -h -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38.bim -f ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38_freq.frq
 ```
 
-* Tess's output
 > ```
 >  Matching to HRC
 >  
@@ -1071,40 +1070,6 @@ perl ../rawData/HRC-1000G-check-bim.pl -r ../rawData/PASS.Variants.TOPMed_freeze
 >  Non Matching alleles 15272
 >  ID and allele mismatching 15272; where HRC is . 0
 >  Duplicates removed 0
-> ```
- 	
-	
-* Van's output
-> ```
-> Matching to HRC
-> 
-> Position Matches
->  ID matches HRC 0
->  ID Doesn't match HRC 139530
->  Total Position Matches 139530
-> ID Match
->  Position different from HRC 0
-> No Match to HRC 703702
-> Skipped (MT) 0
-> Total in bim file 843232
-> Total processed 843232
-> 
-> Indels 0
-> 
-> SNPs not changed 15188
-> SNPs to change ref alt 37739
-> Strand ok 38265
-> Total Strand ok 52927
-> 
-> Strand to change 28960
-> Total checked 139530
-> Total checked Strand 67225
-> Total removed for allele Frequency diff > 0.2 45531
-> Palindromic SNPs with Freq > 0.4 291
-> 
-> Non Matching alleles 72014
-> ID and allele mismatching 72014; where HRC is . 0
-> Duplicates removed 0
 > ```
  
 * Run the Run-plink.sh script, which is generate by perl script 
