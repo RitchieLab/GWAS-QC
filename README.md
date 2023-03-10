@@ -1171,6 +1171,8 @@ for i in {1..22}; do vcf-sort ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_ha
 <details> 
 	<summary>👇 Steps and code </summary>
 	<hr>
+
+* The scp (secure copy) command can transfer files across hosts. Since we want to transfer an entire directory, you need to include the -r flag before executing
 	
 ```
 scp -r login@serveraddress:/~/GWAS_QC/VCFfiles/ ~/Desktop/
