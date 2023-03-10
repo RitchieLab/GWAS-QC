@@ -1430,7 +1430,7 @@ merged_Updated_2_QC.log
 	
 * Actually remove the relateds
 ```
-drop_relateds.sh -b merged_Updated_2_QC -i ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome_updated.genome -p merged_Updated_2_QC_remove_related
+drop_relateds.sh -b merged_Updated_2_QC -i prefix_pruned_100k_genome_updated.genome_updated.genome -p merged_Updated_2_QC_remove_related
 ```
 </details>
 	
