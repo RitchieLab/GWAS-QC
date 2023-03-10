@@ -128,11 +128,27 @@ plink --vcf ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf --make-b
 ```
 ls 	
 ```
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bed 
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bim 
-> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam 
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bed
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bim
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.log
 > ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf
+
+* Download the 1000 Genomes `20130606_g1k.ped` 
+* The files contained in this directory contain information about all the samples in the 1000 genomes project and their relations. 
+```
+wget http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/working/20130606_sample_info/20130606_g1k.ped
+```
+
+```
+ls 	
+```
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bed
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.bim
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.fam
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.log
+> ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped.vcf
+> 20130606_g1k.ped
 
 * Make and enter a PCA directory
 ```
