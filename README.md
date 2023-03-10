@@ -1226,12 +1226,6 @@ cat  prefix_pruned_100k_genome.genome | awk '{print $2,$2,$4,$4,$5,$6,$7,$8,$9,$
 vi prefix_pruned_100k_genome_updated.genome_updated.genome
 ```
 	
-* Second, run the actual drop_relateds.sh script to remove related from the raw data. Because, this is relevant for the samples not the genotypes, this step is independent of imputation and the output will be applied at the very end of the tutorial in the post-Imputation/pre-GWAS QC
-
-```
-module load drop_relateds.sh
-drop_relateds.sh -b ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_Updated_withsex_checked_noDots_QC_b38 -i ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome_updated.genome -p remove_related
-```
 </details>
 	
 
