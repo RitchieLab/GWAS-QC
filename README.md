@@ -19,13 +19,13 @@
 # To Be Updated
 * Upload plink_pca code needs to uploaded 
 * ✅ Upload heterogeneity and missingness code 
-* Upload scree plot / pca plot code added as an R script that you can run easily
+* ✅Upload scree plot / pca plot code added as an R script that you can run easily -- decided to just keep in-line code
 * Upload drop_relateds.sh but we need to adapt the dependencies / paths
 * Fix any hardcoded paths
 * Add file with simulated phenotypes
-* Repeat to clarify specific Plink versions
+* ✅Repeat to clarify specific Plink versions -- Aude did this!
 * Make a note of ideal imputed graph vs the tutorial imputed R-sq graph
-* Locate Jakob's .genome file: *~/group/personal/jakob/gwas/cphg/affy/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome.genome* 
+* ✅Locate Jakob's .genome file: *~/group/personal/jakob/gwas/cphg/affy/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome.genome* 
 * ✅ Upload all the steps for .genome file at the end of the tutorial
 
 
