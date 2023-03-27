@@ -1207,7 +1207,7 @@ scp -r login@serveraddress:/~/GWAS_QC/VCFfiles/ ~/Desktop/
 # Get sex inconsistent samples (from raw)
 plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --check-sex --out prefix_checksex
 
-awk '{ if ($4 == 0) { print $2} }' prefix_checksex.sexcheck > nosex.txt
+awk '{ if ($4 == 0) { print $2"\t"$2} }' prefix_checksex.sexcheck > nosex.txt
 
 # Remove sex inconsistent samples (from raw)
 plink --bfile ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped --remove nosex.txt --make-bed --out prefix_nosex
