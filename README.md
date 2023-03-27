@@ -735,31 +735,29 @@ chr1    863579  863580  798959  rs11240777
 	
 <img width="808" alt="Screen Shot 2023-01-31 at 3 13 02 PM" src="https://user-images.githubusercontent.com/66582523/215872229-be837816-fb34-4b3b-a1b3-7559b9474ce2.png">
 
-* You should see that SNP `rs10458597` is in position `629241` in assembly `GRCh38` but position `564621` in assembly `GRCh37`
-* `liftover_exclude.txt` will contain the SNPs that were not able to be aligned during the liftOver process
-```
-head exclude_liftover.txt
-```
-```
-rs613882
-rs615185
-rs17457350
-rs17423513
-rs10492935
-rs17423547
-rs10915404
-rs557477
-rs560335
-rs565941
-```	
-	
 * Some formatting is required for both files before moving on to Step 8	
 ```
 sed -i 's/chr//g' liftover_newmap.txt
 awk '{print $5,$2}' liftover_newmap.txt > update_map.txt
 cat liftover_exclude.txt | grep -v "#" | awk '{print $5}' > exclude_liftover.txt
 ```
-
+* You should see that SNP `rs10458597` is in position `629241` in assembly `GRCh38` but position `564621` in assembly `GRCh37`
+* `liftover_exclude.txt` will contain the SNPs that were not able to be aligned during the liftOver process
+```
+head exclude_liftover.txt
+```
+```
+rs2474293
+rs4649875
+rs1699721
+rs12728058
+rs55671307
+rs56302109
+rs5011221
+rs4854281
+rs2346578
+rs9876781
+```
 	
 </details>
 
