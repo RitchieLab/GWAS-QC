@@ -7,7 +7,7 @@
   <br>
 </h1>
 
-<h4 align="center">A complementary tutorial to the <a href="https://currentprotocols.onlinelibrary.wiley.com/doi/10.1002/cpz1.603" target="_blank">Truong, Woerner, Cherlin, et al. Paper (2022)</a>. <a href="https://drive.google.com/file/d/1kxV3j_qCF_XMX47575frXhVwRMhzjqju/view?usp=sharing" target="_blank">[PDF])</a></h4>
+<h4 align="center">A complementary tutorial to the <a href="https://currentprotocols.onlinelibrary.wiley.com/doi/10.1002/cpz1.603" target="_blank">(2022) Truong, Woerner, Cherlin, et al. Paper.</a> <a href="https://drive.google.com/file/d/1kxV3j_qCF_XMX47575frXhVwRMhzjqju/view?usp=sharing" target="_blank">[PDF].</a></h4>
 
 <p align="center">
   <a href="#basic-overview">Basic Overview</a> •
