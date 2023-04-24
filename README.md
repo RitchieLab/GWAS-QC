@@ -1484,4 +1484,6 @@ GWAS in large-scale biobanks and cohorts: https://www.colorado.edu/ibg/sites/def
 * DNAnexus GWAS on the Research Analysis Platform using regenie: https://www.youtube.com/watch?v=762PVlyZJ-U
 
 # Acknowledgements
-We thank all co-authors 
+* We thank all co-authors involved in preparing this protocol and manuscript: Van Q. Truong, Jakob A. Woerner, Tess A. Cherlin, Yuki Bradford, Daniel H. Hui, Anastasia M. Lucas, Manu K. Shivakumar, Rachit Kumar, Milton Pividori, Chelsea C. Okeh, S. Chris Jones, Abigail C. Bossa, Stephen D. Turner, Marylyn D. Ritchie and Shefali S. Verma
+* The authors are grateful to the following scientists for their contributions as part of the eMERGE network: Loren L. Armstrong, Christopher S. Carlson, Dana C. Crawford, Andrew T. Crenshaw, Mariza de Andrade, Kimberly F. Doheny, Jonathan L. Haines, Geoffrey Hayes, Gail Jarvik, Lan Jiang, Iftikhar J. Kullo, Rongling Li, Hua Ling, Teri A. Manolio, Martha Matsumoto, Catherine A. McCarty, Andrew N. McDavid, Daniel B. Mirel, Justin E. Paschall, Elizabeth W. Pugh, Luke V. Rasmussen, Russell A. Wilke, and Rebecca L. Zuvich. 
+* An additional thank you goes out to Aude Ikuzwe Sindikubwabo, PhD student in Genetics & Epigenetics, for her help validating this workflow during her rotation
