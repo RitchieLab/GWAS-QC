@@ -1481,7 +1481,7 @@ GWAS in large-scale biobanks and cohorts: https://www.colorado.edu/ibg/sites/def
 ### Regenie
 * Regenie Documentation: https://rgcgithub.github.io/regenie/options/
 * Glow tutorial which implements a distribute version of the Regenie method: https://glow.readthedocs.io/en/latest/tutorial.html
-* DNAnexus GWAS on the Research Analysis Platform using regenie: https://www.youtube.com/watch?v=762PVlyZJ-U
+* DNAnexus GWAS on the Research Analysis Platform using Regenie: https://www.youtube.com/watch?v=762PVlyZJ-U
 
 # Acknowledgements
 * We thank all co-authors involved in the preparation of this protocol and manuscript: Van Q. Truong, Jakob A. Woerner, Tess A. Cherlin, Yuki Bradford, Daniel H. Hui, Anastasia M. Lucas, Manu K. Shivakumar, Rachit Kumar, Milton Pividori, Chelsea C. Okeh, S. Chris Jones, Abigail C. Bossa, Stephen D. Turner, Marylyn D. Ritchie and Shefali S. Verma
