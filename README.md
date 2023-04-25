@@ -1465,6 +1465,12 @@ We recommend the following resources and tutorials developed for performing GWAS
 * GWAS QC - theory and steps by the Pan African Bioinformatics Network for H3Africa: https://www.bioinf.wits.ac.za/courses/AIMS/QC_data.pdf 
 * The International Sample Genome Resource (IGSR) GitHub: https://github.com/igsr 
 * Protocols, methods and tools for genome-wide association studies (GWAS) of dental traits: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6613560/
+* GWAS and PLINK Practical from UColorado: 
+	- Part 1: https://ibg.colorado.edu/cdrom2019/colodro_grasby/GWAS_QC_part1/GWAS_QC_part1.pdf
+	- Practical Part 1: https://ibg.colorado.edu/cdrom2019/colodro_grasby/GWAS_QC_part1/GWAS_QC_part1_practical.pdf
+	- Part 2: https://ibg.colorado.edu/cdrom2019/colodro_grasby/GWAS_QC_part2/GWAS_QC_part2.pdf
+	- Practical Part 2: https://ibg.colorado.edu/cdrom2019/colodro_grasby/GWAS_QC_part2/GWAS_QC_part2_practical.pdf
+	- Relevant Directory: https://ibg.colorado.edu/cdrom2019/colodro_grasby/GWAS_QC_part2/
 
 ### PLINK
 * PLINK Documentation for Association Analysis: https://www.cog-genomics.org/plink/1.9/assoc
