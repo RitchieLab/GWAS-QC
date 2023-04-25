@@ -1470,7 +1470,7 @@ We recommend the following resources and tutorials developed for performing GWAS
 	- Practical Part 1: https://ibg.colorado.edu/cdrom2019/colodro_grasby/GWAS_QC_part1/GWAS_QC_part1_practical.pdf
 	- Part 2: https://ibg.colorado.edu/cdrom2019/colodro_grasby/GWAS_QC_part2/GWAS_QC_part2.pdf
 	- Practical Part 2: https://ibg.colorado.edu/cdrom2019/colodro_grasby/GWAS_QC_part2/GWAS_QC_part2_practical.pdf
-	- Relevant Directory: https://ibg.colorado.edu/cdrom2019/colodro_grasby/GWAS_QC_part2/
+	- Relevant Directory: https://ibg.colorado.edu/cdrom2019/colodro_grasby/
 
 ### PLINK
 * PLINK Documentation for Association Analysis: https://www.cog-genomics.org/plink/1.9/assoc
