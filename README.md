@@ -30,6 +30,7 @@
 * Upload drop_relateds.sh but we need to adapt the dependencies / paths
 * Check for and fix any remaining hardcoded paths
 * Check with journal about paywall issues that every institution seems to be experiencing
+* ✅Add Aude to github contributors
 
 
 
