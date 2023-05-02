@@ -16,7 +16,10 @@
   <a href="#related-resources">Related Resources</a>
 </p>
 
-# To Be Updated
+# Contributing
+Contributions are welcome! Please check out the todos below and feel free to open a pull request.
+
+## Todo
 * ✅ Locate Jakob's .genome file: *~/group/personal/jakob/gwas/cphg/affy/ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_has_ped_pruned10_genome.genome* 
 * ✅ Upload all the steps for .genome file at the end of the tutorial
 * ✅ Upload heterogeneity and missingness code 
